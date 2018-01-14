@@ -1,0 +1,87 @@
+*.font:     xft:DejaVu Sans Mono:size=12
+*.boldFont: xft:DejaVu Sans Mono:bold:size=12
+Xft.dpi:                        96
+Xft.antialias:                  1
+Xft.autohint:                   1
+Xft.hinting:                    1
+Xft.hintstyle:                  hintslight
+Xft.lcdfilter:                  lcdlight
+Xft.rgba:                       rgb
+
+URxvt*background:                     #002b36
+URxvt*foreground:                     #d6d6d6
+URxvt*foreground_bold:                #a8a19f
+
+URxvt.urgentOnBell: true
+URxvt.depth: 32
+URxvt.background: [80]#002b36
+
+!! black
+*color0: #002b36
+*color8: #766e6b
+!! red
+*color1: #f22c40
+*color9: #f22c40
+!! green
+*color2: #5ab738
+*color10: #5ab738
+!! yellow
+*color3: #d5911a
+*color11: #d5911a
+!! blue
+*color4: #407ee7
+*color12: #407ee7
+!! magenta
+*color5: #6666ea
+*color13: #6666ea
+!! cyan
+*color6: #00ad9c
+*color14: #00ad9c
+!! white
+*color7: #a8a19f
+*color15: #f1efee
+
+URxvt.scrollBar: false
+URxvt.intensityStyles: false
+
+URxvt.perl-ext-common: default,matcher,fullscreen,resize-font,url-select,keyboard-select
+URxvt.colorUL: #4682B4
+
+!! url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+!! keyboard-select
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+!! resize-font
+URxvt-resize-font.smaller: C-j
+URxvt-resize-font.bigger: C-k
+
+!! matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+!! fullscreen
+URxvt.keysym.F11: perl:fullscreen:switch
+
+!! rofi
+rofi.lines: 1
+rofi.location: 1
+rofi.line-padding: 1
+rofi.separator-style: solid
+rofi.width: 100
+rofi.font: xos4 Terminus 13
+rofi.columns: 8
+rofi.bw: 0
+rofi.disable-history: true
+rofi.color-enabled: true
+
+rofi.color-window:	#002b37, #e4b51c, #003642
+rofi.color-normal: #002b37, #A6AFB8, #002b37, #003642, #E4B51C
+rofi.color-active: #002b37, #A6AFB8, #002b37, #003642, #008ed4
+rofi.color-urgent: #002b37, #A6AFB8, #002b37, #003642, #da4281
+rofi.modi: window,run
+rofi.case-sensitive: false
+rofi.hide-scrollbar: true

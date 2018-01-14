@@ -1,0 +1,14 @@
+/*
+!.gitignore
+!.config/
+.config/*
+!.config/polybar
+!.config/Scripts
+!.config/compton.conf
+!.config/neofetch
+!.config/nvim
+.config/nvim/bundle
+!.config/polybar
+!.config/ranger
+!.config/rofi
+!.config/termite

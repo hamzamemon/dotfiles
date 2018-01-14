@@ -1,0 +1,391 @@
+[colors]
+background = #141021
+background-alt = #444
+foreground = #c4b7c5
+foreground-alt = #555
+primary = ${xrdb:color3}
+secondary = ${xrdb:color5}
+light_purple = #a363d5
+green = #16a085
+dark_grey = #a6afb8
+yellow = #e4b51c
+blue = #33b5e1
+cyan = #52cbb0
+white = #f5f7fa
+alert = #ef5253
+
+[bar/left]
+monitor = ${env:MONITOR:DVI-D-0}
+width = 100%
+height = 26
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 4
+;line-color = {$xrdb:color1}
+border-size = 0
+border-color = #00000000
+padding-left = 1
+padding-right = 1
+module-margin-right = 1
+module-margin-left = 1
+font-0 = Iosevka Slab:pixelsize=10;3
+font-1 = FontAwesome:size=12;0
+
+modules-left = i3 spotify
+modules-center = date 
+modules-right = volume cpu network temperature powermenu
+
+tray-position = right
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+label-indicator-padding = 1
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+underline-size = 3
+
+
+[bar/right]
+monitor = ${env:MONITOR:VGA-0}
+width = 100%
+height = 26
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 4
+;line-color = {$xrdb:color1}
+border-size = 0
+border-color = #00000000
+padding-left = 1
+padding-right = 1
+module-margin-left = 1
+module-margin-right = 1
+font-0 = Iosevka Slab:pixelsize=10;3
+font-1 = FontAwesome:size=12;0
+
+modules-left = i3 spotify
+modules-center = date 
+modules-right = volume cpu network temperature powermenu
+
+tray-position = right
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+label-indicator-padding = 1
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+underline-size = 3
+;[module/battery]
+;type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+;full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+;battery = BAT0
+;adapter = ADP1
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+;poll-interval = 5
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+;time-format = %H:%M
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+;format-charging = <animation-charging> <label-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-discharging = <ramp-capacity> <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-full = <ramp-capacity> <label-full>
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+;label-charging = Charging %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+;label-discharging = Discharging %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;label-full = Fully charged
+
+; Only applies if <ramp-capacity> is used
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-3 = 
+;ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+;bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+;animation-charging-3 = 
+;animation-charging-4 = 
+; Framerate in milliseconds
+;animation-charging-framerate = 750
+
+
+;spotify
+[module/spotify]
+type = custom/script
+tail = true
+exec = ~/.config/polybar/spotify.sh %artist% - %title%
+format-foreground = ${colors.foreground}
+format-prefix-font = 1
+format-prefix-foreground = ${colors.foreground}
+internal = 1
+format-padding = 1
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+pin-workspaces = true
+strip-wsnumbers = true
+label-mode-padding = 0
+label-mode-foreground = #000
+label-mode-background = ${colors.green}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.background}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+format-underline = ${colors.green}
+label = BL
+bar-width = 7
+bar-indicator = |
+bar-indicator-foreground = ${colors.green}
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = ${colors.green}
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.white}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 3
+label =  %percentage%% 
+
+[module/network]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+format-connected = <ramp-signal> <label-connected>
+format-disconnected = <label-disconnected>
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+;label-connected = %upspeed% %downspeed%
+label-connected = %{F#00ff00}%downspeed%%{F-} %{F#ff0000}%upspeed%%{F-}
+label-connected-foreground = #eefafafa
+label-disconnected = not connected
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+
+[module/date]
+type = internal/date
+interval = 1
+label = %date% %time%
+
+date = "%m/%d/%Y"
+date-alt = "%a, %m/%d/%Y"
+time = "%I:%M:%S%p"
+time-alt = "%I:%M:%S%p"
+
+ 
+[module/volume]
+type = internal/volume
+ 
+format-volume = <ramp-volume> <bar-volume>
+label-volume = VOL
+ 
+format-muted-foreground = ${colors.yellow}
+label-muted = sound muted
+ 
+bar-volume-width = 8
+bar-volume-foreground-0 = ${colors.green}
+bar-volume-foreground-1 = ${colors.green}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.green}
+bar-volume-foreground-4 = ${colors.green}
+bar-volume-foreground-5 = ${colors.yellow}
+bar-volume-foreground-6 = ${colors.yellow}
+bar-volume-foreground-7 = ${colors.alert}
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.white}
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+ramp-headphones-2 = 
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = Charging... <label-charging>
+#format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${xrdb:color3}
+
+format-discharging = <label-discharging>
+#format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+interval = 1
+thermal-zone = 0
+warn-temperature = 60
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+ 
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.yellow}
+ 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.green}
+
+[module/powermenu]
+type = custom/menu
+label-separator = |
+;label-separator=margin = 0.5
+format-spacing = 1
+label-open = 
+
+label-open-foreground = ${colors.yellow}
+;label-close =  cancel
+label-close-foreground = ${colors.yellow}
+format = <label-toggle> <menu>
+format-padding = 1
+menu-0-0 =  
+menu-0-0-exec = systemctl poweroff
+menu-0-1 =  
+menu-0-1-exec = systemctl reboot
+menu-0-2 =  
+menu-0-2-exec = lock && systemctl suspend
+
+label-close =  
+ 
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+ 
+[global/wm]
+margin-top = 5
+margin-bottom = 5
