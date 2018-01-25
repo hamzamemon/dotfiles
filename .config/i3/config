@@ -13,7 +13,7 @@ set $mod Mod4
 set $alt Mod1
 set $monitor DVI-D-0
 set $monitor2 VGA-0
-set $term termite
+set $term st
 set $video --no-startup-id bash ~/.config/Scripts/video.sh
 set $stoprec --no-startup-id killall ffmpeg & killall screenkey
 set $flash --no-startup-id ~/.config/Scripts/flash_win.sh
@@ -287,16 +287,16 @@ bindsym $mod+8		workspace $ws8
 bindsym $mod+9		workspace $ws9
 bindsym $mod+0		workspace $ws10
 
-bindsym $alt+1    workspace $ws20
-bindsym $alt+2		workspace $ws21
-bindsym $alt+3		workspace $ws22
-bindsym $alt+4		workspace $ws23
-bindsym $alt+5		workspace $ws24
-bindsym $alt+6		workspace $ws25
-bindsym $alt+7		workspace $ws26
-bindsym $alt+8		workspace $ws27
-bindsym $alt+9		workspace $ws28
-bindsym $alt+0		workspace $ws29
+bindsym $mod+$alt+1    workspace $ws20
+bindsym $mod+$alt+2		workspace $ws21
+bindsym $mod+$alt+3		workspace $ws22
+bindsym $mod+$alt+4		workspace $ws23
+bindsym $mod+$alt+5		workspace $ws24
+bindsym $mod+$alt+6		workspace $ws25
+bindsym $mod+$alt+7		workspace $ws26
+bindsym $mod+$alt+8		workspace $ws27
+bindsym $mod+$alt+9		workspace $ws28
+bindsym $mod+$alt+0		workspace $ws29
 
 # move focused container to workspace
 bindsym $mod+Shift+1	move container to workspace $ws1
@@ -310,16 +310,16 @@ bindsym $mod+Shift+8	move container to workspace $ws8
 bindsym $mod+Shift+9	move container to workspace $ws9
 bindsym $mod+Shift+0	move container to workspace $ws10
 
-bindsym $alt+Shift+1	move container to workspace $ws20
-bindsym $alt+Shift+2	move container to workspace $ws21
-bindsym $alt+Shift+3	move container to workspace $ws22
-bindsym $alt+Shift+4	move container to workspace $ws23
-bindsym $alt+Shift+5	move container to workspace $ws24
-bindsym $alt+Shift+6	move container to workspace $ws25
-bindsym $alt+Shift+7	move container to workspace $ws26
-bindsym $alt+Shift+8	move container to workspace $ws27
-bindsym $alt+Shift+9	move container to workspace $ws28
-bindsym $alt+Shift+0	move container to workspace $ws29
+bindsym $mod+$alt+Shift+1	move container to workspace $ws20
+bindsym $mod+$alt+Shift+2	move container to workspace $ws21
+bindsym $mod+$alt+Shift+3	move container to workspace $ws22
+bindsym $mod+$alt+Shift+4	move container to workspace $ws23
+bindsym $mod+$alt+Shift+5	move container to workspace $ws24
+bindsym $mod+$alt+Shift+6	move container to workspace $ws25
+bindsym $mod+$alt+Shift+7	move container to workspace $ws26
+bindsym $mod+$alt+Shift+8	move container to workspace $ws27
+bindsym $mod+$alt+Shift+9	move container to workspace $ws28
+bindsym $mod+$alt+Shift+0	move container to workspace $ws29
 
 for_window [class="Blender"] move to workspace $ws6
 for_window [class="Thunderbird"] move to workspace $ws9
@@ -494,3 +494,4 @@ bindsym XF86Documents		exec $term -e ranger ~/Documents
 #bindsym XF86Bluetooth		exec
 bindsym XF86WLAN		exec --no-startup-id sudo systemctl restart NetworkManager
 
+exec --no-startup-id restart

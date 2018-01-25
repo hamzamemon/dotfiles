@@ -14,7 +14,7 @@ vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 " => Turn persistent undo on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-  set undodir=~/.vim/undodir
+  set undodir=~/.config/nvim/undodir
   set undofile
 catch
 endtry
