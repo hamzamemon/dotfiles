@@ -1,0 +1,18 @@
+rofi.lines: 1
+rofi.location: 1
+rofi.line-padding: 1
+rofi.separator-style: solid
+rofi.width: 100
+rofi.font: DejaVu Sans Mono 16
+rofi.columns: 8
+rofi.bw: 0
+rofi.disable-history: true
+rofi.color-enabled: true
+
+rofi.color-window:	#002b37, #e4b51c, #003642
+rofi.color-normal: #002b37, #A6AFB8, #002b37, #003642, #E4B51C
+rofi.color-active: #002b37, #A6AFB8, #002b37, #003642, #008ed4
+rofi.color-urgent: #002b37, #A6AFB8, #002b37, #003642, #da4281
+rofi.modi: window,run
+rofi.case-sensitive: false
+rofi.hide-scrollbar: true

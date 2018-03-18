@@ -8,6 +8,7 @@
 !.config/neofetch
 !.config/nvim
 .config/nvim/bundle
+.config/nvim/undodir
 !.config/polybar
 !.config/ranger
 !.config/rofi

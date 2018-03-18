@@ -3,15 +3,12 @@ import csv
 from re import sub
 from re import compile
 
-quteshortcuts = ""
 rangershortcuts = ""
 bashshortcuts = ""
 #fishshortcuts = ""
 home = str(Path.home())+"/"
 rangerlocation=home+".config/ranger/rc.conf"
 bashlocation=home+".bashrc"
-qutelocation=home+".config/qutebrowser/config.py"
-
 
 # These are the labels that demarcate where the shortcuts
 # go in the config files.
@@ -29,8 +26,6 @@ with open(home+".config/Scripts/folders") as fold:
         rangershortcuts+=("map Y"+line[0]+" shell cp -r %s "+line[1]+"\n")
         #Adds the bashshortcuts shortcuts:
         bashshortcuts+=("alias "+line[0]+"=\"cd "+line[1]+" && ls -a\"\n")
-        #qutebrowser shortcuts:
-        quteshortcuts+="config.bind(';"+line[0]+"', 'set downloads.location.directory "+line[1]+" ;; hint links download')\n"
 
 #Goes thru the config file file and adds the shortcuts to both bashshortcuts and ranger.
 
@@ -60,4 +55,3 @@ def writeShortcuts(location, shortcuts):
 
 writeShortcuts(rangerlocation, rangershortcuts)
 writeShortcuts(bashlocation, bashshortcuts)
-writeShortcuts(qutelocation, quteshortcuts)

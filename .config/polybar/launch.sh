@@ -7,12 +7,6 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
-# Launch bar1 and bar2
-if type "xrandr"; then
-  polybar left &
-  polybar right &
-else
-  polybar --reload left &
-fi
+polybar --reload left &
 
 echo "Bars launched..."

@@ -1,8 +1,5 @@
-set nocompatible
-
 " Enable syntax highlighting
 syntax enable
-
 
 " Enable filetype plugins
 filetype plugin indent on

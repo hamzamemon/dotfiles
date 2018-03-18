@@ -1,30 +1,30 @@
 [options]
 #allow_bold = true
 #audible_bell = false
-clickable_url = true
-dynamic_title = true
-font = DejaVu Sans Mono 11
-fullscreen = true
+#clickable_url = true
+#dynamic_title = true
+font = DejaVu Sans Mono 10
+#fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
 #mouse_autohide = false
 #scroll_on_output = false
-scroll_on_keystroke = true
+#scroll_on_keystroke = true
 # Length of the scrollback buffer, 0 disabled the scrollback buffer
 # and setting it to a negative value means "infinite scrollback"
 scrollback_lines = 10000
-search_wrap = true
-urgent_on_bell = true
+#search_wrap = true
+#urgent_on_bell = true
 #hyperlinks = false
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
 #browser = xdg-open
 
 # "system", "on" or "off"
-cursor_blink = system
+#cursor_blink = system
 
 # "block", "underline" or "ibeam"
-cursor_shape = block
+#cursor_shape = block
 
 # Hide links that are no longer valid in url select overlay mode
 #filter_unmatched_urls = true
@@ -39,38 +39,30 @@ cursor_shape = block
 #scrollbar = off
 
 [colors]
-# If both of these are unset, cursor falls back to the foreground color,
-# and cursor_foreground falls back to the background color.
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
-
-foreground = #d6d6d6
-foreground_bold = #a8a19f
-# background = #1b1918
-
-# 20% background transparency (requires a compositor)
-background = rgba(27, 25, 24, 0.8)
-
-# If unset, will reverse foreground and background
 highlight = #2f2f2f
 
-# Colors from color0 to color254 can be set
-color0 = #1b1918
-color1 = #f22c40
-color2 = #5ab738
-color3 = #d5911a
-color4 = #407ee7
-color5 = #6666ea
-color6 = #00ad9c
-color7 = #a8a19f
-color8 = #766e6b
-color9 = #f22c40
-color10 = #5ab738
-color11 = #d5911a
-color12 = #407ee7
-color13 = #6666ea
-color14 = #00ad9c
-color15 = #f1efee
+cursor = #bbbbbb
+foreground = #f8f8f2
+background = rgba(40, 42, 54, 0.8)
+color0 = #000000
+color1 = #ff5555
+color2 = #50fa7b
+color3 = #f1fa8c
+color4 = #bd93f9
+color5 = #ff79c6
+color6 = #8be9fd
+color7 = #bbbbbb
+color8 = #555555
+color9 = #ff5555
+color10 = #50fa7b
+color11 = #f1fa8c
+color12 = #bd93f9
+color13 = #ff79c6
+color14 = #8be9fd
+color15 = #ffffff
+colorBD = #ffffff
+colorIT =
+colorUL =
 
 [hints]
 #font = Monospace 12

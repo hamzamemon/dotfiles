@@ -3,7 +3,7 @@
 "   Hamza Memon
 "
 " Version:
-"   1.0 - 8/22/17
+"   1.0 - 2/27/18
 "
 " Sections:
 "   -> General
@@ -27,7 +27,11 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Add persistent undoing
-set undofile
+try
+  set undodir=~/.config/nvim/undodir
+  set undofile
+catch
+endtry
 
 " Source Vim
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -46,9 +50,9 @@ set rnu
 set wildmode=longest:full,full
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*/.git/*,*/.DS_Store
-" Height of the command bar
+set wildignore+=*.o,*~,*.pyc,*/.git/*,*/.DS_Store
 
+" Height of the command bar
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
@@ -88,8 +92,8 @@ set foldcolumn=1
 " Enable 256 colors palette
 set t_Co=256
 
-colorscheme PaperColor
-set background=dark
+" Use dracula theme
+colorscheme dracula
 
 " Set UTF-8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -111,7 +115,6 @@ set lbr
 set tw=100
 
 set ai " Auto indent
-set si " Smart indent
 set wrap " Wrap lines
 
 set scrolloff=999

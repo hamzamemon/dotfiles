@@ -54,7 +54,6 @@ os_arch="off"
 
 
 # Uptime
-
 # Shorten the output of the uptime function
 # --uptime_shorthand tiny, on, off
 uptime_shorthand="off"
@@ -105,7 +104,7 @@ gpu_brand="on"
 # colors=(4 6 1 8 8 6)
 # You can also specify:
 # fg (foreground color)
-colors=(distro)
+colors=(4 6 4 6 6 4)
 
 
 # }}}
