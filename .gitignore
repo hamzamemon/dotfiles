@@ -9,6 +9,7 @@
 !.config/nvim
 .config/nvim/bundle
 .config/nvim/undodir
+.config/nvim/spell
 !.config/polybar
 !.config/ranger
 !.config/rofi

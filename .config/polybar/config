@@ -3,7 +3,7 @@ background = ${xrdb:background}00
 foreground = ${xrdb:foreground}
 dark = #1e1f26
 medium = #474b61
-red = ${xrdb:1}
+red = ${xrdb:color1}
 magenta = ${xrdb:color5}
 blue = ${xrdb:color4}
 green = ${xrdb:color2}
@@ -219,7 +219,7 @@ warn-temperature = 60
 ; ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
