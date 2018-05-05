@@ -12,6 +12,7 @@ Plug 'dracula/vim'
 " CtrlP/NerdTree
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'yegappan/mru'
+Plug 'scrooloose/nerdtree'
 
 " Easier jumping around/editing
 Plug 'tpope/vim-surround'
@@ -19,20 +20,33 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 
-" Vim statusline
-Plug 'bling/vim-bufferline'
-Plug 'mkitt/tabline.vim'
+" Development
+Plug 'ap/vim-css-color'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+
+" Interface
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+" needs ctags installed
+Plug 'majutsushi/tagbar'
+
+" Integration
+Plug 'w0rp/ale'
+
+" Misc
+Plug 'sjl/gundo.vim'
+
+Plug 'mkitt/tabline.vim'
 
 Plug 'mileszs/ack.vim'
 
-Plug 'sjl/gundo.vim'
 
-Plug 'w0rp/ale'
+Plug 'tpope/vim-fugitive'
+
 
 Plug 'Chiel92/vim-autoformat'
-Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'elzr/vim-json'
 Plug 'moll/vim-node'
@@ -68,21 +82,11 @@ Plug 'Shougo/neco-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'airblade/vim-gitgutter'
 
 Plug 'terryma/vim-multiple-cursors'
-Plug 'scrooloose/nerdtree'
-
-Plug 'majutsushi/tagbar'
-
-Plug 'plasticboy/vim-markdown'
 
 Plug 'valloric/MatchTagAlways'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'skammer/vim-css-color'
 
-Plug 'othree/javascript-libraries-syntax.vim'
-let g:used_javascript_libs = 'jquery,angularjs,angularui,react,d3,vue'
 
 Plug 'PotatoesMaster/i3-vim-syntax'
 

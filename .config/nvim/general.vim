@@ -23,7 +23,7 @@
 set autowrite
 
 " With a map leader, it's possible to do extra key combinations
-let mapleader = ","
+let g:mapleader = ","
 let g:mapleader = ","
 
 " Add persistent undoing
@@ -44,7 +44,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 set number
 
 " Toggle relative numbering
-set rnu
+set relativenumber
 
 " Turn on the Wild menu
 set wildmode=longest:full,full
@@ -56,7 +56,7 @@ set wildignore+=*.o,*~,*.pyc,*/.git/*,*/.DS_Store
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Configure backspace so it acts as it should act
 set whichwrap+=<,>,h,l
@@ -77,7 +77,7 @@ set magic
 set showmatch
 
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " Folding
 set foldenable
@@ -96,7 +96,7 @@ set t_Co=256
 colorscheme dracula
 
 " Set UTF-8 as standard encoding and en_US as the standard language
-set encoding=utf8
+set encoding=utf-8
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -111,11 +111,11 @@ set tabstop=2
 set showtabline=2
 
 " Linebreak on 100 characters
-set lbr
-set tw=100
+set linebreak
+set textwidth=100
 
-set ai " Auto indent
 set wrap " Wrap lines
+set autoindent " Auto indent
 
 set scrolloff=999
 
@@ -166,7 +166,7 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
-  set stal=2
+  set showtabline=2
 catch
 endtry
 
