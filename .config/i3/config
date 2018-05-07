@@ -12,6 +12,7 @@ set $monitor DVI-D-0
 set $monitor2 VGA-0
 set $term termite
 
+
 ###---Starting External Scripts---###
 #Libinput
 exec_always --no-startup-id libinput-gestures-setup start
@@ -31,6 +32,8 @@ exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.png
 exec --no-startup-id unclutter
 # exec --no-startup-id xrandr --output VGA-0 --mode 1280x1024 --pos 1920x0 --rotate normal --output DVI-D-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off
 exec --no-startup-id xrandr --output HDMI-2 --off --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off --dpi 150
+exec_always --no-startup-id calcurse-caldav --init keep-remote --authcode '4/AAANf9pMYjHa-OfLl43OY9slGvB2OFiay9dfF59OhIg9qT51qoIzdk_JcBDQuqytPjJ30lZFwSTv211S1kRW_LA#'
+
 
 ###---Audio and Music Definitions---###
 ##For spotify
@@ -42,6 +45,16 @@ set $next dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpr
 set $prev dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 set $lilfor dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek
 set $bigfor dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek(
+
+##For pulseaudio/pamixer
+set $inc --no-startup-id pamixer --allow-boost -i 5
+set $biginc --no-startup-id pamixer --allow-boost -i 15
+set $dec --no-startup-id pamixer --allow-boost -d 5
+set $bigdec --no-startup-id pamixer --allow-boost -d 15
+set $mute --no-startup-id pamixer --allow-boost -t
+set $micmute --no-startup-id pamixer --allow-boost -t
+set $truemute --no-startup-id pamixer -m
+
 
 ###---Dropdown/Scratchpad Windows---###
 ##Dropdown terminal
@@ -57,6 +70,7 @@ for_window [instance="math"] resize set 800 300
 for_window [instance="math"] move position center
 for_window [instance="math"] move scratchpad
 exec_always --no-startup-id $term --name math -e R -q
+
 
 ###---Basic Bindings---###
 bindsym $mod+Return 		exec $term
@@ -78,8 +92,7 @@ bindsym $mod+t			split toggle
 bindsym $mod+Shift+t		gaps inner current set 10; gaps outer current set 10
 bindsym $mod+y			exec $term -e calcurse
 
-
-bindsym $mod+u			[instance="dropdown"] scratchpad show; move position center
+bindsym $mod+u			[instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 
 bindsym $mod+i 			exec $term -e htop
 
@@ -116,27 +129,27 @@ bindsym $mod+Shift+x		exec sudo shutdown -h now
 bindsym $mod+m 			exec $music
 
 ###---Workspace Bindings---###
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
 
-set $ws20 "A"
-set $ws21 "B"
-set $ws22 "C"
-set $ws23 "D"
-set $ws24 "E"
-set $ws25 "F"
-set $ws26 "G"
-set $ws27 "H"
-set $ws28 "I"
-set $ws29 "J"
+set $ws20 A
+set $ws21 B
+set $ws22 C
+set $ws23 D
+set $ws24 E
+set $ws25 F
+set $ws26 G
+set $ws27 H
+set $ws28 I
+set $ws29 J
 
 workspace $ws1 output $monitor
 workspace $ws2 output $monitor

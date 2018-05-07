@@ -1,3 +1,6 @@
+;-------------------------------------------------------------------------------
+;	V A R I A B L E S
+;-------------------------------------------------------------------------------
 [colors]
 background = ${xrdb:background}00
 foreground = ${xrdb:foreground}
@@ -10,6 +13,9 @@ green = ${xrdb:color2}
 yellow = ${xrdb:color3}
 orange = #ff9f55
 
+;-------------------------------------------------------------------------------
+;	B A R S
+;-------------------------------------------------------------------------------
 [bar/left]
 dpi = 150
 monitor = ${env:MONITOR:eDP-1}
@@ -27,7 +33,7 @@ font-0 = Roboto:size=9;0
 font-1 = MaterialIcons:size=10;2
 font-2 = FontAwesome:size=10;1
 
-modules-left = i3 spotify
+modules-left = i3 arrow0 i3index arrow spotify
 modules-center = date 
 modules-right = volume memory cpu temperature battery powermenu
 
@@ -91,16 +97,28 @@ format-prefix-foreground = ${colors.green}
 internal = 1
 format-padding = 1
 
+[module/i3index]
+type = internal/i3
+format = <label-state>
+
+label-focused = "%name% "
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.pink}
+
+label-unfocused =
+label-urgent =
+
 [module/i3]
 type = internal/i3
 pin-workspaces = true
-strip-wsnumbers = true
 index-sort = true
 wrapping-scroll = false
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;3
+
+ws-icon-default = ○
 
 format = <label-state> <label-mode>
 
@@ -219,7 +237,7 @@ warn-temperature = 60
 ; ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>

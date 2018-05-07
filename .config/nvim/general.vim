@@ -112,10 +112,11 @@ set showtabline=2
 
 " Linebreak on 100 characters
 set linebreak
-set textwidth=100
+set textwidth=120
+set colorcolumn=120
 
-set wrap " Wrap lines
-set autoindent " Auto indent
+" Wrap lines
+set wrap
 
 set scrolloff=999
 
