@@ -1,9 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
-"   Hamza Memon
+"   Java
 "
 " Version:
-"   1.0 - 2/27/18
+"   1.0 - 8/4/18
 "
 " Sections:
 "   -> General
@@ -23,8 +23,7 @@
 set autowrite
 
 " With a map leader, it's possible to do extra key combinations
-let g:mapleader = ","
-let g:mapleader = ","
+let g:mapleader = ','
 
 " Add persistent undoing
 try
@@ -86,6 +85,7 @@ set foldmethod=syntax
 set foldopen-=block
 set foldcolumn=1
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -112,58 +112,19 @@ set showtabline=2
 
 " Linebreak on 100 characters
 set linebreak
-set textwidth=120
-set colorcolumn=120
+set textwidth=100
+set colorcolumn=100
 
 " Wrap lines
 set wrap
 
+" Keep cursor in middle of screen
 set scrolloff=999
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap escape
-imap jk <Esc>
-
-" Disable highlight when <leader><space> is pressed
-map <silent> <leader><space> :noh<CR>
-
-" Useful mappings for managing windows
-map vs :vsplit
-map sp :split
-
-map vr :vertical resize
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-" Useful mappings for managing tabs
-
-map tn :tabnew<CR>
-map to :tabonly<CR>
-map tc :tabclose<CR>
-map tm :tabmove<CR>
-map tt :tabnext<CR>
-map tp :tabprev<CR>
-map tf :tabfind
-nnoremap <silent> <Esc>h :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <Esc>l :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab

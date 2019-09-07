@@ -1,23 +1,22 @@
 # vim: filetype=i3
 
+
 ###---Basic Definitions---###
 hide_edge_borders both
 for_window [class="^.*"] border pixel 0
 gaps inner 10
 gaps outer 10
 font pango:Roboto 9
+set $ctrl Ctrl
 set $mod Mod4
 set $alt Mod1
-set $monitor DVI-D-0
-set $monitor2 VGA-0
+set $LEFT VGA-0
+set $CENTER HDMI-0
+set $RIGHT DVI-D-0
 set $term termite
 
 
 ###---Starting External Scripts---###
-#Libinput
-exec_always --no-startup-id libinput-gestures-setup start
-#Wifi applet:
-exec --no-startup-id nm-applet
 #Mount other drives:
 exec --no-startup-id sudo mount -a
 #Composite manager:
@@ -30,8 +29,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.png
 #Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
-# exec --no-startup-id xrandr --output VGA-0 --mode 1280x1024 --pos 1920x0 --rotate normal --output DVI-D-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off
-exec --no-startup-id xrandr --output HDMI-2 --off --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off --dpi 150
+exec --no-startup-id xrandr --output VGA-0 --mode 1280x1024 --pos 1920x0 --rotate normal --output DVI-D-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off
 exec_always --no-startup-id calcurse-caldav --init keep-remote --authcode '4/AAANf9pMYjHa-OfLl43OY9slGvB2OFiay9dfF59OhIg9qT51qoIzdk_JcBDQuqytPjJ30lZFwSTv211S1kRW_LA#'
 
 
@@ -151,27 +149,49 @@ set $ws27 H
 set $ws28 I
 set $ws29 J
 
-workspace $ws1 output $monitor
-workspace $ws2 output $monitor
-workspace $ws3 output $monitor
-workspace $ws4 output $monitor
-workspace $ws5 output $monitor
-workspace $ws6 output $monitor
-workspace $ws7 output $monitor
-workspace $ws8 output $monitor
-workspace $ws9 output $monitor
-workspace $ws10 output $monitor
+set $ws30 K
+set $ws31 L
+set $ws32 M
+set $ws33 N
+set $ws34 O
+set $ws35 P
+set $ws36 Q
+set $ws37 R
+set $ws38 S
+set $ws39 T
 
-workspace $ws20 output $monitor2
-workspace $ws21 output $monitor2
-workspace $ws22 output $monitor2
-workspace $ws23 output $monitor2
-workspace $ws24 output $monitor2
-workspace $ws25 output $monitor2
-workspace $ws26 output $monitor2
-workspace $ws27 output $monitor2
-workspace $ws28 output $monitor2
-workspace $ws29 output $monitor2
+workspace $ws1 output $CENTER
+workspace $ws2 output $CENTER
+workspace $ws3 output $CENTER
+workspace $ws4 output $CENTER
+workspace $ws5 output $CENTER
+workspace $ws6 output $CENTER
+workspace $ws7 output $CENTER
+workspace $ws8 output $CENTER
+workspace $ws9 output $CENTER
+workspace $ws10 output $CENTER
+
+workspace $ws20 output $LEFT
+workspace $ws21 output $LEFT
+workspace $ws22 output $LEFT
+workspace $ws23 output $LEFT
+workspace $ws24 output $LEFT
+workspace $ws25 output $LEFT
+workspace $ws26 output $LEFT
+workspace $ws27 output $LEFT
+workspace $ws28 output $LEFT
+workspace $ws29 output $LEFT
+
+workspace $ws30 output $RIGHT
+workspace $ws31 output $RIGHT
+workspace $ws32 output $RIGHT
+workspace $ws33 output $RIGHT
+workspace $ws34 output $RIGHT
+workspace $ws35 output $RIGHT
+workspace $ws36 output $RIGHT
+workspace $ws37 output $RIGHT
+workspace $ws38 output $RIGHT
+workspace $ws39 output $RIGHT
 
 # switch to workspace
 bindsym $mod+1		workspace $ws1
@@ -185,16 +205,27 @@ bindsym $mod+8		workspace $ws8
 bindsym $mod+9		workspace $ws9
 bindsym $mod+0		workspace $ws10
 
-bindsym $mod+$alt+1    workspace $ws20
-bindsym $mod+$alt+2		workspace $ws21
-bindsym $mod+$alt+3		workspace $ws22
-bindsym $mod+$alt+4		workspace $ws23
-bindsym $mod+$alt+5		workspace $ws24
-bindsym $mod+$alt+6		workspace $ws25
-bindsym $mod+$alt+7		workspace $ws26
-bindsym $mod+$alt+8		workspace $ws27
-bindsym $mod+$alt+9		workspace $ws28
-bindsym $mod+$alt+0		workspace $ws29
+bindsym $mod+$ctrl+1    workspace $ws20
+bindsym $mod+$ctrl+2		workspace $ws21
+bindsym $mod+$ctrl+3		workspace $ws22
+bindsym $mod+$ctrl+4		workspace $ws23
+bindsym $mod+$ctrl+5		workspace $ws24
+bindsym $mod+$ctrl+6		workspace $ws25
+bindsym $mod+$ctrl+7		workspace $ws26
+bindsym $mod+$ctrl+8		workspace $ws27
+bindsym $mod+$ctrl+9		workspace $ws28
+bindsym $mod+$ctrl+0		workspace $ws29
+
+bindsym $mod+$alt+1    workspace $ws30
+bindsym $mod+$alt+2		workspace $ws31
+bindsym $mod+$alt+3		workspace $ws32
+bindsym $mod+$alt+4		workspace $ws33
+bindsym $mod+$alt+5		workspace $ws34
+bindsym $mod+$alt+6		workspace $ws35
+bindsym $mod+$alt+7		workspace $ws36
+bindsym $mod+$alt+8		workspace $ws37
+bindsym $mod+$alt+9		workspace $ws38
+bindsym $mod+$alt+0		workspace $ws39
 
 # move focused container to workspace
 bindsym $mod+Shift+1	move container to workspace $ws1
@@ -208,16 +239,27 @@ bindsym $mod+Shift+8	move container to workspace $ws8
 bindsym $mod+Shift+9	move container to workspace $ws9
 bindsym $mod+Shift+0	move container to workspace $ws10
 
-bindsym $mod+$alt+Shift+1	move container to workspace $ws20
-bindsym $mod+$alt+Shift+2	move container to workspace $ws21
-bindsym $mod+$alt+Shift+3	move container to workspace $ws22
-bindsym $mod+$alt+Shift+4	move container to workspace $ws23
-bindsym $mod+$alt+Shift+5	move container to workspace $ws24
-bindsym $mod+$alt+Shift+6	move container to workspace $ws25
-bindsym $mod+$alt+Shift+7	move container to workspace $ws26
-bindsym $mod+$alt+Shift+8	move container to workspace $ws27
-bindsym $mod+$alt+Shift+9	move container to workspace $ws28
-bindsym $mod+$alt+Shift+0	move container to workspace $ws29
+bindsym $mod+$ctrl+Shift+1	move container to workspace $ws20
+bindsym $mod+$ctrl+Shift+2	move container to workspace $ws21
+bindsym $mod+$ctrl+Shift+3	move container to workspace $ws22
+bindsym $mod+$ctrl+Shift+4	move container to workspace $ws23
+bindsym $mod+$ctrl+Shift+5	move container to workspace $ws24
+bindsym $mod+$ctrl+Shift+6	move container to workspace $ws25
+bindsym $mod+$ctrl+Shift+7	move container to workspace $ws26
+bindsym $mod+$ctrl+Shift+8	move container to workspace $ws27
+bindsym $mod+$ctrl+Shift+9	move container to workspace $ws28
+bindsym $mod+$ctrl+Shift+0	move container to workspace $ws29
+
+bindsym $mod+$alt+Shift+1	move container to workspace $ws30
+bindsym $mod+$alt+Shift+2	move container to workspace $ws31
+bindsym $mod+$alt+Shift+3	move container to workspace $ws32
+bindsym $mod+$alt+Shift+4	move container to workspace $ws33
+bindsym $mod+$alt+Shift+5	move container to workspace $ws34
+bindsym $mod+$alt+Shift+6	move container to workspace $ws35
+bindsym $mod+$alt+Shift+7	move container to workspace $ws36
+bindsym $mod+$alt+Shift+8	move container to workspace $ws37
+bindsym $mod+$alt+Shift+9	move container to workspace $ws38
+bindsym $mod+$alt+Shift+0	move container to workspace $ws39
 
 # Sreen brightness controls
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -248,7 +290,7 @@ bindsym $mod+Shift+greater	exec $next
 
 #Print screen takes a screenshot.
 #With shift, it takes one only of the given window.
-bindsym --release Shift+Print exec "scrot -s '/home/hamza/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym --release Shift+Print exec "scrot -s '/home/hamza/Pictures/%s_%H%M_%d%m%Y_$wx$h.png'"
 bindsym --release Print exec "scrot -m '/home/hamza/Pictures/screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png'"
 bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '/home/user/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
 

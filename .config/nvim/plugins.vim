@@ -21,10 +21,10 @@ Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 
 " Development
+Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'hail2u/vim-css3-syntax'
 
 " Interface
 Plug 'vim-airline/vim-airline'
@@ -34,6 +34,7 @@ Plug 'majutsushi/tagbar'
 
 " Integration
 Plug 'w0rp/ale'
+Plug 'chrisbra/csv.vim'
 
 " Misc
 Plug 'sjl/gundo.vim'

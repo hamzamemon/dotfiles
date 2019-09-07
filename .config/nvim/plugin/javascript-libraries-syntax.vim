@@ -1,1 +1,1 @@
-let g:used_javascript_libs = 'jquery,angularjs,angularui,d3'
+let g:used_javascript_libs = 'angularjs,angularui,d3,react'
