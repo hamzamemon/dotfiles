@@ -74,7 +74,7 @@ chpwd() {
 	ls
 }
 
-alias ls='ls --color=auto -F'
+alias ls='ls -hN --color=auto -F'
 
 # Load third party plugins.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
