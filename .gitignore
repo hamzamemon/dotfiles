@@ -15,3 +15,6 @@
 !.config/rofi
 !.config/termite
 !.config/st
+!.zprofile
+!.config/zsh
+.config/zsh/.zcompdump

@@ -1,8 +1,11 @@
-#
-# ~/.bash_profile
-#
+# Profile file. Runs on login. Environmental variables set here.
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+# Default programs
+export EDITOR="nvim"
+export TERMINAL="termite"
+export FILE="ranger"
+
+export ZDOTDIR="$HOME/.config/zsh"
 
 export LESS_TERMCAP_mb=$'\e[01;31m' \
 LESS_TERMCAP_md=$'\E[01;38;5;74m' \
