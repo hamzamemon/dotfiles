@@ -10,9 +10,9 @@ font pango:Roboto 9
 set $ctrl Ctrl
 set $mod Mod4
 set $alt Mod1
-set $LEFT VGA-0
-set $CENTER HDMI-0
-set $RIGHT DVI-D-0
+set $LEFT DisplayPort-2
+set $CENTER HDMI-A-0
+set $RIGHT DisplayPort-0
 set $term termite
 
 
@@ -29,7 +29,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.png
 #Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
-exec --no-startup-id xrandr --output VGA-0 --mode 1280x1024 --pos 1920x0 --rotate normal --output DVI-D-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off
+exec --no-startup-id xrandr --output DisplayPort-0 --mode 1920x1080 --pos 2944x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --mode 1280x1024 --pos 0x0 --rotate left --output HDMI-A-0 --primary --mode 1920x1080 --pos               1024x0 --rotate normal
 exec_always --no-startup-id calcurse-caldav --init keep-remote --authcode '4/AAANf9pMYjHa-OfLl43OY9slGvB2OFiay9dfF59OhIg9qT51qoIzdk_JcBDQuqytPjJ30lZFwSTv211S1kRW_LA#'
 
 
