@@ -17,6 +17,7 @@
 !.config/polybar
 !.config/ranger
 .config/ranger/bookmarks
+.config/ranger/history
 !.config/rofi
 !.config/termite
 !.config/st

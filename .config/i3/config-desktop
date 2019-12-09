@@ -21,8 +21,6 @@ set $term termite
 exec --no-startup-id sudo mount -a
 #Composite manager:
 exec_always --no-startup-id compton --xrender-sync-fence
-#Refresh bash/ranger shortcuts:
-exec --no-startup-id python ~/.config/Scripts/shortcuts.py
 #Launch Polybar where appropriate:
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 #Add wallpaper:

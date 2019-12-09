@@ -1,6 +1,0 @@
-cfr	~/.config/ranger/rc.conf.base
-cfi	~/.config/i3/config
-cff	~/.config/Scripts/folders
-cfc	~/.config/Scripts/configs
-cfT	~/.config/Scripts/tmux.conf
-cfp	~/.config/polybar/config
