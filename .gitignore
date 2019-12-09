@@ -3,6 +3,10 @@
 !.config/
 .config/*
 !.config/polybar
+.config/polybar/launch.sh
+.config/polybar/config
+!.config/i3
+.config/i3/config
 !.config/Scripts
 !.config/compton.conf
 !.config/neofetch
@@ -12,6 +16,7 @@
 .config/nvim/spell
 !.config/polybar
 !.config/ranger
+.config/ranger/bookmarks
 !.config/rofi
 !.config/termite
 !.config/st

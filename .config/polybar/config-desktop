@@ -18,11 +18,12 @@ gray = ${xrdb:color7}
 ;-------------------------------------------------------------------------------
 ;	B A R S
 ;-------------------------------------------------------------------------------
-[bar/left]
-dpi = 120
+[bar/center]
+dpi = 100
 width = 100%
 height = 35
-monitor = DisplayPort-2
+inherit = bar/left
+monitor = HDMI-A-0
 
 background = ${colors.background-trans}
 foreground = ${colors.foreground}
@@ -35,21 +36,27 @@ font-0 = Roboto:size=9:weight=bold;3
 font-1 = FontAwesome:size=9;3
 font-2 = Hack:pixelsize=10:weight=bold;3
 
-modules-left = i3 spotify
-modules-center = date
-modules-right = volume memory cpu temperature powermenu
-
 tray-position = right
 tray-background = ${colors.dark}
 tray-padding = 2
 
-[bar/right]
-inherit = bar/left
-monitor = HDMI-A-0
 modules-left = i3 spotify
 modules-center = date
 modules-right = volume memory cpu temperature powermenu
 
+[bar/left]
+inherit = bar/center
+monitor = DisplayPort-2
+modules-left = i3
+modules-center = date
+modules-right =
+
+[bar/right]
+inherit = bar/center
+monitor = DisplayPort-0
+modules-left = i3
+modules-center = date
+modules-right =
 
 ;-------------------------------------------------------------------------------
 ;	M O D U L E S

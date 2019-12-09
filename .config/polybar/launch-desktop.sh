@@ -8,6 +8,7 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 polybar --reload left &
+polybar --reload center &
 polybar --reload right &
 
 echo "Bars launched..."
