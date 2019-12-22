@@ -19,6 +19,8 @@ _comp_options+=(globdots)		# Include hidden files.
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+bindkey '^R' history-incremental-search-backward
+
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -82,3 +84,7 @@ alias ls='ls -hN --color=auto -F'
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/doc/pkgfile/command-not-found.zsh
 neofetch
+export JAVA_HOME="/usr/lib/jvm/default"
+export PATH="/usr/lib/ccache/bin/:$PATH"
+export PATH="~/.dotnet/tools/:$PATH"
+export MAKEFLAGS="-j17 -l16"

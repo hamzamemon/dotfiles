@@ -4,6 +4,7 @@
 export EDITOR="nvim"
 export TERMINAL="termite"
 export FILE="ranger"
+export LIBVA_DRIVER_NAME="radeonsi"
 
 export ZDOTDIR="$HOME/.config/zsh"
 

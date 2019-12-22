@@ -57,7 +57,7 @@ Plug 'vim-scripts/c.vim'
 Plug 'isruslan/vim-es6'
 Plug 'burnettk/vim-angular'
 
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'terryma/vim-expand-region'
 
 " Install xsel
