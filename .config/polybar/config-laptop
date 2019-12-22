@@ -1,0 +1,276 @@
+;-------------------------------------------------------------------------------
+;	V A R I A B L E S
+;-------------------------------------------------------------------------------
+[colors]
+background-trans = ${xrdb:background}00
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+
+dark = #1e1f26
+medium = #474b61
+red = ${xrdb:color1}
+magenta = ${xrdb:color5}
+blue = ${xrdb:color4}
+green = ${xrdb:color2}
+yellow = ${xrdb:color3}
+gray = ${xrdb:color7}
+
+;-------------------------------------------------------------------------------
+;	B A R S
+;-------------------------------------------------------------------------------
+[bar/center]
+dpi = 100
+width = 100%
+height = 35
+inherit = bar/left
+monitor = HDMI-A-0
+
+background = ${colors.background-trans}
+foreground = ${colors.foreground}
+
+padding-left = 0
+padding-right = 0
+module-margin = 2
+
+font-0 = Roboto:size=9:weight=bold;3
+font-1 = FontAwesome:size=9;3
+font-2 = Hack:pixelsize=10:weight=bold;3
+
+tray-position = right
+tray-background = ${colors.dark}
+tray-padding = 2
+
+modules-left = i3 spotify
+modules-center = date
+modules-right = volume memory cpu temperature powermenu
+
+[bar/left]
+inherit = bar/center
+monitor = DisplayPort-2
+modules-left = i3
+modules-center = date
+modules-right =
+
+[bar/right]
+inherit = bar/center
+monitor = DisplayPort-0
+modules-left = i3
+modules-center = date
+modules-right =
+
+;-------------------------------------------------------------------------------
+;	M O D U L E S
+;-------------------------------------------------------------------------------
+[module/i3index]
+type = internal/i3
+format = <label-state>
+
+label-focused = %name%
+label-focused-padding = 1
+label-focused-background = ${colors.blue}
+label-focused-foreground = ${colors.dark}
+
+label-unfocused =
+label-urgent =
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+
+pin-workspaces = true
+index-sort = true
+enable-click = false
+enable-scroll = true
+wrapping-scroll = false
+
+ws-icon-0 = 0;*
+ws-icon-default = ○
+
+label-focused = " ● "
+label-focused-foreground = ${colors.blue}
+label-focused-background = ${colors.dark}
+label-focused-padding = 1
+
+label-unfocused = " %icon% "
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.dark}
+label-unfocused-padding = 1
+
+label-urgent = " ● "
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.dark}
+label-urgent-padding = 1
+
+[module/cpu]
+type = internal/cpu
+interval = 3
+label =  %percentage%% 
+label-padding = 2
+label-foreground = ${colors.green}
+
+[module/memory]
+type = internal/memory
+interval = 3
+label =  %percentage_used%%
+label-padding = 2
+label-foreground = ${colors.magenta}
+
+[module/date]
+type = internal/date
+interval = 1
+label = %date% %time%
+label-foreground = ${colors.yellow}
+
+date = "%m/%d/%Y"
+date-alt = "%a, %m/%d/%Y"
+time = "%I:%M:%S%p"
+time-alt = "%I:%M:%S%p"
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <bar-volume>
+format-muted-foreground = ${colors.blue}
+label-muted = 
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.blue}
+bar-volume-foreground-1 = ${colors.blue}
+bar-volume-foreground-2 = ${colors.blue}
+bar-volume-foreground-3 = ${colors.blue}
+bar-volume-foreground-4 = ${colors.blue}
+bar-volume-foreground-5 = ${colors.blue}
+bar-volume-foreground-6 = ${colors.magenta}
+bar-volume-foreground-7 = ${colors.magenta}
+bar-volume-foreground-8 = ${colors.magenta}
+bar-volume-foreground-9 = ${colors.magenta}
+bar-volume-foreground-10 = ${colors.magenta}
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = =
+bar-volume-fill-font = 2
+bar-volume-empty = =
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.yellow}
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+ramp-headphones-2 = 
+
+label-volume-padding = 2
+label-muted-padding = 2
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC
+poll-interval = 5
+time-format = %H:%M
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+label-charging = %percentage%% (%time%)
+label-discharging = %percentage%% (%time%)
+label-full = Fully charged
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+bar-capacity-width = 10
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+label-full-foreground = ${colors.blue}
+label-charging-foreground = ${colors.green}
+animation-charging-foreground = ${colors.green}
+label-discharging-foreground = ${colors.magenta}
+ramp-capacity-foreground = ${colors.magenta}
+
+label-full-padding = 1
+label-charging-padding = 1
+label-discharging-padding = 1
+ramp-capacity-padding = 1
+animation-charging-padding = 1
+
+[module/spotify]
+type = custom/script
+tail = true
+exec = ~/.config/polybar/spotify.sh %artist% - %title%
+format-foreground = ${colors.green}
+format-prefix-font = 1
+format-prefix-foreground = ${colors.green}
+internal = 1
+format-padding = 1
+
+[module/temperature]
+type = internal/temperature
+interval = 2
+
+warn-temperature = 60
+
+thermal-zone = 4
+hwmon-path = /sys/class/thermal/thermal_zone0/temp
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+ 
+label = %temperature-c%
+label-padding = 2
+label-foreground = ${colors.yellow}
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.red}
+ 
+ramp-0 = 
+ramp-2 = 
+ramp-1 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.yellow}
+
+[module/powermenu]
+type = custom/menu
+label-separator = |
+format-spacing = 1
+label-open = 
+
+label-open-foreground = ${colors.magenta}
+;label-close =  cancel
+label-close-foreground = ${colors.magenta}
+format = <label-toggle> <menu>
+format-padding = 1
+menu-0-0 =  
+menu-0-0-exec = systemctl poweroff
+menu-0-1 =  
+menu-0-1-exec = systemctl reboot
+menu-0-2 =  
+menu-0-2-exec = lock && systemctl suspend
+
+label-close =  
+ 
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
