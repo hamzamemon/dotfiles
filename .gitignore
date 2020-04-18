@@ -2,6 +2,8 @@
 !.gitignore
 !.config/
 .config/*
+!.config/alsa
+!.config/calcurse
 !.config/polybar
 .config/polybar/launch.sh
 .config/polybar/config
@@ -21,6 +23,7 @@
 !.config/rofi
 !.config/termite
 !.config/st
+!.profile
 !.zprofile
 !.config/zsh
 .config/zsh/.zcompdump
