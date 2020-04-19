@@ -4,6 +4,8 @@
 .config/*
 !.config/alsa
 !.config/calcurse
+!.config/fontconfig
+!.config/mpv
 !.config/polybar
 .config/polybar/launch.sh
 .config/polybar/config
