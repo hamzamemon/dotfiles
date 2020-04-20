@@ -30,3 +30,8 @@
 !.config/tmux/
 !.config/zsh/
 .config/zsh/.zcompdump
+!.local/
+.local/*
+!.local/share/
+.local/share/*
+!.local/share/dotfiles/

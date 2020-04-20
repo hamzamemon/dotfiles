@@ -3,6 +3,7 @@
 # Default programs
 export EDITOR="nvim"
 export TERMINAL="termite"
+export BROWSER="firefox"
 export FILE="ranger"
 export LIBVA_DRIVER_NAME="radeonsi"
 
@@ -19,3 +20,4 @@ LESS_TERMCAP_se=$'\E[0m' \
 LESS_TERMCAP_so=$'\E[38;5;246m' \
 LESS_TERMCAP_ue=$'\E[0m' \
 LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+
