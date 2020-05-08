@@ -54,8 +54,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(hoc-format-selected)
 
 " Use <Tab> for selections ranges.
 nmap <silent> <TAB> <Plug>(coc-range-select)
@@ -72,9 +72,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Prettier command for coc 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" Run before saving async
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.json,*.md,*.yaml,*.html PrettierAsync
 
 " Add (Neo)Vim's native statusline support.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
@@ -115,6 +112,7 @@ let g:coc_global_extensions = [
   \ 'coc-java',
   \ 'coc-json',
   \ 'coc-markdownlint',
+  \ 'coc-prettier',
   \ 'coc-python',
   \ 'coc-snippets',
   \ 'coc-tsserver',

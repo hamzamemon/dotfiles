@@ -74,7 +74,7 @@ let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
 
 " Automatically open NERDTree on start
-autocmd VimEnter * NERDTreeToggle %
+autocmd VimEnter * if argc() == 1 | NERDTreeToggle % | wincmd p | endif
 
 " Automatically close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

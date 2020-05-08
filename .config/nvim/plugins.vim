@@ -29,18 +29,6 @@ Plug 'ryanoasis/vim-devicons'
 " Development
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': [
-    \ 'css',
-    \ 'html',
-    \ 'javascript',
-    \ 'json',
-    \ 'markdown',
-    \ 'typescript',
-    \ 'yaml'
-    \ ]
-  \ }
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'lervag/vimtex'

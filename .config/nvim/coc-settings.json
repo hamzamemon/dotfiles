@@ -60,6 +60,7 @@
   "java.maven.downloadSources": true,
   "java.codeGeneration.useBlocks": true,
   "java.codeGeneration.generateComments": true,
+  "prettier.requireConfig": true,
   "python.autoComplete.addBrackets": true,
   "snippets.ultisnips.directories": ["UltiSnips", "./UltiSnips"],
   "tsserver.log": "verbose",
