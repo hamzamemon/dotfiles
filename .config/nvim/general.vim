@@ -1,17 +1,15 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
-"   Java
+"   Hamza Memon
 "
 " Version:
-"   1.0 - 8/4/18
+"   2.0 - 5/7/20
 "
 " Sections:
 "   -> General
-"   -> Vim user interface
+"   -> Front-end
+"   -> Back-end
 "   -> Colors and Fonts
-"   -> Text, tab and indent related
-"   -> Moving around, tabs and buffers
-"   -> Spell checking
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -32,45 +30,24 @@ try
 catch
 endtry
 
-" Source Vim
-nnoremap <leader>sv :source $MYVIMRC<CR>
+" Disable making a backup before overwriting a file
+set nowritebackup
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim user interface
+" => Front-end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set line number
+" Set line numbering
 set number
 
-" Toggle relative numbering
+" Sets relative numbering
 set relativenumber
-
-" Turn on the Wild menu
-set wildmode=longest:full,full
-
-" Ignore compiled files
-set wildignore+=*.o,*~,*.pyc,*/.git/*,*/.DS_Store
 
 " Height of the command bar
 set cmdheight=2
 
-" A buffer becomes hidden when it is abandoned
-set hidden
-
-" Configure backspace so it acts as it should act
-set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching, try to be be smart about cases
-set smartcase
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" For regex, turn magic on
-set magic
+" By default the sign column will appear when there are signs to show and disappear when there aren't.
+set signcolumn=yes
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -85,23 +62,9 @@ set foldmethod=syntax
 set foldopen-=block
 set foldcolumn=1
 
+" We don't need to see things like -- INSERT -- anymore
+set noshowmode
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable 256 colors palette
-set t_Co=256
-
-" Use dracula theme
-colorscheme dracula
-
-" Set UTF-8 as standard encoding and en_US as the standard language
-set encoding=utf-8
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
 
@@ -110,34 +73,72 @@ set shiftwidth=2
 set tabstop=2
 set showtabline=2
 
-" Linebreak on 100 characters
+" Line break on 100 characters
 set linebreak
 set textwidth=100
 set colorcolumn=100
 
-" Wrap lines
-set wrap
+" Do not wrap lines
+set nowrap
 
 " Keep cursor in middle of screen
 set scrolloff=999
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
+" => Back-end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set showtabline=2
-catch
-endtry
+" Spelling
+set spell
+set spelllang=en_us
+
+" Turn on the wild menu
+set wildmode=longest,list,full
+
+" Ignore compiled files
+set wildignore+=*.o,*~,*.pyc,*/.git/*,*/.DS_Store,*/node_modules/*
+
+" A buffer becomes hidden when it is abandoned
+set hidden
+
+" Update markers and swap file
+set updatetime=200
+
+" Do not show insertion completion menu messages
+set shortmess+=c
+
+" Ignore case when searching
+set ignorecase
+
+" When searching, try to be be smart about cases
+set smartcase
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" For regex, turn magic on
+set magic
+
+" Configure backspace so it acts as it should act
+set whichwrap+=<,>,h,l
+
+" Allow for copy and pasting from clipboard
+set clipboard=unnamedplus
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
+" => Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set spell
-set spelllang=en_us
+" Enable 256 colors palette
+set t_Co=256
+
+" Enable 24 bit colors
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Use dracula theme
+colorscheme dracula

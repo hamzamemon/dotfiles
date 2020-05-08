@@ -7,89 +7,60 @@ call plug#begin('~/.config/nvim/bundle/')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Color schemes
 Plug 'dracula/vim'
 
-" CtrlP/NerdTree
+" Status bar
+Plug 'vim-airline/vim-airline'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+
+" Jumping around files
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'yegappan/mru'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+
+" Development
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': [
+    \ 'css',
+    \ 'html',
+    \ 'javascript',
+    \ 'json',
+    \ 'markdown',
+    \ 'typescript',
+    \ 'yaml'
+    \ ]
+  \ }
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'valloric/MatchTagAlways'
 
 " Easier jumping around/editing
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdcommenter'
 
-" Development
-Plug 'hail2u/vim-css3-syntax'
-Plug 'ap/vim-css-color'
-Plug 'pangloss/vim-javascript'
-Plug 'othree/javascript-libraries-syntax.vim'
-
-" Interface
-Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
-" needs ctags installed
-Plug 'majutsushi/tagbar'
-
-" Integration
-Plug 'w0rp/ale'
+" Miscellaneous
 Plug 'chrisbra/csv.vim'
-
-" Misc
-Plug 'sjl/gundo.vim'
-
-Plug 'mkitt/tabline.vim'
-
+Plug 'mbbill/undotree'
+Plug 'vim-utils/vim-man'
 Plug 'mileszs/ack.vim'
-
-
-Plug 'tpope/vim-fugitive'
-
-
-Plug 'Chiel92/vim-autoformat'
-Plug 'othree/html5.vim'
-Plug 'elzr/vim-json'
-Plug 'moll/vim-node'
-Plug 'chrisbra/csv.vim'
-Plug 'hdima/python-syntax'
-Plug 'vim-scripts/c.vim'
-Plug 'isruslan/vim-es6'
-Plug 'burnettk/vim-angular'
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'terryma/vim-expand-region'
-
-" Install xsel
 Plug 'christoomey/vim-system-copy'
+Plug 'Yggdroot/indentLine'
 
-Plug 'geoffharcourt/vim-matchit'
-
-Plug 'sickill/vim-pasta'
-
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'drn/zoomwin-vim'
-
-
-Plug 'xuhdev/SingleCompile'
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-endif
-
-Plug 'ervandew/supertab'
-Plug 'ternjs/tern_for_vim'
-Plug 'Shougo/neco-vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-
-Plug 'terryma/vim-multiple-cursors'
-
-Plug 'valloric/MatchTagAlways'
-
-
-Plug 'PotatoesMaster/i3-vim-syntax'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => End Plug
