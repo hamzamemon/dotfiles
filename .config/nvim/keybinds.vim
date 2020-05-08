@@ -27,7 +27,7 @@ vmap <silent> <Esc>j :m'>+<cr>`<my`>mzgv`yo`z
 vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 
 " NerdTree
-nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-n> :NERDTreeToggle %<CR>
 
 " Undotree
 nnoremap <F5> :UndotreeToggle<CR>

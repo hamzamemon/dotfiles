@@ -73,25 +73,8 @@ let s:white = "FFFFFF"
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
 
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Sync open file with NERDTree
-function! SyncTree()
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
-
 " Automatically open NERDTree on start
-autocmd VimEnter * if argc() == 1 | NERDTree | wincmd p | endif
+autocmd VimEnter * NERDTreeToggle %
 
 " Automatically close Vim if NERDTree is the last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
