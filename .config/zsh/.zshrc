@@ -10,19 +10,15 @@ HISTFILE=~/.cache/zsh/history
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
-
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)		# Include hidden files.
 
+# Include hidden files.
+_comp_options+=(globdots)
 
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-bindkey '^R' history-incremental-search-backward
-
-
-# Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
@@ -50,6 +46,13 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# Use Ctrl+R to reverse command search
+bindkey '^R' history-incremental-search-backward
+
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"
@@ -62,26 +65,17 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+# Add colors to ls
+alias ls='ls -hN --color=auto -F'
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 alias vim="nvim"
 
-
-
-# functions
-chpwd() {
-	ls
-}
-
-alias ls='ls -hN --color=auto -F'
-
 # Load third party plugins.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/doc/pkgfile/command-not-found.zsh
 neofetch
 export JAVA_HOME="/usr/lib/jvm/default"
