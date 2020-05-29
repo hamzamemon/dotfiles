@@ -43,9 +43,6 @@ let g:ale_completion_symbols = {
 " Maximum number of suggestions in completion menus
 let g:ale_completion_max_suggestions = 30
 
-" Preview window will automatically open when cursor moves onto problematic lines
-let g:ale_cursor_detail = 1
-
 " Message format for echoed messages
 let g:ale_echo_msg_format = '[%linter%] %s %severity%'
 
