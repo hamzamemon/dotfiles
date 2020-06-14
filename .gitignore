@@ -4,7 +4,7 @@
 !.zprofile
 !.config/
 .config/*
-!.config/compton.conf
+!.config/picom.conf
 !.config/alsa/
 !.config/calcurse/
 !.config/dunst/
