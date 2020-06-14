@@ -1,6 +1,7 @@
 /*
 !.gitignore
 !.profile
+!.tmux.conf
 !.zprofile
 !.config/
 .config/*
@@ -26,7 +27,6 @@
 !.config/Scripts/
 !.config/st/
 !.config/termite/
-!.config/tmux/
 !.config/zsh/
 .config/zsh/.zcompdump
 !.local/
