@@ -25,6 +25,7 @@
 .config/ranger/history
 !.config/rofi/
 !.config/Scripts/
+!.config/spicetify/
 !.config/st/
 !.config/termite/
 !.config/zsh/
