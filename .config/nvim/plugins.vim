@@ -48,6 +48,7 @@ Plug 'vim-utils/vim-man'
 Plug 'mileszs/ack.vim'
 Plug 'christoomey/vim-system-copy'
 Plug 'Yggdroot/indentLine'
+Plug 'jiangmiao/auto-pairs'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
