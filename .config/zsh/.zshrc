@@ -53,6 +53,11 @@ bindkey '^e' edit-command-line
 # Use Ctrl+R to reverse command search
 bindkey '^R' history-incremental-search-backward
 
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+bindkey "^A" beginning-of-line
+bindkey "^[e" end-of-line
+
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {
     tmp="$(mktemp)"
