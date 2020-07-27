@@ -15,7 +15,6 @@ export LIBVA_DRIVER_NAME="radeonsi"
 # Global variables
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$HOME/.config/zsh"
-export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
 
 
 export LESS_TERMCAP_mb=$'\e[01;31m' \
