@@ -6,11 +6,12 @@
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
 # Default programs
-export EDITOR="nvim"
-export TERMINAL="termite"
 export BROWSER="firefox"
+export EDITOR="nvim"
 export FILE="ranger"
 export LIBVA_DRIVER_NAME="radeonsi"
+export READER="zathura"
+export TERMINAL="termite"
 
 # Global variables
 export XDG_CONFIG_HOME="$HOME/.config"

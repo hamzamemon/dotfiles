@@ -28,6 +28,7 @@
 !.config/spicetify/
 !.config/st/
 !.config/termite/
+!.config/zathura/
 !.config/zsh/
 .config/zsh/.zcompdump
 !.local/
