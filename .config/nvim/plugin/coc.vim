@@ -55,7 +55,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 nmap <leader>f  <Plug>(coc-format-selected)
-vmap <leader>f  <Plug>(hoc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)
 
 " Use <Tab> for selections ranges.
 nmap <silent> <TAB> <Plug>(coc-range-select)
