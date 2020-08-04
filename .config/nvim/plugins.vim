@@ -36,6 +36,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'valloric/MatchTagAlways'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Easier jumping around/editing
 Plug 'tpope/vim-surround'
