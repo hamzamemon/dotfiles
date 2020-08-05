@@ -55,7 +55,7 @@ let g:ale_linters = {
   \ 'css': ['csslint', 'stylelint'],
   \ 'html': ['tidy', 'proselint'],
   \ 'java': ['javac', 'pmd'],
-  \ 'javascript': ['prettier', 'eslint'],
+  \ 'javascript': ['eslint'],
   \ 'json': ['jsonlint'],
   \ 'markdown': ['proselint'],
   \ 'python': ['flake8', 'pycodestyle'],
