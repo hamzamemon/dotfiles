@@ -46,6 +46,16 @@ let g:ale_completion_max_suggestions = 30
 " Message format for echoed messages
 let g:ale_echo_msg_format = '[%linter%] %s %severity%'
 
+" Map of file types to fixer program
+let g:ale_fixers = {
+  \  'sh': ['shfmt'],
+  \  'javascript': ['prettier', 'eslint'],
+  \  'json': ['prettier'],
+  \  'markdown': ['prettier'],
+  \  'css': ['prettier'],
+  \ }
+
+
 " Fix files on save
 let g:ale_fix_on_save = 1
 

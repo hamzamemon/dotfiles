@@ -20,8 +20,11 @@ let NERDTreeQuitOnOpen = 1
 " Show hidden files
 let NERDTreeShowHidden = 1
 
+" Show line numbers
+let NERDTreeShowLineNumbers = 1
+
 " Which side to display the NERDTree window
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = 'right'
 
 " Size of the NERDTree window
 let g:NERDTreeWinSize = 40
@@ -42,34 +45,34 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 
 " Git symbols for NERDTree
 let g:NERDTreeIndicatorMapCustom = {
-  \ "Modified"  : "✹",
-  \ "Staged"    : "✚",
-  \ "Untracked" : "✭",
-  \ "Renamed"   : "➜",
-  \ "Unmerged"  : "═",
-  \ "Deleted"   : "✖",
-  \ "Dirty"     : "✗",
-  \ "Clean"     : "✔︎",
+  \ 'Modified'  : '✹',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Deleted'   : '✖',
+  \ 'Dirty'     : '✗',
+  \ 'Clean'     : '✔︎',
   \ 'Ignored'   : '☒',
-  \ "Unknown"   : "?"
+  \ 'Unknown'   : '?'
   \ }
 
-let s:brown = "905532"
-let s:aqua =  "3AFFDB"
-let s:blue = "689FB6"
-let s:darkBlue = "44788E"
-let s:purple = "834F79"
-let s:lightPurple = "834F79"
-let s:red = "AE403F"
-let s:beige = "F5C06F"
-let s:yellow = "F09F17"
-let s:orange = "D4843E"
-let s:darkOrange = "F16529"
-let s:pink = "CB6F6F"
-let s:salmon = "EE6E73"
-let s:green = "8FAA54"
-let s:lightGreen = "31B53E"
-let s:white = "FFFFFF"
+let s:brown = '905532'
+let s:aqua =  '3AFFDB'
+let s:blue = '689FB6'
+let s:darkBlue = '44788E'
+let s:purple = '834F79'
+let s:lightPurple = '834F79'
+let s:red = 'AE403F'
+let s:beige = 'F5C06F'
+let s:yellow = 'F09F17'
+let s:orange = 'D4843E'
+let s:darkOrange = 'F16529'
+let s:pink = 'CB6F6F'
+let s:salmon = 'EE6E73'
+let s:green = '8FAA54'
+let s:lightGreen = '31B53E'
+let s:white = 'FFFFFF'
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
 
