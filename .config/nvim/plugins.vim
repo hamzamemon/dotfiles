@@ -32,7 +32,7 @@ Plug 'dense-analysis/ale'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'lervag/vimtex'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'valloric/MatchTagAlways'
