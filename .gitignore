@@ -2,10 +2,15 @@
 !.gitignore
 !.profile
 !.tmux.conf
+!.xinitrc
+!.xprofile
 !.zprofile
 !.config/
 .config/*
+!.config/dotfiles.png
 !.config/picom.conf
+!.config/mimeapps.list
+!.config/user-dirs.dirs
 !.config/alsa/
 !.config/calcurse/
 !.config/dunst/
@@ -28,6 +33,9 @@
 !.config/spicetify/
 !.config/st/
 !.config/termite/
+!.config/tmux/
+!.config/wget/
+!.config/x11/
 !.config/zathura/
 !.config/zsh/
 .config/zsh/.zcompdump

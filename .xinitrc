@@ -1,0 +1,1 @@
+/home/hamza/.config/x11/.xinitrc
