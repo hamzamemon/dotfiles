@@ -1,3 +1,4 @@
+set sandbox none
 set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
@@ -8,7 +9,7 @@ map D toggle_page_mode
 map r reload
 map R rotate
 map - zoom out
-map = zoom in
-map + zoom default
+map = zoom default
+map + zoom in
 map i recolor
 map p print
