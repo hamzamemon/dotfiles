@@ -1,7 +1,6 @@
 /*
 !.gitignore
 !.profile
-!.tmux.conf
 !.xinitrc
 !.xprofile
 !.zprofile
