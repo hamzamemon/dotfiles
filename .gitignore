@@ -16,6 +16,7 @@
 !.config/fontconfig/
 !.config/i3/
 .config/i3/config
+!.config/lf/
 !.config/mpv/
 !.config/neofetch/
 !.config/nvim/
@@ -24,9 +25,6 @@
 .config/nvim/spell/
 !.config/polybar/
 .config/polybar/config
-!.config/ranger/
-.config/ranger/bookmarks
-.config/ranger/history
 !.config/rofi/
 !.config/Scripts/
 !.config/spicetify/

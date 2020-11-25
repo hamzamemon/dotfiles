@@ -24,7 +24,7 @@ Settings for
 - [i3-gaps](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/i3) (window manager)
 - [neovim](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/nvim) (text editor)
 - [polybar](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/polybar) (status bar)
-- [ranger](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/ranger) (file manager)
+- [lf](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/lf) (file manager)
 - [termite](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/termite) (terminal
   emulator)
 - [zsh](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/zsh) (shell)

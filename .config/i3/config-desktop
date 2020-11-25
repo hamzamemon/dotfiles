@@ -49,7 +49,7 @@ bindsym $mod+Shift+q		kill
 
 bindsym $mod+w			exec --no-startup-id $BROWSER
 
-bindsym $mod+r 			exec $term -e ranger
+bindsym $mod+r 			exec $term -e $FILE
 bindsym $mod+Shift+r		restart
 
 bindsym $mod+t			split toggle
