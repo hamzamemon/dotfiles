@@ -7,7 +7,6 @@
 !.config/
 .config/*
 !.config/dotfiles.png
-!.config/picom.conf
 !.config/mimeapps.list
 !.config/user-dirs.dirs
 !.config/alsa/
@@ -23,6 +22,7 @@
 .config/nvim/bundle/
 .config/nvim/undodir/
 .config/nvim/spell/
+!.config/picom/
 !.config/polybar/
 .config/polybar/config
 !.config/rofi/
