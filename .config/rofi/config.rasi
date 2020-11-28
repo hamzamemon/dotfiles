@@ -10,7 +10,7 @@ configuration {
     background-color: #00000065;
     border-color: #00000000;
     text-color: #EFEFEF;
-    font: "DejaVu Sans Mono 14";
+    font: "DejaVu Sans Mono 18";
 }
  
 #window {
