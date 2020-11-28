@@ -7,7 +7,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 
 # Default programs
 export EDITOR="nvim"
-export BROWSER="brave"
+export BROWSER="chromium"
 export FILE="lf"
 export TERMINAL="termite"
 export READER="zathura"
@@ -43,6 +43,8 @@ export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export PATH="~/.dotnet/tools/:$PATH"
 export MAKEFLAGS="-j17 -l16"
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
 
 # Other program settings
 export LESS_TERMCAP_mb=$'\e[01;31m' \

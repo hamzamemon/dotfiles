@@ -28,7 +28,7 @@ exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.png
 # Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
 # Set monitor
-exec --no-startup-id xrandr --output DisplayPort-0 --mode 1920x1080 --pos 2944x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --mode 1280x1024 --pos 0x0 --rotate left --output HDMI-A-0 --primary --mode 1920x1080 --pos               1024x0 --rotate normal
+exec --no-startup-id xrandr --output eDP-1 --primary --mode 3200x1800 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off
 # Start dunst
 exec --no-startup-id dunst
 
