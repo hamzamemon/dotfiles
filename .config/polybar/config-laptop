@@ -22,7 +22,7 @@ gray = ${xrdb:color7}
 enable-ipc = true
 dpi = 160
 width = 100%
-height = 40
+height = 45
 monitor = ${env:MONITOR:}
 
 background = ${colors.background-trans}
@@ -31,10 +31,10 @@ foreground = ${colors.foreground}
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 2
+module-margin-right = 2
 
-font-0 = mono:pixelsize=10;1
+font-0 = mono:pixelsize=12;1
 font-1 = Inconsolata Nerd Font:size=8;1
 font-2 = Noto Color Emoji:scale=10:style=Regular;2
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=11;3"
@@ -150,14 +150,14 @@ bar-volume-empty-foreground = ${colors.gray}
 [module/cpu]
 type = internal/cpu
 interval = 3
-format-prefix = " "
+format-prefix = "💻 "
 label = %percentage%% 
 label-foreground = ${colors.green}
 
 [module/memory]
 type = internal/memory
 interval = 3
-format-prefix = " "
+format-prefix = "🧠 "
 label = %percentage_used%%
 label-foreground = ${colors.magenta}
 
