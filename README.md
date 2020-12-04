@@ -25,7 +25,7 @@ Settings for
 - [neovim](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/nvim) (text editor)
 - [polybar](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/polybar) (status bar)
 - [lf](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/lf) (file manager)
-- [termite](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/termite) (terminal
+- [alacritty](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/alacritty) (terminal
   emulator)
 - [zsh](https://github.com/xJavaTheHutt/dotfiles/tree/master/.config/zsh) (shell)
 

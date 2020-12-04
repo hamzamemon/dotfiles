@@ -9,6 +9,7 @@
 !.config/dotfiles.png
 !.config/mimeapps.list
 !.config/user-dirs.dirs
+!.config/alacritty/
 !.config/alsa/
 !.config/calcurse/
 !.config/dunst/
@@ -29,7 +30,6 @@
 !.config/Scripts/
 !.config/spicetify/
 !.config/st/
-!.config/termite/
 !.config/tmux/
 !.config/wget/
 !.config/x11/
