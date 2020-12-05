@@ -27,7 +27,6 @@
 !.config/polybar/
 .config/polybar/config
 !.config/rofi/
-!.config/Scripts/
 !.config/spicetify/
 !.config/st/
 !.config/tmux/
@@ -41,4 +40,6 @@
 !.local/bin/
 !.local/share/
 .local/share/*
+!.local/share/bg
+!.local/share/wallpaper.png
 !.local/share/dotfiles/

@@ -13,7 +13,7 @@ font pango:Roboto 9
 set $ctrl Ctrl
 set $mod Mod4
 set $alt Mod1
-set $CENTER HDMI-A-0
+set $CENTER eDP-1
 set $term --no-startup-id $TERMINAL
 
 ###---Starting External Scripts---###
@@ -23,14 +23,10 @@ exec --no-startup-id sudo mount -a
 exec_always --no-startup-id compton --xrender-sync-fence
 # Launch Polybar where appropriate:
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-# Add wallpaper:
-exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper.png
 # Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
 # Set monitor
 exec --no-startup-id xrandr --output eDP-1 --primary --mode 3200x1800 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off
-# Start dunst
-exec --no-startup-id dunst
 
 ###---Basic Bindings---###
 bindsym $mod+Return 		exec $term

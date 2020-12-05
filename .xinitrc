@@ -1,1 +1,1 @@
-/home/hamza/.config/x11/.xinitrc
+/home/hamza/.config/x11/xinitrc

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Runs when a DM logs you into a graphical session
+
+# Sets the background
+setbg &
+
+# For notifications
+dunst &
