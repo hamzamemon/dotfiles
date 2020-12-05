@@ -14,14 +14,14 @@ configuration {
 
   background: rgba(29, 35, 48, 90%);
   background-listitem: rgba(255, 121, 198, 100%);
-  bordercolor: rgba(189, 147, 249, 100%);
+  bordercolor: rgba(255, 121, 198, 100%);
 }
  
 #window {
   background-color: @background;
-  border: 3;
+  border: 2;
   border-color: @bordercolor;
-  border-radius: 4px;
+  border-radius: 3px;
   height: 50%;
   padding: 40;
   width: 30%;
