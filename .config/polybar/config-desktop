@@ -1,4 +1,15 @@
 ;-------------------------------------------------------------------------------
+;	S E T T I N G S
+;-------------------------------------------------------------------------------
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+screenchange-reload = true
+
+
+;-------------------------------------------------------------------------------
 ;	V A R I A B L E S
 ;-------------------------------------------------------------------------------
 [colors]
@@ -7,34 +18,29 @@ background = ${xrdb:background}
 foreground = ${xrdb:foreground}
 
 dark = #1e1f26
-medium = #474b61
 red = ${xrdb:color1}
-magenta = ${xrdb:color5}
-blue = ${xrdb:color4}
+pink = ${xrdb:color5}
+purple = ${xrdb:color4}
 green = ${xrdb:color2}
 yellow = ${xrdb:color3}
 gray = ${xrdb:color7}
+
 
 ;-------------------------------------------------------------------------------
 ;	B A R S
 ;-------------------------------------------------------------------------------
 [bar/default]
+monitor = ${env:MONITOR:}
 enable-ipc = true
 dpi = 100
 width = 100%
 height = 35
-monitor = ${env:MONITOR:}
+padding = 0
 
 background = ${colors.background-trans}
 foreground = ${colors.foreground}
 
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = mono:pixelsize=9;1
+font-0 = mono:pixelsize=12;1
 font-1 = Inconsolata Nerd Font:size=8;1
 font-2 = Noto Color Emoji:scale=10:style=Regular;2
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=11;3"
@@ -42,29 +48,19 @@ font-4 = "Font Awesome 5 Free:style=Regular:pixelsize=11;3"
 font-5 = "Font Awesome 5 Brands:pixelsize=11;3"
 font-6 = Symbola:pixelsize=9;1
 
+module-margin = 2
+modules-left = i3 spotify
+modules-center = date
+modules-right = volume cpu memory temperature weather
+
 tray-position = right
 tray-background = ${colors.dark}
 tray-padding = 2
 
-modules-left = i3 spotify
-modules-center = date
-modules-right = volume cpu memory temperature weather powermenu
 
 ;-------------------------------------------------------------------------------
 ;	M O D U L E S
 ;-------------------------------------------------------------------------------
-[module/i3index]
-type = internal/i3
-format = <label-state>
-
-label-focused = %name%
-label-focused-padding = 1
-label-focused-background = ${colors.blue}
-label-focused-foreground = ${colors.dark}
-
-label-unfocused =
-label-urgent =
-
 [module/i3]
 type = internal/i3
 format = <label-state><label-mode>
@@ -72,14 +68,14 @@ format = <label-state><label-mode>
 pin-workspaces = true
 index-sort = true
 enable-click = false
-enable-scroll = true
+enable-scroll = false
 wrapping-scroll = false
 
 ws-icon-0 = 0;*
 ws-icon-default = ○
 
 label-focused = "●"
-label-focused-foreground = ${colors.blue}
+label-focused-foreground = ${colors.purple}
 label-focused-background = ${colors.dark}
 label-focused-padding = 1
 
@@ -95,25 +91,24 @@ label-urgent-padding = 1
 
 [module/spotify]
 type = custom/script
-tail = true
-exec = ~/.local/bin/statusbar/spotify-output.sh %artist% - %title%
+exec = ~/.config/polybar/scripts/spotify.sh %artist% - %title%
+interval = 1
+
 format-foreground = ${colors.green}
-format-prefix = "  "
-format-prefix-font = 1
+format-prefix = " "
 format-prefix-foreground = ${colors.green}
-internal = 1
-format-padding = 1
+format-padding = 2
 
 [module/date]
 type = internal/date
-interval = 1
+interval = 5
 label = %date% %time%
 label-foreground = ${colors.yellow}
 
-date = "%m/%d/%Y"
+date = "%a, %m/%d/%Y"
 date-alt = "%a, %m/%d/%Y"
-time = "%I:%M:%S%p"
-time-alt = "%I:%M:%S%p"
+time = "%I:%M%p"
+time-alt = "%I:%M%p"
 
 [module/volume]
 type = internal/pulseaudio
@@ -123,15 +118,15 @@ ramp-volume-0 = " "
 ramp-volume-1 = " "
 ramp-volume-2 = " "
 
-format-muted-foreground = ${colors.blue}
+format-muted-foreground = ${colors.purple}
 label-muted = 
 
 bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.blue}
-bar-volume-foreground-1 = ${colors.blue}
-bar-volume-foreground-2 = ${colors.blue}
-bar-volume-foreground-3 = ${colors.blue}
-bar-volume-foreground-4 = ${colors.blue}
+bar-volume-foreground-0 = ${colors.purple}
+bar-volume-foreground-1 = ${colors.purple}
+bar-volume-foreground-2 = ${colors.purple}
+bar-volume-foreground-3 = ${colors.purple}
+bar-volume-foreground-4 = ${colors.purple}
 bar-volume-foreground-5 = ${colors.green}
 bar-volume-foreground-6 = ${colors.green}
 bar-volume-foreground-7 = ${colors.green}
@@ -150,23 +145,23 @@ bar-volume-empty-foreground = ${colors.gray}
 [module/cpu]
 type = internal/cpu
 interval = 3
-format-prefix = " "
+format-prefix = "💻 "
 label = %percentage%% 
 label-foreground = ${colors.green}
 
 [module/memory]
 type = internal/memory
 interval = 3
-format-prefix = " "
+format-prefix = "🧠 "
 label = %percentage_used%%
-label-foreground = ${colors.magenta}
+label-foreground = ${colors.pink}
 
 [module/temperature]
 type = internal/temperature
-hwmon-path = /sys/devices/platform/nct6775.2592/hwmon/hwmon1/temp1_input
-
+thermal-zone = 0
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input
 interval = 3
-warn-temperature = 60
+warn-temperature = 65
 
 format = <ramp><label>
 label = %temperature-c%
@@ -185,33 +180,6 @@ ramp-foreground = ${colors.yellow}
 
 [module/weather]
 type = custom/script
-exec = ~/.local/bin/statusbar/weather
+exec = ~/.config/polybar/scripts/weather.sh
 interval = 5000
 ;format-underline =
-
-[module/powermenu]
-type = custom/menu
-label-separator = |
-format-spacing = 1
-label-open = 
-
-label-open-foreground = ${colors.magenta}
-;label-close =  cancel
-label-close-foreground = ${colors.magenta}
-format = <label-toggle> <menu>
-format-padding = 1
-menu-0-0 =  
-menu-0-0-exec = systemctl poweroff
-menu-0-1 =  
-menu-0-1-exec = systemctl reboot
-menu-0-2 =  
-menu-0-2-exec = lock && systemctl suspend
-
-label-close =  
- 
-[settings]
-screenchange-reload = true
-
-[global/wm]
-margin-top = 0
-margin-bottom = 0
