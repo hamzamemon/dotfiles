@@ -7,10 +7,25 @@ export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 
 # Default programs
 export EDITOR="nvim"
-export BROWSER="chromium"
+export BROWSER="brave"
 export FILE="lf"
-export TERMINAL="termite"
+export TERMINAL="alacritty"
 export READER="zathura"
+
+# Global variables
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export ZDOTDIR="$HOME/.config/zsh"
+export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+export JAVA_HOME="/usr/lib/jvm/default"
+export PATH="/usr/lib/ccache/bin/:$PATH"
+export PATH="~/.dotnet/tools/:$PATH"
+export MAKEFLAGS="-j17 -l16"
+export GDK_SCALE=2
+export GDK_DPI_SCALE=1
 
 # Hardware acceleration
 unset LIBVA_DRIVER_NAME VDPAU_DRIVER DRI_PRIME
@@ -30,21 +45,6 @@ if lspci -k | grep -q i915; then
 		export DRI_PRIME=1
 	fi
 fi
-
-# Global variables
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
-export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
-export ZDOTDIR="$HOME/.config/zsh"
-export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
-export JAVA_HOME="/usr/lib/jvm/default"
-export PATH="/usr/lib/ccache/bin/:$PATH"
-export PATH="~/.dotnet/tools/:$PATH"
-export MAKEFLAGS="-j17 -l16"
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
 
 # Other program settings
 export LESS_TERMCAP_mb=$'\e[01;31m' \
