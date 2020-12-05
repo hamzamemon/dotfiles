@@ -13,11 +13,9 @@ screenchange-reload = true
 ;	V A R I A B L E S
 ;-------------------------------------------------------------------------------
 [colors]
-background-trans = ${xrdb:background}00
-background = ${xrdb:background}
+background = #1e1f26
 foreground = ${xrdb:foreground}
 
-dark = #1e1f26
 red = ${xrdb:color1}
 pink = ${xrdb:color5}
 purple = ${xrdb:color4}
@@ -37,7 +35,7 @@ width = 100%
 height = 35
 padding = 0
 
-background = ${colors.background-trans}
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 font-0 = mono:pixelsize=12;1
@@ -54,7 +52,6 @@ modules-center = date
 modules-right = volume cpu memory temperature weather
 
 tray-position = right
-tray-background = ${colors.dark}
 tray-padding = 2
 
 
@@ -76,17 +73,14 @@ ws-icon-default = ○
 
 label-focused = "●"
 label-focused-foreground = ${colors.purple}
-label-focused-background = ${colors.dark}
 label-focused-padding = 1
 
 label-unfocused = "%icon%"
 label-unfocused-foreground = ${colors.foreground}
-label-unfocused-background = ${colors.dark}
 label-unfocused-padding = 1
 
 label-urgent = "●"
 label-urgent-foreground = ${colors.red}
-label-urgent-background = ${colors.dark}
 label-urgent-padding = 1
 
 [module/spotify]
