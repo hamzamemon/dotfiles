@@ -3,20 +3,20 @@ configuration {
   display-window: "Window";
   show-icons: true;
 }
- 
+
 * {
   lines: 15;
   border: 0;
   columns: 1;
   background-color: rgba(0, 0, 0, 0%);
   text-color: rgba(239, 239, 239, 100%);
-  font: "DejaVu Sans Mono 24";
+  font: "Hack Nerd Font 24";
 
   background: rgba(29, 35, 48, 90%);
   background-listitem: rgba(255, 121, 198, 100%);
   bordercolor: rgba(255, 121, 198, 100%);
 }
- 
+
 #window {
   background-color: @background;
   border: 2;
@@ -26,33 +26,33 @@ configuration {
   padding: 40;
   width: 30%;
 }
- 
+
 #mainbox {
   padding: 30px 0;
 }
- 
+
 #listview {
   fixed-height: 0;
   padding: 10px 10px 0;
   scrollbar: false;
   spacing: 5px;
 }
- 
+
 #element {
   border-radius: 10px;
   padding: 3px;
 }
- 
+
 #element selected {
   background-color: @background-listitem;
 }
- 
+
 #inputbar {
   children: [prompt, textbox-prompt-colon, entry, case-indicator];
   padding: 1px;
   spacing: 0;
 }
- 
+
 #prompt {
   spacing: 0;
 }
@@ -66,7 +66,7 @@ configuration {
 #entry {
   spacing: 0;
 }
- 
+
 #case-indicator {
   spacing: 0;
 }

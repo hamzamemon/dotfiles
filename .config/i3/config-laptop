@@ -9,7 +9,7 @@ set $inner_gaps 15
 set $outer_gaps 15
 gaps inner $inner_gaps
 gaps outer $outer_gaps
-font pango:Roboto 9
+font pango:Hack Nerd Font 9
 set $ctrl Ctrl
 set $mod Mod4
 set $alt Mod1

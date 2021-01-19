@@ -1,5 +1,5 @@
 ;-------------------------------------------------------------------------------
-;	S E T T I N G S
+; S E T T I N G S
 ;-------------------------------------------------------------------------------
 [global/wm]
 margin-top = 0
@@ -10,7 +10,7 @@ screenchange-reload = true
 
 
 ;-------------------------------------------------------------------------------
-;	V A R I A B L E S
+; V A R I A B L E S
 ;-------------------------------------------------------------------------------
 [colors]
 background = #1e1f26
@@ -25,7 +25,7 @@ gray = ${xrdb:color7}
 
 
 ;-------------------------------------------------------------------------------
-;	B A R S
+; B A R S
 ;-------------------------------------------------------------------------------
 [bar/default]
 monitor = ${env:MONITOR:}
@@ -38,13 +38,9 @@ padding = 0
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = mono:pixelsize=12;1
-font-1 = Inconsolata Nerd Font:size=8;1
-font-2 = Noto Color Emoji:scale=10:style=Regular;2
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=11;3"
-font-4 = "Font Awesome 5 Free:style=Regular:pixelsize=11;3"
-font-5 = "Font Awesome 5 Brands:pixelsize=11;3"
-font-6 = Symbola:pixelsize=9;1
+font-0 = Hack Nerd Font:pixelsize=10;1
+font-1 = Noto Color Emoji:scale=10:style=Regular;2
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
 
 module-margin = 2
 modules-left = i3 spotify
@@ -56,7 +52,7 @@ tray-padding = 2
 
 
 ;-------------------------------------------------------------------------------
-;	M O D U L E S
+; M O D U L E S
 ;-------------------------------------------------------------------------------
 [module/i3]
 type = internal/i3
@@ -140,7 +136,7 @@ bar-volume-empty-foreground = ${colors.gray}
 type = internal/cpu
 interval = 3
 format-prefix = "💻 "
-label = %percentage%% 
+label = %percentage%%
 label-foreground = ${colors.green}
 
 [module/memory]
@@ -164,7 +160,7 @@ label-foreground = ${colors.yellow}
 format-warn = <ramp><label-warn>
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.red}
- 
+
 ramp-0 = " "
 ramp-1 = " "
 ramp-2 = " "
@@ -215,8 +211,8 @@ animation-charging-foreground = ${colors.green}
 label-discharging-foreground = ${colors.pink}
 ramp-capacity-foreground = ${colors.pink}
 
-label-full-padding = 1
-label-charging-padding = 1
-label-discharging-padding = 1
+label-full-padding = 0
+label-charging-padding = 0
+label-discharging-padding = 0
 ramp-capacity-padding = 1
 animation-charging-padding = 1

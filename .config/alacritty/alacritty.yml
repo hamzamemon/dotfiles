@@ -108,21 +108,23 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: DejaVu Sans Mono
+    #family: monospace
+    family: Hack Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Medium
 
   # Bold font face
-  #bold:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    family: Hack Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
   #italic:
@@ -131,9 +133,10 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    family: Hack Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Italic
 
   # Bold italic font face
   #bold_italic:
@@ -142,9 +145,10 @@ font:
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    family: Hack Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
   size: 8.0
@@ -153,8 +157,8 @@ font:
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
   offset:
-    x: -1
-    y: -1
+    x: 0
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -176,7 +180,7 @@ draw_bold_text_with_bright_colors: false
 colors:
   # Default colors
   primary:
-    background: '#191919'
+    background: '#1e1e1e'
     foreground: '#d8dee9'
 
     # Bright and dim foreground colors
@@ -237,36 +241,37 @@ colors:
 
 # Normal colors
   normal:
-    black:   '#191919'
-    red:     '#b02626'
-    green:   '#40a62f'
-    yellow:  '#f2e635'
-    blue:    '#314ad0'
-    magenta: '#b30ad0'
-    cyan:    '#32d0fc'
-    white:   '#acadb1'
+    black: "#3B4252"
+    red: "#D54646"
+    green: "#23D18B"
+    yellow: "#D7BA7D"
+    blue: "#569CD6"
+    magenta: "#C586C0"
+    cyan: "#29B8DB"
+    white: "#abb2bf"
 
   # Bright colors
   bright:
-    black:   '#36393d'
-    red:     '#ce2727'
-    green:   '#47c930'
-    yellow:  '#fff138'
-    blue:    '#2e4bea'
-    magenta: '#cc15ed'
-    cyan:    '#54d9ff'
-    white:   '#dbdbdb'
+    black: "#3B4252"
+    red: "#D54646"
+    green: "#23D18B"
+    yellow: "#D7BA7D"
+    blue: "#569CD6"
+    magenta: "#C586C0"
+    cyan: "#29B8DB"
+    white: "#ECEFF4"
+  # background_opacity: 1.0
 
   # Dim colors
   dim:
-    black:   '#676f78'
-    red:     '#b55454'
-    green:   '#78a670'
-    yellow:  '#faf380'
-    blue:    '#707fd0'
+    black: '#676f78'
+    red: '#b55454'
+    green: '#78a670'
+    yellow: '#faf380'
+    blue: '#707fd0'
     magenta: '#c583d0'
-    cyan:    '#8adaf1'
-    white:   '#e0e3e7'
+    cyan: '#8adaf1'
+    white: '#e0e3e7'
   # Indexed Colors
   #
   # The indexed colors include all colors from 16 to 256.
@@ -330,7 +335,7 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  save_to_clipboard: false
+  save_to_clipboard: true
 
 cursor:
   # Cursor style
