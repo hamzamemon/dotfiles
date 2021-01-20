@@ -3,5 +3,5 @@ source ~/.config/nvim/general.vim
 source ~/.config/nvim/keybinds.vim
 
 if !has('nvim')
-	source ~/.config/nvim/vim_specific.vim
+	source ~/.config/nvim/neovim_defaults.vim
 endif
