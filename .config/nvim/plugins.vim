@@ -1,7 +1,13 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Start Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.config/nvim/bundle/')
+call plug#begin('~/.config/nvim/plugged/')
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -21,9 +27,6 @@ Plug 'junegunn/gv.vim'
 
 " Jumping around files
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 
 " Development

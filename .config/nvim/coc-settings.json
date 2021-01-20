@@ -1,5 +1,6 @@
 {
   "clangd.semanticHighlighting": true,
+
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "html",
@@ -16,6 +17,7 @@
     "typescriptreact",
     "xml"
   ],
+
   "css.lint.argumentsInColorFunction": "error",
   "css.lint.boxModel": "warning",
   "css.lint.compatibleVendorPrefixes": "warning",
@@ -35,6 +37,7 @@
   "css.lint.unknownVendorSpecificProperties": "error",
   "css.lint.vendorPrefix": "error",
   "css.lint.zeroUnits": "warning",
+
   "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "E",
   "diagnostic.hintSign": "H",
@@ -42,6 +45,7 @@
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.refreshAfterSave": true,
   "diagnostic.warningSign": "W",
+
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
     "javascript",
@@ -49,11 +53,22 @@
     "typescript",
     "typescriptreact"
   ],
+
+  "explorer.file.showHiddenFiles": false,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.enableVimDevicons": false,
+  "explorer.keyMappings.global": {
+    "v": "open:vsplit"
+  },
+  "explorer.previewAction.onHover": true,
+  "explorer.width": 30,
+
   "html.autoClosingTags": true,
   "html.format.endWithNewline": true,
   "html.format.indentInnerHtml": true,
   "html.format.indentHandlebars": true,
   "html.format.wrapAttributes": "auto",
+
   "java.referencesCodeLens.enabled": true,
   "java.signatureHelp.enabled": true,
   "java.completion.importOrder": ["java", "javax", "com", "org"],
@@ -63,16 +78,21 @@
   "java.format.settings.profile": "JavaStyle",
   "java.format.settings.url": "/home/hamza/.config/nvim/formatters/java.xml",
   "java.maven.downloadSources": true,
+
   "python.autoComplete.addBrackets": true,
   "python.formatting.provider": "black",
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": false,
+
   "snippets.ultisnips.directories": ["UltiSnips", "./UltiSnips"],
+
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "suggest.noselect": false,
+
   "tsserver.log": "verbose",
   "tsserver.npm": "/usr/bin/npm",
+
   "xml.validation.noGrammar": "error"
 }
