@@ -81,7 +81,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 
 " Miscellaneous
 Plug 'vuciv/vim-bujo'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
