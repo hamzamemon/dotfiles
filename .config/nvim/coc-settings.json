@@ -1,5 +1,5 @@
 {
-  "clangd.semanticHighlighting": true,
+  "codeLens.enable": true,
 
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
@@ -15,44 +15,45 @@
     "sql",
     "typescript",
     "typescriptreact",
-    "xml"
+    "xml",
+    "yaml"
   ],
 
-  "css.lint.argumentsInColorFunction": "error",
   "css.lint.boxModel": "warning",
   "css.lint.compatibleVendorPrefixes": "warning",
   "css.lint.duplicateProperties": "error",
-  "css.lint.emptyRules": "warning",
   "css.lint.float": "warning",
-  "css.lint.fontFaceProperties": "warning",
-  "css.lint.hexColorLength": "warning",
+  "css.lint.idSelector": "warning",
   "css.lint.ieHack": "warning",
   "css.lint.important": "warning",
   "css.lint.importStatement": "warning",
-  "css.lint.idSelector": "warning",
-  "css.lint.propertyIgnoredDueToDisplay": "warning",
   "css.lint.universalSelector": "warning",
-  "css.lint.unknownAtRules": "warning",
   "css.lint.unknownProperties": "error",
   "css.lint.unknownVendorSpecificProperties": "error",
   "css.lint.vendorPrefix": "error",
   "css.lint.zeroUnits": "warning",
+  "scss.lint.boxModel": "warning",
+  "scss.lint.compatibleVendorPrefixes": "warning",
+  "scss.lint.duplicateProperties": "error",
+  "scss.lint.float": "warning",
+  "scss.lint.idSelector": "warning",
+  "scss.lint.ieHack": "warning",
+  "scss.lint.important": "warning",
+  "scss.lint.importStatement": "warning",
+  "scss.lint.universalSelector": "warning",
+  "scss.lint.unknownProperties": "error",
+  "scss.lint.unknownVendorSpecificProperties": "error",
+  "scss.lint.vendorPrefix": "error",
+  "scss.lint.zeroUnits": "warning",
 
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.errorSign": "E",
-  "diagnostic.hintSign": "H",
-  "diagnostic.infoSign": "I",
+  "diagnostic.errorSign": " ",
+  "diagnostic.hintSign": " ",
+  "diagnostic.infoSign": "",
   "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.refreshAfterSave": true,
-  "diagnostic.warningSign": "W",
+  "diagnostic.warningSign": " ",
 
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
 
   "explorer.file.showHiddenFiles": false,
   "explorer.icon.enableNerdfont": true,
@@ -60,15 +61,14 @@
   "explorer.keyMappings.global": {
     "v": "open:vsplit"
   },
-  "explorer.previewAction.onHover": true,
+  "explorer.previewAction.onHover": "content",
   "explorer.width": 30,
 
   "html.autoClosingTags": true,
   "html.format.endWithNewline": true,
   "html.format.indentInnerHtml": true,
-  "html.format.indentHandlebars": true,
-  "html.format.wrapAttributes": "auto",
 
+  "java.implementationsCodeLens.enabled": true,
   "java.referencesCodeLens.enabled": true,
   "java.signatureHelp.enabled": true,
   "java.completion.importOrder": ["java", "javax", "com", "org"],
@@ -79,20 +79,16 @@
   "java.format.settings.url": "/home/hamza/.config/nvim/formatters/java.xml",
   "java.maven.downloadSources": true,
 
-  "python.autoComplete.addBrackets": true,
-  "python.formatting.provider": "black",
-  "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
-  "python.linting.pylintEnabled": false,
 
-  "snippets.ultisnips.directories": ["UltiSnips", "./UltiSnips"],
+  "sh.highlightParsingErrors": true,
+
+  "snippets.priority": 1,
 
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "suggest.noselect": false,
 
   "tsserver.log": "verbose",
-  "tsserver.npm": "/usr/bin/npm",
-
-  "xml.validation.noGrammar": "error"
+  "tsserver.npm": "/usr/bin/npm"
 }

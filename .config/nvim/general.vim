@@ -145,6 +145,9 @@ set magic
 " Stop highlighting after searching
 set nohlsearch
 
+" Keywords used when searching and recognizing commands
+set iskeyword+=@-@
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Background

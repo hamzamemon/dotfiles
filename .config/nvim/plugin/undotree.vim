@@ -9,3 +9,6 @@ let g:undotree_SetFocusWhenToggle = 1
 
 " Hide the label \"Press ? for help\"
 let g:undotree_HelpLine = 0
+
+" Undotree
+nnoremap <F4> :UndotreeToggle<CR>

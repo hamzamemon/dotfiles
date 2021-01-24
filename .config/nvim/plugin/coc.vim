@@ -35,9 +35,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 " Show documentation
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -46,9 +43,39 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+" Note coc#float#scroll works on neovim >= 0.4.3 or vim >= 8.2.0750
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" NeoVim-only mapping for visual mode scroll
+" Useful on signatureHelp after jump placeholder of snippet expansion
+if has('nvim')
+  vnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#nvim_scroll(1, 1) : "\<C-f>"
+  vnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#nvim_scroll(0, 1) : "\<C-b>"
+endif
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -102,23 +129,43 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " List of extensions to install
 let g:coc_global_extensions = [
-  \ 'coc-actions',
   \ 'coc-angular',
-  \ 'coc-clangd',
+  \ 'coc-bootstrap-classname',
   \ 'coc-css',
+  \ 'coc-docker',
   \ 'coc-eslint',
   \ 'coc-explorer',
-  \ 'coc-highlight',
+  \ 'coc-fzf-preview',
   \ 'coc-html',
   \ 'coc-java',
+  \ 'coc-java-debug',
   \ 'coc-json',
+  \ 'coc-lua',
   \ 'coc-markdownlint',
   \ 'coc-prettier',
-  \ 'coc-python',
+  \ 'coc-pyright',
+  \ 'coc-sh',
   \ 'coc-snippets',
   \ 'coc-tsserver',
+  \ 'coc-vimlsp',
+  \ 'coc-vimtex',
   \ 'coc-xml'
   \ ]
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
@@ -126,6 +173,8 @@ function! s:cocActionsOpenFromSelected(type) abort
 endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " Explorer
 let g:coc_explorer_global_presets = {
@@ -135,14 +184,6 @@ let g:coc_explorer_global_presets = {
 \   'tab': {
 \     'position': 'tab',
 \     'quit-on-open': v:true,
-\   },
-\   'leftSide': {
-\     'position': 'left',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'rightSide': {
-\     'position': 'right',
-\     'open-action-strategy': 'sourceWindow',
 \   },
 \   'floating': {
 \     'position': 'floating',
@@ -170,6 +211,6 @@ let g:coc_explorer_global_presets = {
 \   }
 \ }
 
-nmap <leader>e :CocCommand explorer --preset rightSide<CR>
+nmap <leader>e :CocCommand explorer<CR>
 nmap <leader>f :CocCommand explorer --preset floating<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
