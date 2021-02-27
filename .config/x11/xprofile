@@ -7,3 +7,6 @@ setbg &
 
 # For notifications
 dunst &
+
+# Starting compositor
+picom -b

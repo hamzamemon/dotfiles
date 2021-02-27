@@ -19,8 +19,6 @@ set $term --no-startup-id $TERMINAL
 ###---Starting External Scripts---###
 # Mount other drives:
 exec --no-startup-id sudo mount -a
-# Composite manager:
-exec_always --no-startup-id compton --xrender-sync-fence
 # Launch Polybar where appropriate:
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Unclutter makes the mouse invisible after a brief period
