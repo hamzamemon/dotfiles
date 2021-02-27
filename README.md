@@ -34,11 +34,11 @@ Settings for
 ##### i3
 
 1. Navigate to `~/.config/i3/`
-2. Copy `config-desktop` or `config-laptop` to `config`
+2. Link `config-desktop` or `config-laptop` to `config`
 3. Adjust the monitor name(s) and workspace outputs for `$LEFT`, `$CENTER` and `$RIGHT`. Monitor
    names can be found by running `xrandr`
 
 ##### Polybar
 
 1. Navigate to `~/.config/polybar/`
-2. Copy `config-desktop` or `config-laptop` to `config`
+2. Link `config-desktop` or `config-laptop` to `config`
