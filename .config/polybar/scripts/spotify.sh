@@ -4,6 +4,7 @@ main() {
     echo " Start a track"; exit
   fi
 
+  # TODO: look into exclamation mark bug
   cmd="org.freedesktop.DBus.Properties.Get"
   domain="org.mpris.MediaPlayer2"
   path="/org/mpris/MediaPlayer2"
@@ -20,7 +21,7 @@ main() {
     title="${title}..."
   fi
 
-  echo " ${*:-%artist% - %title%}" | sed "s/%artist%/$artist/g;s/%title%/$title/g;s/%album%/$album/g"i | sed 's/&/\\&/g'
+  echo " ${*:-%artist% - %title%}" | sed "s/%artist%/$artist/g;s#%title%#$title#g;s/%album%/$album/g"i | sed 's/&/\\&/g'
 }
 
 main "$@"
