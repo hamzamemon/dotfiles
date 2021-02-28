@@ -3,7 +3,7 @@
 "   Hamza Memon
 "
 " Version:
-"   3.0 - 1/20/21
+"   4.0 - 2/27/21
 "
 " Sections:
 "   -> General
@@ -11,6 +11,7 @@
 "   -> Command line, completion and wild menu
 "   -> Search
 "   -> Background
+"   -> General Autocmds
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -51,9 +52,6 @@ set whichwrap+=<,>,h,l
 
 " Allow for copy and pasting from clipboard
 set clipboard=unnamedplus
-
-" Return to last edit position when opening files
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Horizontal splits will automatically be below
 set splitbelow
@@ -163,3 +161,37 @@ colorscheme dracula
 
 " Remove background
 highlight Normal guibg=none
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General Autocmds
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+
+function! GoToLastPosition() abort
+  if line("'\"") <= 0 || line("'\"") > line('$')
+    return
+  endif
+
+  normal! g`"
+  if &foldlevel == 0
+    normal! zMzvzz
+  endif
+endfunction
+
+augroup MY_GENERAL_GROUP
+    autocmd!
+
+    " Trim whitespace
+    autocmd BufWritePre * :call TrimWhitespace()
+
+    " Return to last edit position when opening files
+    autocmd BufReadPost * :call GoToLastPosition()
+
+    " Close preview window when completion is done
+    autocmd CompleteDone * if pumvisible() == 0 | silent! pclose | endif
+augroup END

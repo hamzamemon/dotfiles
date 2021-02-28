@@ -18,7 +18,7 @@ let fc['https?://twitter.com.*'] = { 'takeover': 'never', 'priority': 1 }
 let fc['https://.*gmail.com.*'] = { 'takeover': 'never', 'priority': 1 }
 let fc['https?://.*twitch.tv.*'] = { 'takeover': 'never', 'priority': 1 }
 
-augroup MyFirenvimGroup
+augroup MY_FIRENVIM_GROUP
     autocmd!
     au BufEnter github.com_*.txt set filetype=markdown
     au BufEnter stackoverflow_*.txt set filetype=markdown
