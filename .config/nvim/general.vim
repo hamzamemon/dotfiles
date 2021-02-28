@@ -11,7 +11,6 @@
 "   -> Command line, completion and wild menu
 "   -> Search
 "   -> Background
-"   -> General Autocmds
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -59,9 +58,6 @@ set splitbelow
 " Vertical splits will automatically be to the right
 set splitright
 
-" Do not wrap lines
-set nowrap
-
 " Keeps cursor in the middle of screen
 set scrolloff=999
 
@@ -80,6 +76,9 @@ set signcolumn=yes
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
+" Add less than and greater than sign as pairs to make jumping easier with '%'
+set matchpairs+=<:>
 
 " Number of tenths of a second to blink when matching brackets
 set matchtime=2
@@ -106,7 +105,9 @@ set expandtab
 set linebreak
 set textwidth=80
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=grey
+
+" Do not wrap lines
+set nowrap
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
