@@ -14,7 +14,7 @@ autocmd VimEnter *
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color schemes
-Plug 'dracula/vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Status bar
 Plug 'vim-airline/vim-airline'
@@ -43,9 +43,7 @@ Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-writer.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'nvim-telescope/telescope-packer.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 
@@ -66,6 +64,9 @@ Plug 'vim-utils/vim-man'
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'AndrewRadev/tagalong.vim'
+Plug 'andymass/vim-matchup'
+Plug 'dbeniamine/cheat.sh-vim'
+Plug 'sbdchd/neoformat'
 
 " Colors
 Plug 'luochen1990/rainbow'
@@ -75,13 +76,14 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 
-" LaTeX
+" LaTeX/Markdown
 Plug 'lervag/vimtex'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Miscellaneous
 Plug 'vuciv/vim-bujo'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
+Plug 'vimwiki/vimwiki'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
