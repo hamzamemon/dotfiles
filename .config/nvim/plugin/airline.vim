@@ -39,7 +39,6 @@ let g:airline_section_z = '%3v'
 let g:airline_extensions = [
   \ 'branch',
   \ 'coc',
-  \ 'default',
   \ 'fzf',
   \ 'hunks',
   \ 'undotree',
