@@ -37,8 +37,10 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Show documentation
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+  if index(['vim', 'help'], &filetype) >= 0
+    execute 'h ' . expand('<cword>')
+  elseif &filetype ==# 'tex'
+    VimtexDocPackage
   else
     call CocAction('doHover')
   endif
@@ -48,7 +50,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-augroup mygroup
+augroup MyCocGroup
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
