@@ -36,7 +36,7 @@ require('nvim-treesitter.configs').setup {
         enable = true
     },
     highlight_current_scope = {
-        enable = true
+        enable = false
     },
     smart_rename = {
       enable = true,
@@ -93,7 +93,6 @@ require('nvim-treesitter.configs').setup {
   -- ensure_installed = {'lua'}, -- one of 'all', 'language', or a list of languages
 }
 
-vim.cmd [[highlight IncludedC guibg=#373b41]]
 
 --[[
 
