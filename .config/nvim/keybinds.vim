@@ -1,9 +1,9 @@
 " Remap escape
-imap jk <Esc>
+inoremap jk <Esc>
 
 " Useful mappings for managing windows
-map vs :vsplit
-map sp :split
+nnoremap vs :vsplit
+nnoremap sp :split
 
 " Vertically resize the current window
 nnoremap vr :vertical resize
@@ -20,10 +20,10 @@ nnoremap <C-l> <C-W>l
 nnoremap 0 ^
 
 " Move the current line up or down
-nmap <silent> <Esc>j mz:m+<CR>`z
-nmap <silent> <Esc>k mz:m-2<CR>`z
-vmap <silent> <Esc>j :m'>+<cr>`<my`>mzgv`yo`z
-vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <silent> <Esc>j mz:m+<CR>`z
+nnoremap <silent> <Esc>k mz:m-2<CR>`z
+vnoremap <silent> <Esc>j :m'>+<cr>`<my`>mzgv`yo`z
+vnoremap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -38,5 +38,9 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+
+nnoremap <C-k> :bprev<CR>
+nnoremap <C-j> :bnext<CR>
+nnoremap <C-q> :bdelete<CR>
 
 nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
