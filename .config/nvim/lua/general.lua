@@ -1,20 +1,4 @@
 --------------------------------------------------------------------------------
--- Maintainer:
---   Hamza Memon
---
--- Version:
---   5.0 - 3/36/21
---
--- Sections:
---   -> General
---   -> Front-end
---   -> Command line, completion and wild menu
---   -> Search
---   -> Background
---------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------
 -- General
 --------------------------------------------------------------------------------
 -- Automatically write if modified for commands like :next, :make and :stop
@@ -166,7 +150,7 @@ vim.o.t_Co = "256"
 vim.o.termguicolors = true
 
 -- Use dracula theme
---colorscheme dracula
+vim.cmd('colorscheme dracula')
 
 -- Remove background
---highlight Normal guibg=none
+vim.cmd('highlight Normal guibg=none')
