@@ -8,6 +8,10 @@ end
 
 -- General mappings
 require('general')
+require('plugins')
+
+-- Force loading of astronauta first.
+vim.cmd [[runtime plugin/astronauta.vim]]
 
 -- Load supplementary Vim files
 vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
