@@ -21,6 +21,15 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
     use 'ryanoasis/vim-devicons'
 
+    -- Treesitter
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use 'nvim-treesitter/completion-treesitter'
+    use 'nvim-treesitter/playground'
+    use 'nvim-treesitter/nvim-treesitter-angular'
+    use 'nvim-treesitter/nvim-treesitter-refactor'
+    use 'p00f/nvim-ts-rainbow'
+    use 'windwp/nvim-ts-autotag'
+
     -- Autocomplete
     use 'hrsh7th/nvim-compe'
 
