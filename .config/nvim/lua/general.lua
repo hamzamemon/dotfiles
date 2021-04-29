@@ -42,7 +42,6 @@ vim.o.scrolloff = 999
 -- Time in milliseconds to wait for a mapped sequence to complete
 vim.o.timeoutlen = 100
 
-
 --------------------------------------------------------------------------------
 -- Front-end
 --------------------------------------------------------------------------------
@@ -95,7 +94,6 @@ vim.wo.wrap = false
 -- Enable highlighting of the current line
 vim.wo.cursorline = true
 
-
 --------------------------------------------------------------------------------
 -- Command line, completion and wild menu
 --------------------------------------------------------------------------------
@@ -103,13 +101,16 @@ vim.wo.cursorline = true
 vim.o.cmdheight = 2
 
 -- Options for insert mode completion
-vim.o.completeopt = 'menu,preview,noinsert,noselect'
+vim.o.completeopt = 'menuone,noselect'
 
 -- Turn on the wild menu
 vim.o.wildmode = 'longest,list,full'
 
 -- Ignore files
 vim.o.wildignore = vim.o.wildignore .. '*.o,*~,*.pyc,*/.git/*,*/.DS_Store,*/node_modules/*'
+
+-- Pseudo transparency for the popup menu
+vim.o.pumblend = 15
 
 -- Makes popup menu smaller
 vim.o.pumheight = 10
@@ -120,6 +121,8 @@ vim.o.showtabline = 2
 -- Do not show insertion completion menu messages
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
+-- Insert two spaces after a ".", "?" and "/" with a join command
+vim.o.joinspaces = false
 
 --------------------------------------------------------------------------------
 -- Search
@@ -138,7 +141,6 @@ vim.o.hlsearch = false
 
 -- Keywords used when searching and recognizing commands
 vim.bo.iskeyword = vim.bo.iskeyword .. ',@-@'
-
 
 --------------------------------------------------------------------------------
 -- Background

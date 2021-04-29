@@ -8,6 +8,10 @@ return require('packer').startup(function(use)
     -- Auto execute lua files in lua/plugin/, ftplugin/ and after/ftplugin/
     use 'tjdevries/astronauta.nvim'
 
+    -- Color
+    use {'dracula/vim', as = 'dracula'}
+    use 'norcalli/nvim-colorizer.lua'
+
     -- Status Line and Bufferline
     use 'glepnir/galaxyline.nvim'
     use 'romgrk/barbar.nvim'
@@ -16,4 +20,14 @@ return require('packer').startup(function(use)
     -- Icons
     use 'kyazdani42/nvim-web-devicons'
     use 'ryanoasis/vim-devicons'
+
+    -- Autocomplete
+    use 'hrsh7th/nvim-compe'
+
+    -- Snippets
+    use 'hrsh7th/vim-vsnip'
+    use 'rafamadriz/friendly-snippets'
+
+    -- Miscellaneous
+    -- use 'cohama/lexima.vim'
 end)
