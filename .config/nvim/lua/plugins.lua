@@ -21,6 +21,21 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
     use 'ryanoasis/vim-devicons'
 
+    -- LSP
+    use 'neovim/nvim-lspconfig'
+    use 'nvim-lua/completion-nvim'
+    use 'glepnir/lspsaga.nvim'
+    use 'onsails/lspkind-nvim'
+    use 'kosayoda/nvim-lightbulb'
+    use 'nvim-lua/lsp_extensions.nvim'
+    -- use 'kabouzeid/nvim-lspinstall'
+    use 'liuchengxu/vista.vim'
+    use 'wbthomason/lsp-status.nvim'
+    use {
+        'folke/lsp-trouble.nvim',
+        config = function() require('trouble').setup {} end
+    }
+
     -- Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/completion-treesitter'
@@ -49,12 +64,6 @@ return require('packer').startup(function(use)
     -- Snippets
     use 'hrsh7th/vim-vsnip'
     use 'rafamadriz/friendly-snippets'
-
-    -- Git
-    use 'pwntester/octo.nvim'
-
-    -- Debugging
-    use 'mfussenegger/nvim-dap'
 
     -- Miscellaneous
     -- use 'cohama/lexima.vim'
