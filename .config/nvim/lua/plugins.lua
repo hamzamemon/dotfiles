@@ -58,6 +58,12 @@ return require('packer').startup(function(use)
     use 'nvim-telescope/telescope-dap.nvim'
     use 'tami5/sql.nvim'
 
+    -- Development
+    use 'turbio/bracey.vim'
+    use 'elzr/vim-json'
+    use {'prettier/vim-prettier', run = 'yarn install'}
+    use 'mattn/emmet-vim'
+
     -- Autocomplete
     use 'hrsh7th/nvim-compe'
 
