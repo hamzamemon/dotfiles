@@ -6,7 +6,7 @@
 require('general')
 require('globals')
 require('plugins')
--- require('keybinds')
+require('keybinds')
 
 -- Force loading of astronauta first.
 vim.cmd [[runtime plugin/astronauta.vim]]

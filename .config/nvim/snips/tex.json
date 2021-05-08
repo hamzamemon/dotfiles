@@ -1,0 +1,76 @@
+{
+    "minimal document": {
+		"prefix": "minimal document",
+		"body": [
+			"\\documentclass{minimal}",
+            "\\begin{document}",
+            "\t$0",
+            "\\end{document}"
+		],
+		"description": "Minimal document"
+	},
+    "minimal article": {
+		"prefix": "minimal article",
+		"body": [
+            "\\documentclass{article}",
+            "\\usepackage[utf8]{inputenc}",
+            "\\usepackage{graphicx}",
+            "\t$1",
+            "\\begin{document}",
+            "\t$0",
+            "\\end{document}"
+		],
+		"description": "Minimal article"
+	},
+    "section": {
+        "prefix": "section",
+		"body": [
+            "\\section{$1}",
+            "$0"
+		],
+		"description": "Creates a section"
+    },
+    "subsection": {
+        "prefix": "subsection",
+		"body": [
+            "\\subection{$1}",
+            "$0"
+		],
+		"description": "Creates a subsection"
+    },
+    "subsubsection": {
+        "prefix": "subsubsection",
+		"body": [
+            "\\subsubection{$1}",
+            "$0"
+		],
+		"description": "Creates a subsubsection"
+    },
+    "begin and end": {
+        "prefix": "begin",
+		"body": [
+            "\\begin{${1:name}}",
+            "\t${0}",
+            "\\end{$1}"
+		],
+		"description": "Creates begin and end environments"
+    },
+    "itemize": {
+        "prefix": "itemize",
+		"body": [
+            "\\begin{itemize}",
+            "\t\\item ${0}",
+            "\\end{itemize}"
+		],
+		"description": "Creates an itemized environment"
+    },
+    "enumerate": {
+        "prefix": "enumerate",
+		"body": [
+            "\\begin{enumerate}",
+            "\t\\item ${0}",
+            "\\end{enumerate}"
+		],
+		"description": "Creates an enumerated environment"
+    }
+}
