@@ -62,8 +62,8 @@ require('nvim-treesitter.configs').setup {
         navigation = {
             enable = true,
             keymaps = {
-                goto_definition = 'gnd', -- mapping to go to definition of symbol under cursor
-                list_definitions = 'gnD', -- mapping to list all definitions in current file
+                goto_definition = 'gnd',
+                list_definitions = 'gnD',
                 list_definitions_toc = "gO",
                 goto_next_usage = "<a-*>",
                 goto_previous_usage = "<a-#>"
@@ -73,12 +73,14 @@ require('nvim-treesitter.configs').setup {
     autotag = {enable = true},
     rainbow = {
         enable = true,
-        extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        max_file_lines = 2000 -- Do not enable for files with more than 1000 lines, int
+        extended_mode = true, -- Highlight also non-parentheses delimiters
+        max_file_lines = 2000 -- Disable for files with more than 1000 lines
     },
     query_linter = {
         enable = true,
         use_virtual_text = true,
         lint_events = {"BufWrite", "CursorHold"}
-    }
+    },
+    context_commentstring = {enable = true},
+    matchup = {enable = true}
 }

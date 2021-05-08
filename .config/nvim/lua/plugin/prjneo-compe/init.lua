@@ -72,17 +72,15 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.cmd('highlight link CompeDocumentation NormalFloat')
 
 -- NOTE: Order is important. You can't lazy loading lexima.vim.
--- vim.g.lexima_no_default_rules = true
--- vim.cmd('call lexima#set_default_rules()')
+vim.g.lexima_no_default_rules = true
+vim.cmd('call lexima#set_default_rules()')
 vim.api.nvim_set_keymap('i', '<C-y>', 'compe#confirm("<C-y>")',
                         {noremap = true, expr = true, silent = true})
 vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()',
                         {noremap = true, expr = true, silent = true})
---[[
 vim.api.nvim_set_keymap('i', '<CR>',
-'compe#confirm(lexima#expand(\'<LT>CR>\', \'i\'))',
-{noremap = true, expr = true, silent = true})
-]] --
+                        'compe#confirm(lexima#expand(\'<LT>CR>\', \'i\'))',
+                        {noremap = true, expr = true, silent = true})
 vim.api.nvim_set_keymap('i', '<C-e>', 'compe#close(\'<C-e>\')',
                         {noremap = true, expr = true, silent = true})
 vim.api.nvim_set_keymap('i', '<C-f>', ' compe#scroll({ \'delta\': +4 })',

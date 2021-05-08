@@ -22,7 +22,7 @@ augroup MY_GENERAL_GROUP
   autocmd!
 
   " Trim whitespace
-  autocmd BufWritePre * :call TrimWhitespace()
+  "autocmd BufWritePre * :call TrimWhitespace()
 
   " Return to last edit position when opening files
   autocmd BufReadPost * :call GoToLastPosition()

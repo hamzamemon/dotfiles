@@ -2,11 +2,11 @@
 -- Maintainer:
 --   Hamza Memon
 --------------------------------------------------------------------------------
-if require('initial')() then return end
-
 -- General mappings
 require('general')
+require('globals')
 require('plugins')
+-- require('keybinds')
 
 -- Force loading of astronauta first.
 vim.cmd [[runtime plugin/astronauta.vim]]

@@ -38,6 +38,8 @@ local custom_attach = function(client)
 
     nnoremap {"<space>cr", MyLspRename, buffer = 0}
 
+    --[[
+
     telescope_mapper('gr', 'lsp_references', {
         layout_strategy = "vertical",
         sorting_strategy = "ascending",
@@ -56,6 +58,7 @@ local custom_attach = function(client)
     end
 
     telescope_mapper('<space>ca', 'lsp_code_actions', nil, true)
+        ]] --
 
     -- mapper('n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
     -- mapper('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>')
@@ -157,6 +160,22 @@ lspconfig.dockerls.setup {
     root_dir = vim.loop.cwd
 }
 
+require'lspconfig'.efm.setup {
+    init_options = {documentFormatting = true},
+    filetypes = {"lua"},
+    settings = {
+        rootMarkers = {".git/"},
+        languages = {
+            lua = {
+                {
+                    formatCommand = "lua-format -i --no-keep-simple-function-one-line --no-break-after-operator --column-limit=150 --break-after-table-lb",
+                    formatStdin = true
+                }
+            }
+        }
+    }
+}
+
 lspconfig.emmet_ls = {
     default_config = {
         cmd = {'emmet-ls', '--stdio'},
@@ -237,31 +256,38 @@ require'lspconfig'.kotlin_language_server.setup {
     end
 }
 
--- Load lua configuration from nlua.
---[[
+-- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
+local sumneko_root_path = DATA_PATH .. "/lspinstall/lua"
+local sumneko_binary = sumneko_root_path .. "/sumneko-lua-language-server"
 
-require('nlua.lsp.nvim').setup(lspconfig, {
+require'lspconfig'.sumneko_lua.setup {
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     on_init = custom_init,
     on_attach = custom_attach,
     capabilities = updated_capabilities,
-
-    root_dir = function(fname)
-        if string.find(vim.fn.fnamemodify(fname, ":p"), "nvim/") then
-            return vim.fn.expand("~/.config/nvim/")
-        end
-
-        -- ~/git/config_manager/xdg_config/nvim/...
-        return lspconfig_util.find_git_ancestor(fname) or
-                   lspconfig_util.path.dirname(fname)
-    end,
-
-    globals = {
-        -- Colorbuddy
-        "Color", "c", "Group", "g", "s", -- Custom
-        "RELOAD"
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+                -- Setup your lua path
+                path = vim.split(package.path, ';')
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'}
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = {
+                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+                },
+                maxPreload = 10000
+            }
+        }
     }
-})
-]] --
+}
 
 require'lspconfig'.intelephense.setup {
     cmd = {
@@ -272,8 +298,7 @@ require'lspconfig'.intelephense.setup {
     capabilities = updated_capabilities
 }
 
-lspconfig.pyls.setup {
-    plugins = {pyls_mypy = {enabled = true, live_mode = false}},
+require'lspconfig'.pyright.setup {
     on_init = custom_init,
     on_attach = custom_attach,
     capabilities = updated_capabilities
@@ -316,5 +341,3 @@ lspconfig.yamlls.setup {
     on_attach = custom_attach,
     capabilities = updated_capabilities
 }
-
-vim.cmd [[autocmd CursorHold, CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]

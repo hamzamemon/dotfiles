@@ -48,12 +48,13 @@ gls.left[1] = {
                 ['!'] = colors.blue,
                 t = colors.blue
             }
-            vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
+            vim.api.nvim_command('hi GalaxyViMode guifg=' ..
+                                     mode_color[vim.fn.mode()])
             return '▊ '
         end,
         highlight = {colors.red, colors.bg},
-	separator = ' ',
-        separator_highlight = {'NONE',colors.bg},
+        separator = ' ',
+        separator_highlight = {'NONE', colors.bg}
     }
 }
 print(vim.fn.getbufvar(0, 'ts'))
@@ -61,9 +62,7 @@ vim.fn.getbufvar(0, 'ts')
 
 gls.left[2] = {
     GitIcon = {
-        provider = function()
-            return ' '
-        end,
+        provider = function() return ' ' end,
         condition = condition.check_git_workspace,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
@@ -109,19 +108,22 @@ gls.left[6] = {
 }
 
 gls.left[7] = {
-  FileName = {
-    provider = {'FileName'},
-    condition = condition.buffer_not_empty,
-    highlight = {colors.magenta, colors.bg, 'bold'}
-  }
+    FileName = {
+        provider = {'FileName'},
+        condition = condition.buffer_not_empty,
+        highlight = {colors.magenta, colors.bg, 'bold'}
+    }
 }
 
-gls.right[1] ={
-  FileIcon = {
-    provider = 'FileIcon',
-    condition = buffer_not_empty,
-    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.darkblue},
-  },
+gls.right[1] = {
+    FileIcon = {
+        provider = 'FileIcon',
+        condition = buffer_not_empty,
+        highlight = {
+            require('galaxyline.provider_fileinfo').get_file_icon_color,
+            colors.darkblue
+        }
+    }
 }
 
 gls.right[2] = {
@@ -190,7 +192,8 @@ gls.right[8] = {
 gls.right[9] = {
     Tabstop = {
         provider = function()
-            return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+            return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") ..
+                       " "
         end,
         condition = condition.hide_in_width,
         separator = ' ',
@@ -221,9 +224,7 @@ gls.right[11] = {
 
 gls.right[12] = {
     Space = {
-        provider = function()
-            return ' '
-        end,
+        provider = function() return ' ' end,
         separator = ' ',
         separator_highlight = {'NONE', colors.bg},
         highlight = {colors.orange, colors.bg}
@@ -248,8 +249,5 @@ gls.short_line_left[2] = {
 }
 
 gls.short_line_right[1] = {
-    BufferIcon = {
-        provider = 'BufferIcon',
-        highlight = {colors.gray, colors.bg}
-    }
+    BufferIcon = {provider = 'BufferIcon', highlight = {colors.gray, colors.bg}}
 }
