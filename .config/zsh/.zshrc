@@ -1,127 +1,74 @@
-# Show system information
-neofetch
+# Change directory colors
+LS_COLORS=$LS_COLORS:'di=1;32:';
+export LS_COLORS
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-# Enable colors
-autoload -U colors && colors
-
-# Change prompt
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-# Automatically `cd` into a directory if directory is typed (> Downloads = > cd Downloads)
-setopt autocd
-
-# Disable Ctrl+S to freeze terminal.
-stty stop undef
-
-# Enable comments
-setopt interactive_comments
-
-# History in cache directory
+# History
 HISTSIZE=10000000
-SAVEHIST=10000000
-HISTFILE=~/.cache/zsh/history
+SAVEHIST=$HISTSIZE
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+# Remove blank lines from history
+setopt hist_reduce_blanks
+# Adds commands as they are typed, not at shell exit
+setopt inc_append_history
 
-# Basic auto/tab complete
-autoload -U compinit
+# Setup a custom completion directory
+fpath=("${XDG_DATA_HOME:-$HOME/.local/share}"/zsh/completions $fpath)
+
+# Enable the completion system
+autoload -Uz +X compinit && compinit -u
 zstyle ':completion:*' menu select
 # Auto complete with case insensitivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zmodload zsh/complist
-compinit
+# Initialize all completions on $fpath and ignore (-i) all insecure files and directories
+compinit -i
 # Include hidden files
 _comp_options+=(globdots)
+# Case insensitive globbing
+setopt no_case_glob
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
+# Some useful options
+setopt autocd extendedglob nomatch menucomplete
+setopt interactive_comments
+stty stop undef # Disable Ctrl-S to freeze terminal
 
-# Use vim keys in tab complete menu
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
+# Useful Functions
+source "$ZDOTDIR/zsh-functions"
 
-# Change cursor shape for different vi modes
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-
-# ci", ci', ci`, di", etc
-autoload -U select-quoted
-zle -N select-quoted
-for m in visual viopp; do
-  for c in {a,i}{\',\",\`}; do
-    bindkey -M $m $c select-quoted
-  done
-done
-
-# ci{, ci(, ci<, di{, etc
-autoload -U select-bracketed
-zle -N select-bracketed
-for m in visual viopp; do
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-    bindkey -M $m $c select-bracketed
-  done
-done
-
-zle-line-init() {
-    # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    zle -K viins
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-
-# Use beam shape cursor on startup
-echo -ne '\e[5 q'
-# Use beam shape cursor for each new prompt
-preexec() { echo -ne '\e[5 q' ;}
-
-# Reverse command search
-bindkey '^R' history-incremental-search-backward
-
-# Edit line in Vim
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-
-# Use `lf` to switch directories and bind it to Ctrl+O
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp" >/dev/null
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
-
-# Load aliases and shortcuts if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
-
-# List files when moving into a directory
-function cd {
-  builtin cd "$@" && ls -F
-}
+# Add plugins
+zsh_add_plugin 'zsh-users/zsh-syntax-highlighting'
+zsh_add_plugin 'zsh-users/zsh-autosuggestions'
+zsh_add_plugin 'zsh-users/zsh-completions'
+zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin 'agkozak/zsh-z'
 
 # Search repos for commands that cannot be found
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
-# Suggests commands on type based on history and completions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+bindkey '^ ' autosuggest-accept
+bindkey '^n' autosuggest-accept
 
-# Load syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+
+## Import local plugins
+sources=(
+  'aliases'
+  'functions'
+  'git'
+  'npm'
+  'prompt'
+  'vim'
+)
+for s in "${sources[@]}"; do
+  source $XDG_CONFIG_HOME/zsh/include/${s}.zsh
+done
+
+# FZF
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
+# export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+compinit

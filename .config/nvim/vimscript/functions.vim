@@ -30,3 +30,9 @@ augroup MY_GENERAL_GROUP
   " Close preview window when completion is done
   autocmd CompleteDone * if pumvisible() == 0 | silent! pclose | endif
 augroup END
+
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif

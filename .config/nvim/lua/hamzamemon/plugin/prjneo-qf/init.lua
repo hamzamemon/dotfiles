@@ -1,0 +1,13 @@
+vim.g.qf_mapping_ack_style = 1
+vim.g.qf_window_bottom = 1
+vim.g.qf_loclist_window_bottom = 1
+vim.g.qf_statusline = {}
+vim.g.qf_auto_open_quickfix = 1
+vim.g.qf_auto_open_loclist = 1
+vim.g.qf_auto_resize = 1
+vim.g.qf_max_height = 10
+vim.g.qf_auto_quit = 1
+vim.g.qf_bufname_or_text = 0
+vim.g.qf_save_win_view = 1
+vim.g.qf_nowrap = 1
+vim.g.qf_shorten_path = 3

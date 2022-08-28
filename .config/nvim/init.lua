@@ -2,17 +2,19 @@
 -- Maintainer:
 --   Hamza Memon
 --------------------------------------------------------------------------------
--- General mappings
-require('general')
-require('globals')
-require('plugins')
-require('keybinds')
+-- Install plugins
+require 'hamzamemon.plugins'
 
--- Force loading of astronauta first.
-vim.cmd [[runtime plugin/astronauta.vim]]
+-- Adjust general settings
+require 'hamzamemon.general'
+
+-- Autoload all Lua files under ./lua/hamzamemon/
+vim.o.runtimepath = vim.o.runtimepath .. ',~/.config/nvim/lua/hamzamemon/'
+
+-- require 'hamzamemon.keybinds'
 
 -- LSP
-require('lsp')
+require 'hamzamemon.lsp'
 
 -- Load supplementary Vim files
 vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
