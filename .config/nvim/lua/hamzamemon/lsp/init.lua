@@ -24,6 +24,7 @@ M.server_capabilities = function()
 end
 
 require 'hamzamemon.lsp.lsp-signature'
+require 'hamzamemon.lsp.mason-installer'
 require 'hamzamemon.lsp.mason'
 require'hamzamemon.lsp.handlers'.setup()
 require 'hamzamemon.lsp.null-ls'

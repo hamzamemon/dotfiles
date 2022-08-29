@@ -30,10 +30,9 @@ packer.startup(function(use)
     use 'hamzamemon/sunflower'
     use 'norcalli/nvim-colorizer.lua'
 
-    -- Status Line and Bufferline
+    -- Status Line
     use 'nvim-lualine/lualine.nvim'
     use 'kyazdani42/nvim-web-devicons'
-    use 'romgrk/barbar.nvim'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
