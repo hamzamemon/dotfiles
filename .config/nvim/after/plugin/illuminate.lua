@@ -1,4 +1,4 @@
-local status_ok, illuminate = pcall(require, "illuminate")
+local status_ok, illuminate = pcall(require, 'illuminate')
 if not status_ok then return end
 
 -- default configuration
@@ -6,11 +6,11 @@ illuminate.configure({
     -- providers: provider used to get references in the buffer, ordered by priority
     providers = {'lsp', 'treesitter', 'regex'},
     -- delay: delay in milliseconds
-                delay = 120,
+    delay = 120,
     -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
     filetypes_denylist = {
-        'dirvish', "fugitive", "NvimTree", "packer", "neogitstatus", "Trouble",
-        "Outline", "spectre_panel", "TelescopePrompt"
+        'dirvish', 'fugitive', 'NvimTree', 'packer', 'neogitstatus', 'Trouble',
+        'Outline', 'spectre_panel', 'TelescopePrompt'
     },
     -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
     filetypes_allowlist = {},

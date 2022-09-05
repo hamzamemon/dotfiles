@@ -1,7 +1,7 @@
-local status_ok, navic = pcall(require, "nvim-navic")
+local status_ok, navic = pcall(require, 'nvim-navic')
 if not status_ok then return end
 
-local icons = require "hamzamemon.icons"
+local icons = require 'hamzamemon.icons'
 
 navic.setup {
     icons = {
@@ -33,8 +33,8 @@ navic.setup {
         TypeParameter = ' '
     },
     highlight = true,
-    separator = " " .. icons.ui.ChevronRight .. " ",
+    separator = ' ' .. icons.ui.ChevronRight .. ' ',
     depth_limit = 0,
-    depth_limit_indicator = ".."
+    depth_limit_indicator = '..'
 }
 

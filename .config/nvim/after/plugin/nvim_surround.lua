@@ -1,83 +1,83 @@
-local status_ok, surround = pcall(require, "nvim-surround")
+local status_ok, surround = pcall(require, 'nvim-surround')
 if not status_ok then return end
 
 surround.setup {
     keymaps = { -- vim-surround style keymaps
-        insert = "<C-g>s",
-        insert_line = "<C-g>S",
-        normal = "s",
-        normal_cur = "ss",
-        normal_line = "S",
-        normal_cur_line = "SS",
-        visual = "s",
-        visual_line = "gS",
-        delete = "ds",
-        change = "cs"
+        insert = '<C-g>s',
+        insert_line = '<C-g>S',
+        normal = 's',
+        normal_cur = 'ss',
+        normal_line = 'S',
+        normal_cur_line = 'SS',
+        visual = 's',
+        visual_line = 'gS',
+        delete = 'ds',
+        change = 'cs'
     },
     surrounds = {
-        ["("] = {
-            add = {"( ", " )"},
+        ['('] = {
+            add = {'( ', ' )'},
             find = function()
-                return M.get_selection({textobject = "("})
+                return M.get_selection({textobject = '('})
             end,
-            delete = "^(. ?)().-( ?.)()$",
-            change = {target = "^(. ?)().-( ?.)()$"}
+            delete = '^(. ?)().-( ?.)()$',
+            change = {target = '^(. ?)().-( ?.)()$'}
         },
-        [")"] = {
-            add = {"(", ")"},
+        [')'] = {
+            add = {'(', ')'},
             find = function()
-                return M.get_selection({textobject = ")"})
+                return M.get_selection({textobject = ')'})
             end,
-            delete = "^(.)().-(.)()$",
-            change = {target = "^(.)().-(.)()$"}
+            delete = '^(.)().-(.)()$',
+            change = {target = '^(.)().-(.)()$'}
         },
-        ["{"] = {
-            add = {"{ ", " }"},
+        ['{'] = {
+            add = {'{ ', ' }'},
             find = function()
-                return M.get_selection({textobject = "{"})
+                return M.get_selection({textobject = '{'})
             end,
-            delete = "^(. ?)().-( ?.)()$",
-            change = {target = "^(. ?)().-( ?.)()$"}
+            delete = '^(. ?)().-( ?.)()$',
+            change = {target = '^(. ?)().-( ?.)()$'}
         },
-        ["}"] = {
-            add = {"{", "}"},
+        ['}'] = {
+            add = {'{', '}'},
             find = function()
-                return M.get_selection({textobject = "}"})
+                return M.get_selection({textobject = '}'})
             end,
-            delete = "^(.)().-(.)()$",
-            change = {target = "^(.)().-(.)()$"}
+            delete = '^(.)().-(.)()$',
+            change = {target = '^(.)().-(.)()$'}
         },
-        ["<"] = {
-            add = {"< ", " >"},
+        ['<'] = {
+            add = {'< ', ' >'},
             find = function()
-                return M.get_selection({textobject = "<"})
+                return M.get_selection({textobject = '<'})
             end,
-            delete = "^(. ?)().-( ?.)()$",
-            change = {target = "^(. ?)().-( ?.)()$"}
+            delete = '^(. ?)().-( ?.)()$',
+            change = {target = '^(. ?)().-( ?.)()$'}
         },
-        [">"] = {
-            add = {"<", ">"},
+        ['>'] = {
+            add = {'<', '>'},
             find = function()
-                return M.get_selection({textobject = ">"})
+                return M.get_selection({textobject = '>'})
             end,
-            delete = "^(.)().-(.)()$",
-            change = {target = "^(.)().-(.)()$"}
+            delete = '^(.)().-(.)()$',
+            change = {target = '^(.)().-(.)()$'}
         },
-        ["["] = {
-            add = {"[ ", " ]"},
+        ['['] = {
+            add = {'[ ', ' ]'},
             find = function()
-                return M.get_selection({textobject = "["})
+                return M.get_selection({textobject = '['})
             end,
-            delete = "^(. ?)().-( ?.)()$",
-            change = {target = "^(. ?)().-( ?.)()$"}
+            delete = '^(. ?)().-( ?.)()$',
+            change = {target = '^(. ?)().-( ?.)()$'}
         },
-        ["]"] = {
-            add = {"[", "]"},
+        [']'] = {
+            add = {'[', ']'},
             find = function()
-                return M.get_selection({textobject = "]"})
+                return M.get_selection({textobject = ']'})
             end,
-            delete = "^(.)().-(.)()$",
-            change = {target = "^(.)().-(.)()$"}
+            delete = '^(.)().-(.)()$',
+            change = {target = '^(.)().-(.)()$'}
         },
         ["'"] = {
             add = {"'", "'"},
@@ -95,20 +95,20 @@ surround.setup {
             delete = "^(.)().-(.)()$",
             change = {target = "^(.)().-(.)()$"}
         },
-        ["`"] = {
-            add = {"`", "`"},
+        ['`'] = {
+            add = {'`', '`'},
             find = function()
-                return M.get_selection({textobject = "`"})
+                return M.get_selection({textobject = '`'})
             end,
-            delete = "^(.)().-(.)()$",
-            change = {target = "^(.)().-(.)()$"}
+            delete = '^(.)().-(.)()$',
+            change = {target = '^(.)().-(.)()$'}
         },
-        ["i"] = { -- TODO: Add find/delete/change functions
+        ['i'] = { -- TODO: Add find/delete/change functions
             add = function()
-                local left_delimiter = M.get_input("Enter the left delimiter: ")
+                local left_delimiter = M.get_input('Enter the left delimiter: ')
                 local right_delimiter = left_delimiter and
                                             M.get_input(
-                                                "Enter the right delimiter: ")
+                                                'Enter the right delimiter: ')
                 if right_delimiter then
                     return {{left_delimiter}, {right_delimiter}}
                 end
@@ -117,62 +117,62 @@ surround.setup {
             delete = function() end,
             change = {target = function() end}
         },
-        ["t"] = {
+        ['t'] = {
             add = function()
-                local input = M.get_input("Enter the HTML tag: ")
+                local input = M.get_input('Enter the HTML tag: ')
                 if input then
-                    local element = input:match("^<?([%w-]*)")
-                    local attributes = input:match("%s+([^>]+)>?$")
+                    local element = input:match('^<?([%w-]*)')
+                    local attributes = input:match('%s+([^>]+)>?$')
 
-                    local open = attributes and element .. " " .. attributes or
+                    local open = attributes and element .. ' ' .. attributes or
                                      element
                     local close = element
 
-                    return {{"<" .. open .. ">"}, {"</" .. close .. ">"}}
+                    return {{'<' .. open .. '>'}, {'</' .. close .. '>'}}
                 end
             end,
             find = function()
-                return M.get_selection({textobject = "t"})
+                return M.get_selection({textobject = 't'})
             end,
-            delete = "^(%b<>)().-(%b<>)()$",
+            delete = '^(%b<>)().-(%b<>)()$',
             change = {
-                target = "^<([%w-]*)().-([^/]*)()>$",
+                target = '^<([%w-]*)().-([^/]*)()>$',
                 replacement = function()
-                    local element = M.get_input("Enter the HTML element: ")
+                    local element = M.get_input('Enter the HTML element: ')
                     if element then
                         return {{element}, {element}}
                     end
                 end
             }
         },
-        ["T"] = {
+        ['T'] = {
             add = function()
-                local input = M.get_input("Enter the HTML tag: ")
+                local input = M.get_input('Enter the HTML tag: ')
                 if input then
-                    local element = input:match("^<?([%w-]*)")
-                    local attributes = input:match("%s+([^>]+)>?$")
+                    local element = input:match('^<?([%w-]*)')
+                    local attributes = input:match('%s+([^>]+)>?$')
 
-                    local open = attributes and element .. " " .. attributes or
+                    local open = attributes and element .. ' ' .. attributes or
                                      element
                     local close = element
 
-                    return {{"<" .. open .. ">"}, {"</" .. close .. ">"}}
+                    return {{'<' .. open .. '>'}, {'</' .. close .. '>'}}
                 end
             end,
             find = function()
-                return M.get_selection({textobject = "t"})
+                return M.get_selection({textobject = 't'})
             end,
-            delete = "^(%b<>)().-(%b<>)()$",
+            delete = '^(%b<>)().-(%b<>)()$',
             change = {
-                target = "^<([^>]*)().-([^%/]*)()>$",
+                target = '^<([^>]*)().-([^%/]*)()>$',
                 replacement = function()
-                    local input = M.get_input("Enter the HTML tag: ")
+                    local input = M.get_input('Enter the HTML tag: ')
                     if input then
-                        local element = input:match("^<?([%w-]*)")
-                        local attributes = input:match("%s+([^>]+)>?$")
+                        local element = input:match('^<?([%w-]*)')
+                        local attributes = input:match('%s+([^>]+)>?$')
 
                         local open =
-                            attributes and element .. " " .. attributes or
+                            attributes and element .. ' ' .. attributes or
                                 element
                         local close = element
 
@@ -181,18 +181,18 @@ surround.setup {
                 end
             }
         },
-        ["f"] = {
+        ['f'] = {
             add = function()
-                local result = M.get_input("Enter the function name: ")
-                if result then return {{result .. "("}, {")"}} end
+                local result = M.get_input('Enter the function name: ')
+                if result then return {{result .. '('}, {')'}} end
             end,
-            find = "[%w%-_:.>]+%b()",
-            delete = "^([%w%-_:.>]+%()().-(%))()$",
+            find = '[%w%-_:.>]+%b()',
+            delete = '^([%w%-_:.>]+%()().-(%))()$',
             change = {
-                target = "^.-([%w_]+)()%b()()()$",
+                target = '^.-([%w_]+)()%b()()()$',
                 replacement = function()
-                    local result = M.get_input("Enter the function name: ")
-                    if result then return {{result}, {""}} end
+                    local result = M.get_input('Enter the function name: ')
+                    if result then return {{result}, {''}} end
                 end
             }
         },
@@ -200,35 +200,35 @@ surround.setup {
             add = function(char) return {{char}, {char}} end,
             find = function(char)
                 return M.get_selection({
-                    pattern = vim.pesc(char) .. ".-" .. vim.pesc(char)
+                    pattern = vim.pesc(char) .. '.-' .. vim.pesc(char)
                 })
             end,
             delete = function(char)
                 return M.get_selections({
                     char = char,
-                    pattern = "^(.)().-(.)()$"
+                    pattern = '^(.)().-(.)()$'
                 })
             end,
             change = {
                 target = function(char)
                     return M.get_selections({
                         char = char,
-                        pattern = "^(.)().-(.)()$"
+                        pattern = '^(.)().-(.)()$'
                     })
                 end
             }
         }
     },
     aliases = {
-        ["a"] = ">",
-        ["b"] = ")",
-        ["B"] = "}",
-        ["r"] = "]",
-        ["q"] = {'"', "'", "`"},
-        ["s"] = {"}", "]", ")", ">", '"', "'", "`"}
+        ['a'] = '>',
+        ['b'] = ')',
+        ['B'] = '}',
+        ['r'] = ']',
+        ['q'] = {'"', "'", '`'},
+        ['s'] = {'}', ']', ')', '>', '"', "'", '`'}
     },
     highlight = {duration = 0},
-    move_cursor = "begin"
+    move_cursor = 'begin'
 }
 
 vim.cmd [[nmap <leader>' siw']]

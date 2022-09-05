@@ -1,13 +1,13 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+local status_ok, configs = pcall(require, 'nvim-treesitter.configs')
 if not status_ok then return end
 
 configs.setup {
     -- A directory to install the parsers into.
     -- If this is excluded or nil parsers are installed
-    -- to either the package dir, or the "site" dir.
+    -- to either the package dir, or the 'site' dir.
     -- If a custom path is used (not nil) it must be added to the runtimepath.
-    -- parser_install_dir = "/some/path/to/store/parsers",
-    -- ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    -- parser_install_dir = '/some/path/to/store/parsers',
+    -- ensure_installed = 'all', -- one of 'all', 'maintained' (parsers with maintainers), or a list of languages
     ensure_installed = {
         'bash', 'bibtex', 'css', 'dockerfile', 'gitignore', 'help', 'html',
         'java', 'javascript', 'json', 'json5', 'kotlin', 'latex', 'lua',
@@ -26,8 +26,8 @@ configs.setup {
     highlight = {
         use_languagetree = true,
         enable = true, -- false will disable the whole extension
-        -- disable = { "css", "html" }, -- list of language that will be disabled
-        -- disable = { "css", "markdown" }, -- list of language that will be disabled
+        -- disable = { 'css', 'html' }, -- list of language that will be disabled
+        -- disable = { 'css', 'markdown' }, -- list of language that will be disabled
         disable = {}, -- list of language that will be disabled
         additional_vim_regex_highlighting = false
     },
@@ -48,13 +48,13 @@ configs.setup {
         extended_mode = true, -- Highlight also non-parentheses delimiters
         max_file_lines = 2000, -- Disable for files with more than 1000 lines
         colors = {
-            -- "#68a0b0",
-            -- "#946EaD",
-            -- "#c7aA6D",
-            "Gold", "Orchid", "DodgerBlue"
-            -- "Cornsilk",
-            -- "Salmon",
-            -- "LawnGreen",
+            -- '#68a0b0',
+            -- '#946EaD',
+            -- '#c7aA6D',
+            'Gold', 'Orchid', 'DodgerBlue'
+            -- 'Cornsilk',
+            -- 'Salmon',
+            -- 'LawnGreen',
         },
         disable = {}
     },
@@ -93,16 +93,16 @@ configs.setup {
             keymaps = {
                 goto_definition = 'gnd',
                 list_definitions = 'gnD',
-                list_definitions_toc = "gO",
-                goto_next_usage = "<a-*>",
-                goto_previous_usage = "<a-#>"
+                list_definitions_toc = 'gO',
+                goto_next_usage = '<a-*>',
+                goto_previous_usage = '<a-#>'
             }
         }
     },
     query_linter = {
         enable = true,
         use_virtual_text = true,
-        lint_events = {"BufWrite", "CursorHold"}
+        lint_events = {'BufWrite', 'CursorHold'}
     },
     textobjects = {
         select = {
@@ -110,28 +110,28 @@ configs.setup {
             lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
             keymaps = {
                 -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["at"] = "@class.outer",
-                ["it"] = "@class.inner",
-                ["ac"] = "@call.outer",
-                ["ic"] = "@call.inner",
-                ["aa"] = "@parameter.outer",
-                ["ia"] = "@parameter.inner",
-                ["al"] = "@loop.outer",
-                ["il"] = "@loop.inner",
-                ["ai"] = "@conditional.outer",
-                ["ii"] = "@conditional.inner",
-                ["a/"] = "@comment.outer",
-                ["i/"] = "@comment.inner",
-                ["ab"] = "@block.outer",
-                ["ib"] = "@block.inner",
-                ["as"] = "@statement.outer",
-                ["is"] = "@scopename.inner",
-                ["aA"] = "@attribute.outer",
-                ["iA"] = "@attribute.inner",
-                ["aF"] = "@frame.outer",
-                ["iF"] = "@frame.inner"
+                ['af'] = '@function.outer',
+                ['if'] = '@function.inner',
+                ['at'] = '@class.outer',
+                ['it'] = '@class.inner',
+                ['ac'] = '@call.outer',
+                ['ic'] = '@call.inner',
+                ['aa'] = '@parameter.outer',
+                ['ia'] = '@parameter.inner',
+                ['al'] = '@loop.outer',
+                ['il'] = '@loop.inner',
+                ['ai'] = '@conditional.outer',
+                ['ii'] = '@conditional.inner',
+                ['a/'] = '@comment.outer',
+                ['i/'] = '@comment.inner',
+                ['ab'] = '@block.outer',
+                ['ib'] = '@block.inner',
+                ['as'] = '@statement.outer',
+                ['is'] = '@scopename.inner',
+                ['aA'] = '@attribute.outer',
+                ['iA'] = '@attribute.inner',
+                ['aF'] = '@frame.outer',
+                ['iF'] = '@frame.inner'
             },
             -- You can choose the select mode (default is charwise 'v')
             selection_modes = {
@@ -149,33 +149,33 @@ configs.setup {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
-                ["]m"] = "@function.outer",
-                ["]]"] = "@class.outer"
+                [']m'] = '@function.outer',
+                [']]'] = '@class.outer'
             },
             goto_next_end = {
-                ["]M"] = "@function.outer",
-                ["]["] = "@class.outer"
+                [']M'] = '@function.outer',
+                [']['] = '@class.outer'
             },
             goto_previous_start = {
-                ["[m"] = "@function.outer",
-                ["[["] = "@class.outer"
+                ['[m'] = '@function.outer',
+                ['[['] = '@class.outer'
             },
             goto_previous_end = {
-                ["[M"] = "@function.outer",
-                ["[]"] = "@class.outer"
+                ['[M'] = '@function.outer',
+                ['[]'] = '@class.outer'
             }
         },
         swap = {
             enable = true,
-            swap_next = {["<leader>."] = "@parameter.inner"},
-            swap_previous = {["<leader>,"] = "@parameter.inner"}
+            swap_next = {['<leader>.'] = '@parameter.inner'},
+            swap_previous = {['<leader>,'] = '@parameter.inner'}
         },
         lsp_interop = {
             enable = true,
             border = 'none',
             peek_definition_code = {
-                ["<leader>df"] = "@function.outer",
-                ["<leader>dF"] = "@class.outer"
+                ['<leader>df'] = '@function.outer',
+                ['<leader>dF'] = '@class.outer'
             }
         }
     },

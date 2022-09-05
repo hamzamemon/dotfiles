@@ -1,14 +1,14 @@
-local status_ok, fidget = pcall(require, "fidget")
+local status_ok, fidget = pcall(require, 'fidget')
 if not status_ok then
   return
 end
 
 fidget.setup({
       text = {
-        spinner = "pipe",         -- animation shown when tasks are ongoing
-        done = "✔",               -- character shown when all tasks are complete
-        commenced = "Started",    -- message shown when task starts
-        completed = "Completed",  -- message shown when task completes
+        spinner = 'pipe',         -- animation shown when tasks are ongoing
+        done = '✔',               -- character shown when all tasks are complete
+        commenced = 'Started',    -- message shown when task starts
+        completed = 'Completed',  -- message shown when task completes
       },
       align = {
         bottom = true,            -- align fidgets along bottom edge of buffer
@@ -20,7 +20,7 @@ fidget.setup({
         task_decay = 1000,        -- how long to keep around completed task, in ms
       },
       window = {
-        relative = "win",         -- where to anchor, either "win" or "editor"
+        relative = 'win',         -- where to anchor, either 'win' or 'editor'
         blend = 100,              -- &winblend for the window
         zindex = nil,             -- the zindex value for the window
       },
@@ -30,14 +30,14 @@ fidget.setup({
         max_width = 0,            -- maximum width of the fidget box
         fidget =                  -- function to format fidget title
           function(fidget_name, spinner)
-            return string.format("%s %s", spinner, fidget_name)
+            return string.format('%s %s', spinner, fidget_name)
           end,
         task =                    -- function to format each task line
           function(task_name, message, percentage)
             return string.format(
-              "%s%s [%s]",
+              '%s%s [%s]',
               message,
-              percentage and string.format(" (%s%%)", percentage) or "",
+              percentage and string.format(' (%s%%)', percentage) or '',
               task_name
             )
           end,

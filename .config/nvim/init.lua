@@ -12,4 +12,4 @@ require 'hamzamemon.general'
 require 'hamzamemon.lsp'
 
 -- Set keybindings
-require "hamzamemon.keybinds"
+require 'hamzamemon.keybinds'

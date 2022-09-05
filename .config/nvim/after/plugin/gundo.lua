@@ -14,8 +14,8 @@ vim.g.gundo_help = 0
 
 vim.gundo_disable = 0
 
-vim.g.gundo_map_move_older = "j"
-vim.g.gundo_map_move_newer = "k"
+vim.g.gundo_map_move_older = 'j'
+vim.g.gundo_map_move_newer = 'k'
 
 -- Automatically close window when reverting
 vim.g.gundo_close_on_revert = 1

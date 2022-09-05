@@ -1,4 +1,4 @@
-local status_ok, context = pcall(require, "treesitter-context")
+local status_ok, context = pcall(require, 'treesitter-context')
 if not status_ok then return end
 
 context.setup {
@@ -23,8 +23,8 @@ context.setup {
     },
     exact_patterns = {
         -- Example for a specific filetype with Lua patterns
-        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
-        -- exactly match "impl_item" only)
+        -- Treat patterns.rust as a Lua pattern (i.e '^impl_item$' will
+        -- exactly match 'impl_item' only)
         -- rust = true,
     },
 
