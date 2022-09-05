@@ -26,17 +26,6 @@ M.setup = function()
     local config = {
         virtual_lines = true,
         virtual_text = false,
-        -- virtual_text = {
-        --   -- spacing = 7,
-        --   -- update_in_insert = false,
-        --   -- severity_sort = true,
-        --   -- prefix = "<-",
-        --   prefix = " ●",
-        --   source = "if_many", -- Or "always"
-        --   -- format = function(diag)
-        --   --   return diag.message .. "blah"
-        --   -- end,
-        -- },
 
         -- show signs
         signs = {active = signs},
@@ -100,7 +89,7 @@ local function lsp_keymaps(bufnr)
                                 "<cmd>Telescope lsp_references<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gl",
                                 "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]]
+    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gs",
                                 "<cmd>lua vim.lsp.buf.signature_help()<CR>",
                                 opts)
@@ -136,6 +125,7 @@ M.on_attach = function(client, bufnr)
         vim.lsp.codelens.refresh()
         if JAVA_DAP_ACTIVE then
             require("jdtls").setup_dap {hotcodereplace = "auto"}
+            require('jdtls.setup').add_commands()
             require("jdtls.dap").setup_dap_main_class_configs()
         end
     end
@@ -145,7 +135,7 @@ function M.enable_format_on_save()
     vim.cmd [[
     augroup format_on_save
       autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.format({ async = true }) 
+      autocmd BufWritePre * lua vim.lsp.buf.formatting_sync() 
     augroup end
   ]]
     vim.notify "Enabled format on save"

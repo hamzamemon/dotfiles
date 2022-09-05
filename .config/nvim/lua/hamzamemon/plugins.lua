@@ -63,7 +63,6 @@ packer.startup(function(use)
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
     use "SmiteshP/nvim-navic"
     use "simrat39/symbols-outline.nvim"
-
     use "lvimuser/lsp-inlayhints.nvim"
 
     -- Completion
@@ -126,16 +125,15 @@ packer.startup(function(use)
     use 'folke/todo-comments.nvim'
     use "mfussenegger/nvim-jdtls"
     use "folke/lua-dev.nvim"
+    use "filipdutescu/renamer.nvim"
 
     -- Debugging
     use 'mfussenegger/nvim-dap'
     use "rcarriga/nvim-dap-ui"
     use "theHamsta/nvim-dap-virtual-text"
     use 'mfussenegger/nvim-dap-python'
-    -- use "Pocco81/DAPInstall.nvim"
 
     -- Text manipulation
-    use 'godlygeek/tabular'
     use 'tpope/vim-repeat'
     use "kylechui/nvim-surround"
     use 'wellle/targets.vim'
@@ -157,56 +155,14 @@ packer.startup(function(use)
     use 'andymass/vim-matchup'
     use 'cohama/lexima.vim'
     use 'dstein64/vim-startuptime'
-    use 'vimwiki/vimwiki'
-    use 'vuciv/vim-bujo'
     use "rcarriga/nvim-notify"
     use 'lewis6991/impatient.nvim'
     use "windwp/nvim-spectre"
     use "folke/which-key.nvim"
 
-    -- Note Taking
-    use "mickael-menu/zk-nvim"
-
-    -- Utility
-    use "moll/vim-bbye"
-
     -- Session
     use "rmagatti/auto-session"
     use "rmagatti/session-lens"
-
-    -- Editing Support
-    use "windwp/nvim-autopairs"
-
-    -- Motion
-    -- use "jinh0/eyeliner.nvim"
-
-    -- Rust
-    use {
-        "christianchiarulli/rust-tools.nvim",
-        branch = "modularize_and_inlay_rewrite"
-    }
-
-    -- Typescript TODO: set this up, also add keybinds to ftplugin
-    use "jose-elias-alvarez/typescript.nvim"
-
-    -- use "stevearc/aerial.nvim"
-
-    -- Graveyard
-    -- use "romgrk/nvim-treesitter-context"
-    -- use "mizlan/iswap.nvim"
-    -- use {'christianchiarulli/nvim-ts-rainbow'}
-    -- use 'David-Kunz/cmp-npm' -- doesn't seem to work
-    -- use "lunarvim/vim-solidity"
-    -- use "tpope/vim-repeat"
-    -- use "Shatur/neovim-session-manager"
-    -- use "metakirby5/codi.vim"
-    -- use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
-    -- use "rcarriga/cmp-dap"
-    use "filipdutescu/renamer.nvim"
-    -- use "rebelot/kanagawa.nvim"
-    -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-    -- use "rmagatti/goto-preview"
-    -- use "nvim-lua/lsp_extensions.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

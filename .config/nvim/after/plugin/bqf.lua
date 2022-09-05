@@ -1,7 +1,5 @@
 local status_ok, bqf = pcall(require, "bqf")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 bqf.setup {
     auto_enable = true,
@@ -9,12 +7,14 @@ bqf.setup {
     auto_resize_height = true, -- highly recommended enable
     preview = {
         auto_preview = true,
-        border_chars = {'│', '│', '─', '─', '╭', '╮', '╰', '╯', '█'},
+        border_chars = {
+            '┃', '┃', '━', '━', '┏', '┓', '┗', '┛', '█'
+        },
         delay_syntax = 80,
         win_height = 15,
         win_vheight = 15,
         wrap = false,
-        should_preview_cb = nil,
+        should_preview_cb = nil
     },
     -- make `drop` and `tab drop` to become preferred
     func_map = {
@@ -23,7 +23,7 @@ bqf.setup {
         split = '<C-s>',
         tabdrop = '<C-t>',
         tabc = '',
-        ptogglemode = 'z,',
+        ptogglemode = 'z,'
     },
     filter = {
         fzf = {
@@ -34,9 +34,9 @@ bqf.setup {
                 ['ctrl-q'] = 'signtoggle',
                 ['ctrl-c'] = 'closeall',
                 ['ctrl-s'] = 'split',
-                ['ctrl-t'] = 'tab drop',
+                ['ctrl-t'] = 'tab drop'
             },
-            extra_opts = {'--bind', 'ctrl-o:toggle-all', '--prompt', '> '},
+            extra_opts = {'--bind', 'ctrl-o:toggle-all', '--prompt', '> '}
         }
     }
 }

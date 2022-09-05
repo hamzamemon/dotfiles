@@ -24,7 +24,7 @@ configs.setup {
         include_match_words = false
     },
     highlight = {
-        -- use_languagetree = true,
+        use_languagetree = true,
         enable = true, -- false will disable the whole extension
         -- disable = { "css", "html" }, -- list of language that will be disabled
         -- disable = { "css", "markdown" }, -- list of language that will be disabled
@@ -40,7 +40,6 @@ configs.setup {
             node_decremental = '<M-C-w>' -- decrement to the previous node
         }
     },
-    autopairs = {enable = true},
     indent = {enable = true, disable = {}},
     context_commentstring = {enable = true, enable_autocmd = false},
     autotag = {enable = true, disable = {}},

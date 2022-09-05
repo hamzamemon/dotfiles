@@ -283,6 +283,7 @@ telescope.load_extension 'hop'
 telescope.load_extension 'luasnip'
 telescope.load_extension "file_browser"
 telescope.load_extension "ui-select"
+telescope.load_extension "session-lens"
 
 -- Keybindings
 vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>',
@@ -301,5 +302,9 @@ vim.api.nvim_set_keymap('n', '<leader>fm', ':Telescope media_files<CR>',
                         {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fc', ':Telescope cheat fd<CR>',
                         {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope file_browser",
+vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope file_browser<CR>",
+                        {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>gs", ":Telescope git_branches<CR>",
+                        {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>gs", ":Telescope git_status<CR>",
                         {noremap = true})

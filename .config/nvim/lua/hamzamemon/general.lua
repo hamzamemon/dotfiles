@@ -128,7 +128,7 @@ vim.wo.wrap = false
 vim.o.cmdheight = 2
 
 -- Options for insert mode completion
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect'
 
 -- Turn on the wild menu
 vim.o.wildmode = 'longest,list,full'
@@ -146,7 +146,7 @@ vim.o.pumheight = 10
 vim.o.showtabline = 0
 
 -- Do not show insertion completion menu messages
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.opt.shortmess:append 'c'
 
 -- Insert two spaces after a ".", "?" and "/" with a join command
 vim.o.joinspaces = false
@@ -167,7 +167,7 @@ vim.o.magic = true
 vim.o.hlsearch = true
 
 -- Keywords used when searching and recognizing commands
-vim.bo.iskeyword = vim.bo.iskeyword .. ',@-@'
+vim.opt.iskeyword:append '@-@'
 
 --------------------------------------------------------------------------------
 -- Background

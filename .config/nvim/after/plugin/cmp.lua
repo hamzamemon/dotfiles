@@ -119,12 +119,12 @@ cmp.setup {
 
             -- NOTE: order matters
             vim_item.menu = ({
-                nvim_lsp = "",
-                nvim_lua = "",
-                luasnip = "",
-                buffer = "",
-                path = "",
-                emoji = ""
+                nvim_lsp = "LSP",
+                nvim_lua = "LUA",
+                luasnip = "Snippet",
+                buffer = "Buffer",
+                path = "Path",
+                emoji = "Emoji"
             })[entry.source.name]
             return vim_item
         end
@@ -151,32 +151,30 @@ cmp.setup {
                     return true
                 end
             end
-        }, {name = "buffer", group_index = 2}, {name = "path", group_index = 2},
-        {name = "emoji", group_index = 2},
+        }, {name = "path", group_index = 2}, {name = "emoji", group_index = 2},
         {name = "latex_symbols", group_index = 2}
     },
     sorting = {
         priority_weight = 2,
         comparators = {
             compare.offset, compare.exact, -- compare.scopes,
-            compare.score, compare.recently_used, compare.locality,
-            -- compare.kind,
-            compare.sort_text, compare.length, compare.order
+            compare.score, compare.kind, compare.recently_used,
+            compare.locality, compare.sort_text, compare.length, compare.order
         }
     },
     confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
     window = {
-        documentation = false,
-        -- documentation = {
-        --   border = "rounded",
-        --   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-        -- },
+        -- documentation = false,
+        documentation = {
+            border = "rounded",
+            winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None"
+        },
         completion = {
             border = "rounded",
             winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None"
         }
     },
-    experimental = {ghost_text = true}
+    experimental = {ghost_text = false}
 }
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

@@ -8,7 +8,7 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 local icons = require "hamzamemon.icons"
 
-nvim_tree.setup({
+nvim_tree.setup {
     auto_reload_on_write = true,
     create_in_closed_folder = false,
     disable_netrw = false, -- Completely disable netrw
@@ -210,4 +210,8 @@ nvim_tree.setup({
             watcher = false
         }
     }
-})
+}
+
+-- Keybindings
+vim.api.nvim_set_keymap("n", "<leader>nn", ":NvimTreeToggle<CR>",
+                        {noremap = true})

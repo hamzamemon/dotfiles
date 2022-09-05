@@ -62,39 +62,9 @@ keymap("v", ">", ">gv", opts)
 keymap('v', 'J', ':m \'>+1<CR>gv=gv', opts_noremap)
 keymap('v', 'K', ':m \'<-2<CR>gv=gv', opts_noremap)
 
-keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
-keymap("n", "<F1>", ":e ~/Notes/<cr>", opts)
-keymap("n", "<F3>", ":e .<cr>", opts)
-keymap("n", "<F4>", "<cmd>Telescope resume<cr>", opts)
-keymap("n", "<F5>", "<cmd>Telescope commands<CR>", opts)
 keymap("n", "<F6>",
        [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
        opts)
-keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
-keymap("n", "<F8>", "<cmd>TSPlaygroundToggle<cr>", opts)
-keymap("n", "<F11>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-keymap("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-keymap("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opts)
-keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
--- keymap("n", "<C-s>", "<cmd>vsplit<cr>", opts)
-keymap("n", "<c-n>", ":e ~/Notes/<cr>", opts)
-
--- keymap("n", "<C-\\>", "<cmd>vsplit<cr>", opts)
--- vim.cmd[[nnoremap c* /\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgn]]
--- vim.cmd[[nnoremap c# ?\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgN]]
--- keymap("n", "c*", [[/\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgn]], opts)
--- keymap("n", "c#", [[?\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgN]], opts)
--- keymap("n", "gx", [[:execute '!brave ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
-keymap("n", "gx",
-       [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]],
-       opts)
--- Change '<CR>' to whatever shortcut you like :)
--- vim.api.nvim_set_keymap("n", "<CR>", "<cmd>NeoZoomToggle<CR>", { noremap = true, silent = true, nowait = true })
-
--- alt binds
--- keymap("n", "<m-s>", "<cmd>split<cr>", opts)
-keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
--- keymap("n", "<m-q>", "<cmd>:q<cr>", opts)
 
 M.show_documentation = function()
     local filetype = vim.bo.filetype
@@ -110,44 +80,6 @@ vim.api.nvim_set_keymap("n", "K",
                         ":lua require('hamzamemon.keymaps').show_documentation()<CR>",
                         opts)
 
--- vim.api.nvim_set_keymap("n", "<m-e>", "NvimTreeToggle<cr>", opts)
--- vim.api.nvim_set_keymap(
---   "n",
---   "<m-f>",
---   "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
---   opts
--- )
--- Comment
-keymap("n", "<m-/>",
-       "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<m-/>",
-       '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>',
-       opts)
-
--- vim.api.nvim_set_keymap(
---   "n",
---   "<tab>",
---   "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
---   opts
--- )
-
-vim.api.nvim_set_keymap("n", "<s-tab>",
-                        "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
-                        opts)
-vim.api.nvim_set_keymap("n", "<m-g>", "<cmd>Telescope git_branches<cr>", opts)
-vim.api.nvim_set_keymap("n", "<s-enter>", "<cmd>TodoQuickFix<cr>", opts)
-
-vim.cmd [[
-  function! QuickFixToggle()
-    if empty(filter(getwininfo(), 'v:val.quickfix'))
-      copen
-    else
-      cclose
-    endif
-  endfunction
-]]
-
-keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 keymap("n", "<c-l>", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
 
 return M

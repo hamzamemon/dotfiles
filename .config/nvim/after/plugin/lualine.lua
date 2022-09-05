@@ -143,8 +143,8 @@ local filetype = {
     "filetype",
     fmt = function(str)
         local ui_filetypes = {
-            "help", "packer", "neogitstatus", "NvimTree", "Trouble",
-            "Outline", "spectre_panel", "", "nil"
+            "help", "packer", "neogitstatus", "NvimTree", "Trouble", "Outline",
+            "spectre_panel", "", "nil"
         }
 
         local return_val = function(str)
@@ -204,9 +204,7 @@ local current_signature = {
     function()
         local buf_ft = vim.bo.filetype
 
-        if buf_ft == "TelescopePrompt" then
-            return ""
-        end
+        if buf_ft == "TelescopePrompt" then return "" end
         if not pcall(require, "lsp_signature") then return "" end
         local sig = require("lsp_signature").status_line(30)
         local hint = sig.hint
@@ -239,8 +237,8 @@ local spaces = {
         local buf_ft = vim.bo.filetype
 
         local ui_filetypes = {
-            "help", "packer", "neogitstatus", "NvimTree", "Trouble",
-            "Outline", "spectre_panel", ""
+            "help", "packer", "neogitstatus", "NvimTree", "Trouble", "Outline",
+            "spectre_panel", ""
         }
         local space = ""
 
@@ -264,9 +262,8 @@ local lanuage_server = {
     function()
         local buf_ft = vim.bo.filetype
         local ui_filetypes = {
-            "help", "packer", "neogitstatus", "NvimTree", "Trouble",
-            "Outline", "spectre_panel", "TelescopePrompt",
-            "lspinfo", "lsp-installer", ""
+            "help", "packer", "neogitstatus", "NvimTree", "Trouble", "Outline",
+            "spectre_panel", "TelescopePrompt", "lspinfo", "lsp-installer", ""
         }
 
         if contains(ui_filetypes, buf_ft) then

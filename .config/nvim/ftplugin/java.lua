@@ -58,27 +58,31 @@ local config = {
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     cmd = {
 
+        -- 💀
         "java", -- or '/path/to/java11_or_newer/bin/java'
         -- depends on if `java` is in your $PATH env variable and if it points to the right version.
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
-        "-Dlog.protocol=true", "-Dlog.level=ALL", "-Xms1g",
+        "-Dlog.protocol=true", "-Dlog.level=ALL", "-Xms1g", "-Xmx4G",
         "-javaagent:" .. home ..
             "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
         "--add-modules=ALL-SYSTEM", "--add-opens",
         "java.base/java.util=ALL-UNNAMED", "--add-opens",
-        "java.base/java.lang=ALL-UNNAMED", "-jar", vim.fn.glob(home ..
-                                                                   "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+        "java.base/java.lang=ALL-UNNAMED", -- 💀
+        "-jar", vim.fn.glob(home ..
+                                "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
         -- Must point to the                                                     Change this to
         -- eclipse.jdt.ls installation                                           the actual version
+        -- 💀
         "-configuration",
         home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. CONFIG,
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
         -- Must point to the                      Change to one of `linux`, `win` or `mac`
         -- eclipse.jdt.ls installation            Depending on your system.
 
+        -- 💀
         -- See `data directory configuration` section in the README
         "-data", workspace_dir
     },
@@ -86,6 +90,7 @@ local config = {
     on_attach = require("hamzamemon.lsp.handlers").on_attach,
     capabilities = capabilities,
 
+    -- 💀
     -- This is the default if not provided, you can remove it. Or adjust as needed.
     -- One dedicated LSP server & client will be started per unique root_dir
     root_dir = root_dir,
@@ -127,6 +132,10 @@ local config = {
                 "org.junit.jupiter.api.Assertions.*",
                 "java.util.Objects.requireNonNull",
                 "java.util.Objects.requireNonNullElse", "org.mockito.Mockito.*"
+            },
+            filteredTypes = {
+                "com.sun.*", "io.micrometer.shaded.*", "java.awt.*", "jdk.*",
+                "sun.*"
             }
         },
         contentProvider = {preferred = "fernflower"},
@@ -138,6 +147,7 @@ local config = {
             toString = {
                 template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
             },
+            hashCodeEquals = {useJava7Objects = true},
             useBlocks = true
         }
     },

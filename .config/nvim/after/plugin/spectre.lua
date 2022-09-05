@@ -125,18 +125,6 @@ spectre.setup({
                 }
             }
         },
-        -- call rust code by nvim-oxi to replace
-        ['oxi'] = {
-            cmd = 'oxi',
-            args = {},
-            options = {
-                ['ignore-case'] = {
-                    value = 'i',
-                    icon = '[I]',
-                    desc = 'ignore case'
-                }
-            }
-        }
     },
     default = {
         find = {

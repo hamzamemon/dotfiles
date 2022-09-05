@@ -40,12 +40,14 @@ dial_config.augends:register_group{
 local map = require "dial.map"
 
 -- change augends in VISUAL mode
-vim.api
-    .nvim_set_keymap("n", "<C-a>", map.inc_normal "mygroup", {noremap = true})
-vim.api
-    .nvim_set_keymap("n", "<C-x>", map.dec_normal "mygroup", {noremap = true})
-vim.api.nvim_set_keymap("v", "<C-a>", map.inc_normal "visual", {noremap = true})
-vim.api.nvim_set_keymap("v", "<C-x>", map.dec_normal "visual", {noremap = true})
+vim.api.nvim_set_keymap("n", "<C-a>", map.inc_normal "mygroup",
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-x>", map.dec_normal "mygroup",
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap("v", "<C-a>", map.inc_normal "visual",
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap("v", "<C-x>", map.dec_normal "visual",
+                        {noremap = true, silent = true})
 
 vim.cmd [[
   " enable only for specific FileType
