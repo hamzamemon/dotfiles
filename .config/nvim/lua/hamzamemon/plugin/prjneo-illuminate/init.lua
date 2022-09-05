@@ -6,13 +6,12 @@ illuminate.configure({
     -- providers: provider used to get references in the buffer, ordered by priority
     providers = {'lsp', 'treesitter', 'regex'},
     -- delay: delay in milliseconds
-    delay = 100,
-    -- filetype_overrides: filetype specific overrides.
-    -- The keys are strings to represent the filetype while the values are tables that
-    -- supports the same keys passed to .configure except for filetypes_denylist and filetypes_allowlist
-    filetype_overrides = {},
+                delay = 120,
     -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
-    filetypes_denylist = {},
+    filetypes_denylist = {
+        'dirvish', "fugitive", "NvimTree", "packer", "neogitstatus", "Trouble",
+        "Outline", "spectre_panel", "TelescopePrompt"
+    },
     -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
     filetypes_allowlist = {},
     -- modes_denylist: modes to not illuminate, this overrides modes_allowlist

@@ -30,7 +30,6 @@ export ZDOTDIR="$HOME/.config/zsh"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="/usr/lib/ccache/bin/:$PATH"
-export PATH="~/.dotnet/tools/:$PATH"
 export MAKEFLAGS="-j17 -l16"
 export GDK_SCALE=1
 export GDK_DPI_SCALE=1

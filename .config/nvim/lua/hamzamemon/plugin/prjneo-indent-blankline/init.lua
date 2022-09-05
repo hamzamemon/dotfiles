@@ -1,7 +1,5 @@
 local status_ok, indent_blankline = pcall(require, "indent_blankline")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 indent_blankline.setup {
     char = '│',
@@ -52,25 +50,28 @@ indent_blankline.setup {
     context_start_priority = 10000,
     context_patterns = [[
         "class",
-        "^func",
+        "return",
+        "function",
         "method",
         "^if",
-        "while",
-        "for",
-        "with",
-        "try",
-        "except",
+        "^while",
+        "jsx_element",
+        "^for",
+        "^object",
+        "^table",
+        "block",
         "arguments",
-        "argument_list",
-        "object",
-        "dictionary",
-        "element",
-        "table",
-        "tuple",
-        "do_block",
+        "if_statement",
+        "else_clause",
+        "jsx_element",
+        "jsx_self_closing_element",
+        "try_statement",
+        "catch_clause",
+        "import_statement",
+        "operation_type",
     ]],
     use_treesitter_scope = true,
     context_pattern_highlight = {},
     viewport_buffer = 10,
-    disable_warning_message = false,
+    disable_warning_message = false
 }

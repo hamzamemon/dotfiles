@@ -7,7 +7,6 @@ configs.setup {
     -- to either the package dir, or the "site" dir.
     -- If a custom path is used (not nil) it must be added to the runtimepath.
     -- parser_install_dir = "/some/path/to/store/parsers",
-
     -- ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = {
         'bash', 'bibtex', 'css', 'dockerfile', 'gitignore', 'help', 'html',
@@ -15,24 +14,21 @@ configs.setup {
         'python', 'scss', 'sql', 'swift', 'todotxt', 'tsx', 'typescript', 'vim',
         'yaml'
     },
-    sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-    -- Automatically install missing parsers when entering buffer
-    auto_install = true,
-    ignore_install = {},
+    sync_install = false, -- install languages synchronously (only applied to `ensure_installed`) 
+    auto_install = true, -- Automatically install missing parsers when entering buffer
+    ignore_install = {}, -- List of parsers to ignore installing
     matchup = {
-        enable = true -- mandatory, false will disable the whole extension
-        -- disable = { "c", "ruby" }, -- optional, list of language that will be disabled
-        -- disable_virtual_text = false,
-        -- include_match_words = false
+        enable = true, -- mandatory, false will disable the whole extension
+        disable_virtual_text = false,
+        disable = {}, -- optional, list of language that will be disabled
+        include_match_words = false
     },
     highlight = {
         -- use_languagetree = true,
         enable = true, -- false will disable the whole extension
         -- disable = { "css", "html" }, -- list of language that will be disabled
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
+        -- disable = { "css", "markdown" }, -- list of language that will be disabled
+        disable = {}, -- list of language that will be disabled
         additional_vim_regex_highlighting = false
     },
     incremental_selection = {
@@ -44,22 +40,24 @@ configs.setup {
             node_decremental = '<M-C-w>' -- decrement to the previous node
         }
     },
-    indent = {enable = true},
+    autopairs = {enable = true},
+    indent = {enable = true, disable = {}},
     context_commentstring = {enable = true, enable_autocmd = false},
-    autotag = {enable = true},
+    autotag = {enable = true, disable = {}},
     rainbow = {
         enable = true,
         extended_mode = true, -- Highlight also non-parentheses delimiters
         max_file_lines = 2000, -- Disable for files with more than 1000 lines
         colors = {
-            "#68a0b0", "#946EaD", "#c7aA6D"
-            -- "Gold",
-            -- "Orchid",
-            -- "DodgerBlue",
+            -- "#68a0b0",
+            -- "#946EaD",
+            -- "#c7aA6D",
+            "Gold", "Orchid", "DodgerBlue"
             -- "Cornsilk",
             -- "Salmon",
             -- "LawnGreen",
-        }
+        },
+        disable = {}
     },
     playground = {
         enable = true,

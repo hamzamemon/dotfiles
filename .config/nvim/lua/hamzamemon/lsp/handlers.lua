@@ -80,6 +80,13 @@ local function lsp_highlight_document(client)
     -- end
 end
 
+local function attach_navic(client, bufnr)
+    vim.g.navic_silence = true
+    local status_ok, navic = pcall(require, "nvim-navic")
+    if not status_ok then return end
+    navic.attach(client, bufnr)
+end
+
 local function lsp_keymaps(bufnr)
     local opts = {noremap = true, silent = true}
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gd",
@@ -109,12 +116,20 @@ local function lsp_keymaps(bufnr)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
+local function attach_inlay_hints(client, bufnr)
+    local status_ok, hints = pcall(require, "lsp-inlayhints")
+    if not status_ok then return end
+    hints.on_attach(client, bufnr)
+end
+
 M.on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
+    attach_navic(client, bufnr)
+    attach_inlay_hints(client, bufnr)
 
     if client.name == "tsserver" then
-        require("lsp-inlayhints").on_attach(bufnr, client)
+        require("lsp-inlayhints").on_attach(client, bufnr)
     end
 
     if client.name == "jdt.ls" then

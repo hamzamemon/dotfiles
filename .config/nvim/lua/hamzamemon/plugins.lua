@@ -1,7 +1,8 @@
 local fn = vim.fn
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+---@diagnostic disable-next-line: missing-parameter
 if fn.empty(fn.glob(install_path)) > 0 then
     PACKER_BOOTSTRAP = fn.system {
         "git", "clone", "--depth", "1",
@@ -19,8 +20,22 @@ vim.cmd [[
   augroup end
 ]]
 
+-- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then return end
+
+-- Have packer use a popup window
+packer.init {
+    -- snapshot = "july-24",
+    snapshot_path = fn.stdpath "config" .. "/snapshots",
+    max_jobs = 50,
+    display = {
+        open_fn = function()
+            return require("packer.util").float {border = "rounded"}
+        end,
+        prompt_border = "rounded" -- Border style of prompt popups.
+    }
+}
 
 packer.startup(function(use)
     -- Packer can manage itself as an optional plugin
@@ -46,6 +61,10 @@ packer.startup(function(use)
     use 'folke/lsp-trouble.nvim'
     use "b0o/SchemaStore.nvim"
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+    use "SmiteshP/nvim-navic"
+    use "simrat39/symbols-outline.nvim"
+
+    use "lvimuser/lsp-inlayhints.nvim"
 
     -- Completion
     use 'hrsh7th/nvim-cmp'
@@ -69,6 +88,7 @@ packer.startup(function(use)
     use 'nvim-treesitter/nvim-treesitter-refactor'
     use 'p00f/nvim-ts-rainbow'
     use 'windwp/nvim-ts-autotag'
+    use 'nvim-treesitter/nvim-treesitter-context'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "RRethy/nvim-treesitter-textsubjects"
@@ -86,6 +106,8 @@ packer.startup(function(use)
     use 'nvim-telescope/telescope-cheat.nvim'
     use 'nvim-telescope/telescope-dap.nvim'
     use 'nvim-telescope/telescope-hop.nvim'
+    use "nvim-telescope/telescope-file-browser.nvim"
+    use "nvim-telescope/telescope-ui-select.nvim"
     use 'benfowler/telescope-luasnip.nvim'
     use 'kkharji/sqlite.lua'
     use 'BurntSushi/ripgrep'
@@ -103,21 +125,19 @@ packer.startup(function(use)
     use 'numToStr/Comment.nvim'
     use 'folke/todo-comments.nvim'
     use "mfussenegger/nvim-jdtls"
+    use "folke/lua-dev.nvim"
 
     -- Debugging
     use 'mfussenegger/nvim-dap'
     use "rcarriga/nvim-dap-ui"
-    use 'theHamsta/nvim-dap-virtual-text'
+    use "theHamsta/nvim-dap-virtual-text"
     use 'mfussenegger/nvim-dap-python'
+    -- use "Pocco81/DAPInstall.nvim"
 
     -- Text manipulation
     use 'godlygeek/tabular'
     use 'tpope/vim-repeat'
     use "kylechui/nvim-surround"
-    use {
-        "abecodes/tabout.nvim",
-        wants = {"nvim-treesitter"} -- or require if not used so far
-    }
     use 'wellle/targets.vim'
     use "monaqa/dial.nvim"
 
@@ -143,4 +163,52 @@ packer.startup(function(use)
     use 'lewis6991/impatient.nvim'
     use "windwp/nvim-spectre"
     use "folke/which-key.nvim"
+
+    -- Note Taking
+    use "mickael-menu/zk-nvim"
+
+    -- Utility
+    use "moll/vim-bbye"
+
+    -- Session
+    use "rmagatti/auto-session"
+    use "rmagatti/session-lens"
+
+    -- Editing Support
+    use "windwp/nvim-autopairs"
+
+    -- Motion
+    -- use "jinh0/eyeliner.nvim"
+
+    -- Rust
+    use {
+        "christianchiarulli/rust-tools.nvim",
+        branch = "modularize_and_inlay_rewrite"
+    }
+
+    -- Typescript TODO: set this up, also add keybinds to ftplugin
+    use "jose-elias-alvarez/typescript.nvim"
+
+    -- use "stevearc/aerial.nvim"
+
+    -- Graveyard
+    -- use "romgrk/nvim-treesitter-context"
+    -- use "mizlan/iswap.nvim"
+    -- use {'christianchiarulli/nvim-ts-rainbow'}
+    -- use 'David-Kunz/cmp-npm' -- doesn't seem to work
+    -- use "lunarvim/vim-solidity"
+    -- use "tpope/vim-repeat"
+    -- use "Shatur/neovim-session-manager"
+    -- use "metakirby5/codi.vim"
+    -- use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
+    -- use "rcarriga/cmp-dap"
+    use "filipdutescu/renamer.nvim"
+    -- use "rebelot/kanagawa.nvim"
+    -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+    -- use "rmagatti/goto-preview"
+    -- use "nvim-lua/lsp_extensions.nvim"
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if PACKER_BOOTSTRAP then require("packer").sync() end
 end)

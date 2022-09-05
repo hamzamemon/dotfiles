@@ -131,11 +131,6 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", pyright_opts, opts)
     end
 
-    if server == "zk" then
-        local zk_opts = require "hamzamemon.lsp.settings.zk"
-        opts = vim.tbl_deep_extend("force", zk_opts, opts)
-    end
-
     if server == "jdtls" then goto continue end
 
     lspconfig[server].setup(opts)

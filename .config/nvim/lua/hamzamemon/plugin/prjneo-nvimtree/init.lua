@@ -1,4 +1,4 @@
-local status_ok, nvim_tree = pcall(require, "nvimtree")
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then return end
 
 local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
@@ -13,7 +13,7 @@ nvim_tree.setup({
     create_in_closed_folder = false,
     disable_netrw = false, -- Completely disable netrw
     hijack_cursor = false,
-    hijack_netrw = true, --Hijack netrw windows (overridden if |disable_netrw| is `true`)
+    hijack_netrw = true, -- Hijack netrw windows (overridden if |disable_netrw| is `true`)
     hijack_unnamed_buffer_when_opening = false,
     ignore_buffer_on_setup = false,
     open_on_setup = false,
@@ -86,21 +86,19 @@ nvim_tree.setup({
                 {key = "g?", action = "toggle_help"},
                 {key = "m", action = "toggle_mark"},
                 {key = "bmv", action = "bulk_move"}
-            },
-            float = {
-                enable = false,
-                open_win_config = {
-                    relative = "editor",
-                    border = "rounded",
-                    width = 30,
-                    height = 30,
-                    row = 1,
-                    col = 1
-                }
             }
         },
-
-        filesystem_watchers = {enable = true, debounce_delay = 50}
+        float = {
+            enable = false,
+            open_win_config = {
+                relative = "editor",
+                border = "rounded",
+                width = 30,
+                height = 30,
+                row = 1,
+                col = 1
+            }
+        }
     },
     renderer = {
         add_trailing = false,
@@ -163,6 +161,7 @@ nvim_tree.setup({
         }
     },
     filters = {dotfiles = false, custom = {".git"}, exclude = {".gitignore"}},
+    filesystem_watchers = {enable = true, debounce_delay = 50},
     git = {enable = true, ignore = true, show_on_dirs = true, timeout = 500},
     actions = {
         use_system_clipboard = true,

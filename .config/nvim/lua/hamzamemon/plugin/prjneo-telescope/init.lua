@@ -1,5 +1,5 @@
-local telescope_ok, telescope = pcall(require, "telescope")
-if not telescope_ok then return end
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then return end
 
 local trouble_ok, trouble = pcall(require, 'trouble')
 if not trouble_ok then return end
@@ -61,6 +61,7 @@ telescope.setup {
         mappings = {
             i = {
                 ["<esc>"] = actions.close,
+                ["<C-c>"] = actions.close,
                 ["<C-x>"] = false,
 
                 ["<C-n>"] = actions.cycle_history_next,
@@ -168,7 +169,8 @@ telescope.setup {
         live_grep = {theme = "dropdown"},
         grep_string = {theme = "dropdown"},
         find_files = {
-            -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+            theme = "dropdown",
+            previewer = false,
             find_command = {"rg", "--files", "--hidden", "--glob", "!.git/*"}
         },
         buffers = {
@@ -233,6 +235,38 @@ telescope.setup {
             trace_entry = true,
             -- jump to entry where hoop loop was started from
             reset_selection = true
+        },
+        file_browser = {
+            theme = "ivy",
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            mappings = {
+                ["i"] = {
+                    -- your custom insert mode mappings
+                },
+                ["n"] = {
+                    -- your custom normal mode mappings
+                }
+            }
+        },
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+                -- even more opts
+            }
+
+            -- pseudo code / specification for writing custom displays, like the one
+            -- for "codeactions"
+            -- specific_opts = {
+            --   [kind] = {
+            --     make_indexed = function(items) -> indexed_items, width,
+            --     make_displayer = function(widths) -> displayer
+            --     make_display = function(displayer) -> function(e)
+            --     make_ordinal = function(e) -> string
+            --   },
+            --   -- for example to disable the custom builtin "codeactions" display
+            --      do the following
+            --   codeactions = false,
+            -- }
         }
     }
 }
@@ -247,13 +281,15 @@ telescope.load_extension "cheat"
 telescope.load_extension "dap"
 telescope.load_extension 'hop'
 telescope.load_extension 'luasnip'
+telescope.load_extension "file_browser"
+telescope.load_extension "ui-select"
 
 -- Keybindings
 vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>',
                         {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fg', ':Telescope live_grep<CR>',
                         {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>',
+vim.api.nvim_set_keymap('n', '<leader>fd', ':Telescope buffers<CR>',
                         {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fh', ':Telescope help_tags<CR>',
                         {noremap = true})
@@ -264,4 +300,6 @@ vim.api.nvim_set_keymap('n', '<leader>fs', ':Telescope symbols<CR>',
 vim.api.nvim_set_keymap('n', '<leader>fm', ':Telescope media_files<CR>',
                         {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fc', ':Telescope cheat fd<CR>',
+                        {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope file_browser",
                         {noremap = true})
