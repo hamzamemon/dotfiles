@@ -36,10 +36,8 @@ set shell bash
 # is used selectively within individual commands as it can be limiting at times
 set shellopts '-eu'
 
-
 # Vars that depend on environmental variables
 $lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
-
 
 # Open files command
 cmd open ${{
@@ -48,8 +46,6 @@ cmd open ${{
     video/*|image/*/application/pdf) xdg-open "$f";;
     *) xdg-open "$f" ;;
   esac
-}}
-    esac
 }}
 
 # Make directory command
@@ -86,14 +82,16 @@ cmd chmod ${{
   lf -remote 'send reload'
 }}
 
-# Delete file command
-cmd delete ${{
+# Copy file command
+cmd copyto ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
-	printf "%s\n\t" "$fx"
-	printf "delete?[y/N]"
-	read ans
-	[ $ans = "y" ] && rm -rf $fx
+	clear; echo "Copy to where?"
+	dest="$(cut -d'	' -f2- ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf | sed 's|~|$HOME|' )" &&
+	for x in $fx; do
+		eval cp -ivr \"$x\" \"$dest\"
+	done &&
+	notify-send "📋 File(s) copied." "File(s) copies to $dest."
 }}
 
 # Move file command
@@ -108,29 +106,102 @@ cmd moveto ${{
 	notify-send "🚚 File(s) moved." "File(s) moved to $dest."
 }}
 
-# Copy file command
-cmd copyto ${{
+# Delete file command
+cmd delete ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
-	clear; echo "Copy to where?"
-	dest="$(cut -d'	' -f2- ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf | sed 's|~|$HOME|' )" &&
-	for x in $fx; do
-		eval cp -ivr \"$x\" \"$dest\"
-	done &&
-	notify-send "📋 File(s) copied." "File(s) copies to $dest."
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && rm -r $fx
 }}
 
-# Run delete command
-map D delete
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+cmd zip %zip -r "$f.zip" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
 
-# Run copy command
-map C copyto
+# Trash cli bindings
+cmd trash ${{
+  for file in $fx
+  do
+    trash-put $file
+  done
+}}
+cmd clear_trash %trash-empty
+cmd restore_trash ${{
+  trash-restore
+}}
 
-# Run move command
-map M moveto
+# Image preview
+map - "${XDG_CONFIG_HOME:-$HOME/.config}"/lf/draw_img "$f"
+
+# Video preview
+cmd video_preview ${{
+    CACHE=$(mktemp /tmp/thumb_cache.XXXXX)
+    ffmpegthumbnailer -i "$f" -o $CACHE -s 0
+    set previewer "${XDG_CONFIG_HOME:-$HOME/.config}/lf/previewer"
+    "${XDG_CONFIG_HOME:-$HOME/.config"}/lf/draw_img $CACHE && rm $CACHE
+}}
+map + :video_preview
+
+### Commands mappings ###
+# Run open command
+map cO open
 
 # Create new folder command
-map <c-n> push :mkdir<space>
+map cD mkdir
+
+# Make file commands
+map cF mkfile
+map cR sudomkfile
+
+# Run chmod command
+map cH chmod
+
+# Run copy command
+map cC copyto
+
+# Run move command
+map cM moveto
+
+# Run delete command
+map cD delete
+
+### Movement ###
+map gc cd ~/.config
+
+map ghd cd ~/Downloads
+map ghD cd ~/Documents
+map ghp cd ~/Projects
+map ghP cd ~/Pictures
+map ghv cd ~/Videos
+
+map gl cd ~/.local
+map glt cd ~/.local/share/Trash/files
+
+### Misc mappings ###
+# Archive Mappings
+map az zip
+map at tar
+map ag targz
+map ab tarbz2
+map au unarchive
+
+# Trash Mappings
+map td trash
+map tc clear_trash
+map tr restore_trash
 
 # Reload
 map <c-r> reload
@@ -138,10 +209,34 @@ map <c-r> reload
 # Use enter for shell commands
 map <enter> shell
 
+# File Openers
+map ee $$EDITOR "$f"
+map u $view "$f"
+
 # Execute current file (must be executable)
 map x $$f
 map X !$f
 
+# Toggle hidden files
+map . set hidden!
+
+# Cut and paste commands
+map <c-x> cut
+map <c-v> paste
+
+# Rename file
+map r rename
+
+# Jump around menus
+map H top
+map L bottom
+
+# Clear
+map C clear
+
+# Unselect file
+map U unselect
+
 # Dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
+# map o &mimeopen $f
+# map O $mimeopen --ask $f

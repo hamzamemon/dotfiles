@@ -6,7 +6,15 @@
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 
 # Default programs
-export EDITOR="nvim"
+if hash nvim 2>/dev/null; then
+  export EDITOR="nvim"
+
+  # Use nvim as manpager `:h Man`
+  export MANPAGER='nvim +Man!'
+else
+  export EDITOR="vim"
+fi
+
 export BROWSER="brave"
 export FILE="lf"
 export TERMINAL="alacritty"
@@ -22,10 +30,16 @@ export ZDOTDIR="$HOME/.config/zsh"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="/usr/lib/ccache/bin/:$PATH"
-export PATH="~/.dotnet/tools/:$PATH"
 export MAKEFLAGS="-j17 -l16"
-export GDK_SCALE=2
+export GDK_SCALE=1
 export GDK_DPI_SCALE=1
+export SHELL=/bin/zsh
+
+# Something for me to see where aliases get defined
+# Use 256 colors
+# export TERM=xterm-256color
+export LANG=en_US.UTF8
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # Hardware acceleration
 unset LIBVA_DRIVER_NAME VDPAU_DRIVER DRI_PRIME

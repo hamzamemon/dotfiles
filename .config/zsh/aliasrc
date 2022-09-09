@@ -3,8 +3,8 @@
 
 # Verbosity and settings
 alias \
-	cp="cp -iv" \
-	mv="mv -iv" \
+	cp="cp -v" \
+	mv="mv -v" \
 	rm="rm -vI" \
 	mkd="mkdir -pv" \
 	ffmpeg="ffmpeg -hide_banner"

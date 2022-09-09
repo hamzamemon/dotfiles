@@ -11,8 +11,8 @@ font pango:Hack Nerd Font 9
 set $ctrl Ctrl
 set $mod Mod4
 set $alt Mod1
-set $LEFT DisplayPort-2
-set $CENTER HDMI-A-0
+set $LEFT HDMI-A-0
+set $CENTER DisplayPort-1
 set $RIGHT DisplayPort-0
 set $term --no-startup-id $TERMINAL
 
@@ -24,7 +24,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
 # Set monitors
-exec --no-startup-id xrandr --output DisplayPort-0 --mode 1920x1080 --pos 2944x0 --rotate normal --output DisplayPort-1 --off --output DisplayPort-2 --mode 1280x1024 --pos 0x0 --rotate left --output HDMI-A-0 --primary --mode 1920x1080 --pos               1024x0 --rotate normal
+exec --no-startup-id xrandr --output DisplayPort-0 --mode 1920x1080 --pos 3840x0 --rotate left --output DisplayPort-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DisplayPort-2 --off --output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal
 
 ###---Basic Bindings---###
 bindsym $mod+Return 		exec $term
@@ -186,7 +186,7 @@ bindsym $mod+$ctrl+8		workspace $ws27
 bindsym $mod+$ctrl+9		workspace $ws28
 bindsym $mod+$ctrl+0		workspace $ws29
 
-bindsym $mod+$alt+1    workspace $ws30
+bindsym $mod+$alt+1     workspace $ws30
 bindsym $mod+$alt+2		workspace $ws31
 bindsym $mod+$alt+3		workspace $ws32
 bindsym $mod+$alt+4		workspace $ws33
