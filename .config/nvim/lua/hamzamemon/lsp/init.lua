@@ -12,8 +12,8 @@ M.server_capabilities = function()
     end
 
     vim.ui.select(vim.tbl_keys(active_client_map), {
-        prompt = "Select client:",
-        format_item = function(item) return "capabilites for: " .. item end
+        prompt = 'Select client:',
+        format_item = function(item) return 'capabilites for: ' .. item end
     }, function(choice)
         -- print(active_client_map[choice])
         print(vim.inspect(
@@ -30,7 +30,7 @@ require 'hamzamemon.lsp.mason'
 require'hamzamemon.lsp.handlers'.setup()
 require 'hamzamemon.lsp.null-ls'
 
-local l_status_ok, lsp_lines = pcall(require, "lsp_lines")
+local l_status_ok, lsp_lines = pcall(require, 'lsp_lines')
 if not l_status_ok then return end
 
 lsp_lines.setup()

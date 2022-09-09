@@ -1,12 +1,17 @@
 local status_ok, spectre = pcall(require, 'spectre')
 if not status_ok then return end
-spectre.setup({
 
+spectre.setup({
     color_devicons = true,
+    open_cmd = 'vnew',
+    live_update = false, -- auto excute search again when you write any file in vim
+    line_sep_start = '┌-----------------------------------------',
+    result_padding = '¦  ',
+    line_sep = '└-----------------------------------------',
     highlight = {ui = 'String', search = 'DiffChange', replace = 'DiffDelete'},
     mapping = {
         ['toggle_line'] = {
-            map = 't',
+            map = 'dd',
             cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
             desc = 'toggle current item'
         },
@@ -36,7 +41,7 @@ spectre.setup({
             desc = 'replace current line'
         },
         ['run_replace'] = {
-            map = '<leader>r',
+            map = '<leader>R',
             cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
             desc = 'replace all'
         },
@@ -44,16 +49,6 @@ spectre.setup({
             map = '<leader>v',
             cmd = "<cmd>lua require('spectre').change_view()<CR>",
             desc = 'change result view mode'
-        },
-        ['change_replace_sed'] = {
-            map = 'th',
-            cmd = "<cmd>lua require('spectre').change_engine_replace('sed')<CR>",
-            desc = 'use sed to replace'
-        },
-        ['change_replace_oxi'] = {
-            map = 'th',
-            cmd = "<cmd>lua require('spectre').change_engine_replace('oxi')<CR>",
-            desc = 'use oxi to replace'
         },
         ['toggle_live_update'] = {
             map = 'tu',
@@ -92,7 +87,7 @@ spectre.setup({
                     desc = 'hidden file',
                     icon = '[H]'
                 }
-                -- you can put any option you want here it can toggle with
+                -- you can put any rg search option you want here it can toggle with
                 -- show_option function
             }
         },
@@ -114,17 +109,14 @@ spectre.setup({
         }
     },
     replace_engine = {
-        ['sed'] = {
-            cmd = 'sed',
-            args = nil,
-            options = {
-                ['ignore-case'] = {
-                    value = '--ignore-case',
-                    icon = '[I]',
-                    desc = 'ignore case'
-                }
+        ['sed'] = {cmd = 'sed', args = nil},
+        options = {
+            ['ignore-case'] = {
+                value = '--ignore-case',
+                icon = '[I]',
+                desc = 'ignore case'
             }
-        },
+        }
     },
     default = {
         find = {
@@ -141,3 +133,17 @@ spectre.setup({
     is_open_target_win = true, -- open file on opener window
     is_insert_mode = false -- start open panel on is_insert_mode
 })
+
+-- Keybindings
+vim.api.nvim_set_keymap('n', '<leader>sw',
+                        "<cmd>lua require('spectre').open_visual({select_word=true})<CR>",
+                        {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>s',
+                        "<cmd>lua require('spectre').open()<CR>",
+                        {noremap = true})
+vim.api.nvim_set_keymap('v', '<leader>S',
+                        "<cmd>lua require('spectre').open_visual()<CR>",
+                        {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>sp',
+                        "<cmd>lua require('spectre').open_file_search()<CR>",
+                        {noremap = true})

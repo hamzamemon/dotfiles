@@ -213,5 +213,5 @@ nvim_tree.setup {
 }
 
 -- Keybindings
-vim.api.nvim_set_keymap('n', '<leader>nn', ':NvimTreeToggle<CR>',
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
                         {noremap = true})

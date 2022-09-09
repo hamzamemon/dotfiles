@@ -1,11 +1,11 @@
-local status_ok, signature = pcall(require, "lsp_signature")
+local status_ok, signature = pcall(require, 'lsp_signature')
 if not status_ok then return end
 
-local icons = require "hamzamemon.icons"
+local icons = require 'hamzamemon.icons'
 
 local cfg = {
     debug = false, -- set to true to enable debug logging
-    log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
+    log_path = vim.fn.stdpath('cache') .. '/lsp_signature.log', -- log dir when debug is on
     -- default is  ~/.cache/nvim/lsp_signature.log
     verbose = false, -- show debug line number
 
@@ -32,17 +32,17 @@ local cfg = {
     close_timeout = 4000, -- close floating window after ms when laster parameter is entered
     fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters
     hint_enable = true, -- virtual hint enable
-    hint_prefix = icons.misc.Squirrel .. " ", -- Prefix for parameter
-    hint_scheme = "Comment",
-    hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
+    hint_prefix = icons.misc.Squirrel .. ' ', -- Prefix for parameter
+    hint_scheme = 'Comment',
+    hi_parameter = 'LspSignatureActiveParameter', -- how your parameter will be highlight
     handler_opts = {
-        border = "rounded" -- double, rounded, single, shadow, none
+        border = 'rounded' -- double, rounded, single, shadow, none
     },
 
     always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
 
     auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
-    extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
+    extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {'(', ','}
     zindex = 200, -- by default it will be on top of all floating windows, set to <= 50 send it to bottom
 
     padding = '', -- character to pad on left and right of signature can be ' ', or '|'  etc
@@ -61,5 +61,5 @@ signature.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
 
 -- You can also do this inside lsp on_attach
 -- note: on_attach deprecated
--- require("lsp_signature").on_attach(cfg, bufnr) -- no need to specify bufnr if you don't use toggle_key
+-- require('lsp_signature').on_attach(cfg, bufnr) -- no need to specify bufnr if you don't use toggle_key
 signature.on_attach(cfg) -- no need to specify bufnr if you don't use toggle_key

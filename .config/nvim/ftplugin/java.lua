@@ -1,35 +1,35 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local status_cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not status_cmp_ok then return end
 
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
-local status, jdtls = pcall(require, "jdtls")
+local status, jdtls = pcall(require, 'jdtls')
 if not status then return end
 
 -- Determine OS
-local home = os.getenv "HOME"
-if vim.fn.has "mac" == 1 then
-    WORKSPACE_PATH = home .. "/Projects/"
-    CONFIG = "mac"
-elseif vim.fn.has "unix" == 1 then
-    WORKSPACE_PATH = home .. "/Projects/"
-    CONFIG = "linux"
+local home = os.getenv 'HOME'
+if vim.fn.has 'mac' == 1 then
+    WORKSPACE_PATH = home .. '/Projects/'
+    CONFIG = 'mac'
+elseif vim.fn.has 'unix' == 1 then
+    WORKSPACE_PATH = home .. '/Projects/'
+    CONFIG = 'linux'
 else
-    print "Unsupported system"
+    print 'Unsupported system'
 end
 
 -- Find root of project
-local root_markers = {".git", "mvnw", "gradlew", "pom.xml", "build.gradle"}
-local root_dir = require("jdtls.setup").find_root(root_markers)
-if root_dir == "" then return end
+local root_markers = {'.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle'}
+local root_dir = require('jdtls.setup').find_root(root_markers)
+if root_dir == '' then return end
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
 local workspace_dir = WORKSPACE_PATH .. project_name
 
@@ -45,11 +45,11 @@ if JAVA_DAP_ACTIVE then
                         vim.fn
                             .glob(
                             home ..
-                                "/.config/nvim/vscode-java-test/server/*.jar"),
-                        "\n"))
+                                '/.config/nvim/vscode-java-test/server/*.jar'),
+                        '\n'))
     vim.list_extend(bundles, vim.split(vim.fn.glob(home ..
-                                                       "/.config/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
-                                       "\n"))
+                                                       '/.config/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'),
+                                       '\n'))
 end
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
@@ -59,35 +59,35 @@ local config = {
     cmd = {
 
         -- 💀
-        "java", -- or '/path/to/java11_or_newer/bin/java'
+        'java', -- or '/path/to/java11_or_newer/bin/java'
         -- depends on if `java` is in your $PATH env variable and if it points to the right version.
-        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-        "-Dosgi.bundles.defaultStartLevel=4",
-        "-Declipse.product=org.eclipse.jdt.ls.core.product",
-        "-Dlog.protocol=true", "-Dlog.level=ALL", "-Xms1g", "-Xmx4G",
-        "-javaagent:" .. home ..
-            "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
-        "--add-modules=ALL-SYSTEM", "--add-opens",
-        "java.base/java.util=ALL-UNNAMED", "--add-opens",
-        "java.base/java.lang=ALL-UNNAMED", -- 💀
-        "-jar", vim.fn.glob(home ..
-                                "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+        '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        '-Dosgi.bundles.defaultStartLevel=4',
+        '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        '-Dlog.protocol=true', '-Dlog.level=ALL', '-Xms1g', '-Xmx4G',
+        '-javaagent:' .. home ..
+            '/.local/share/nvim/mason/packages/jdtls/lombok.jar',
+        '--add-modules=ALL-SYSTEM', '--add-opens',
+        'java.base/java.util=ALL-UNNAMED', '--add-opens',
+        'java.base/java.lang=ALL-UNNAMED', -- 💀
+        '-jar', vim.fn.glob(home ..
+                                '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
         -- Must point to the                                                     Change this to
         -- eclipse.jdt.ls installation                                           the actual version
         -- 💀
-        "-configuration",
-        home .. "/.local/share/nvim/mason/packages/jdtls/config_" .. CONFIG,
+        '-configuration',
+        home .. '/.local/share/nvim/mason/packages/jdtls/config_' .. CONFIG,
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
         -- Must point to the                      Change to one of `linux`, `win` or `mac`
         -- eclipse.jdt.ls installation            Depending on your system.
 
         -- 💀
         -- See `data directory configuration` section in the README
-        "-data", workspace_dir
+        '-data', workspace_dir
     },
 
-    on_attach = require("hamzamemon.lsp.handlers").on_attach,
+    on_attach = require('hamzamemon.lsp.handlers').on_attach,
     capabilities = capabilities,
 
     -- 💀
@@ -103,49 +103,49 @@ local config = {
         java = {
             -- jdt = {
             --   ls = {
-            --     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
+            --     vmargs = '-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m'
             --   }
             -- },
             eclipse = {downloadSources = true},
-            configuration = {updateBuildConfiguration = "interactive"},
+            configuration = {updateBuildConfiguration = 'interactive'},
             maven = {downloadSources = true},
             implementationsCodeLens = {enabled = true},
             referencesCodeLens = {enabled = true},
             references = {includeDecompiledSources = true},
             inlayHints = {
                 parameterNames = {
-                    enabled = "all" -- literals, all, none
+                    enabled = 'all' -- literals, all, none
                 }
             },
             format = {
                 enabled = false
                 -- settings = {
-                --   profile = "asdf"
+                --   profile = 'asdf'
                 -- }
             }
         },
         signatureHelp = {enabled = true},
         completion = {
             favoriteStaticMembers = {
-                "org.hamcrest.MatcherAssert.assertThat",
-                "org.hamcrest.Matchers.*", "org.hamcrest.CoreMatchers.*",
-                "org.junit.jupiter.api.Assertions.*",
-                "java.util.Objects.requireNonNull",
-                "java.util.Objects.requireNonNullElse", "org.mockito.Mockito.*"
+                'org.hamcrest.MatcherAssert.assertThat',
+                'org.hamcrest.Matchers.*', 'org.hamcrest.CoreMatchers.*',
+                'org.junit.jupiter.api.Assertions.*',
+                'java.util.Objects.requireNonNull',
+                'java.util.Objects.requireNonNullElse', 'org.mockito.Mockito.*'
             },
             filteredTypes = {
-                "com.sun.*", "io.micrometer.shaded.*", "java.awt.*", "jdk.*",
-                "sun.*"
+                'com.sun.*', 'io.micrometer.shaded.*', 'java.awt.*', 'jdk.*',
+                'sun.*'
             }
         },
-        contentProvider = {preferred = "fernflower"},
+        contentProvider = {preferred = 'fernflower'},
         extendedClientCapabilities = extendedClientCapabilities,
         sources = {
             organizeImports = {starThreshold = 9999, staticStarThreshold = 9999}
         },
         codeGeneration = {
             toString = {
-                template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+                template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}'
             },
             hashCodeEquals = {useJava7Objects = true},
             useBlocks = true
@@ -179,68 +179,3 @@ vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_co
 -- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
 vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
-
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then return end
-
-local opts = {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true -- use `nowait` when creating keymaps
-}
-
-local vopts = {
-    mode = "v", -- VISUAL mode
-    prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true -- use `nowait` when creating keymaps
-}
-
-local mappings = {
-    L = {
-        name = "Java",
-        o = {
-            "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports"
-        },
-        v = {
-            "<Cmd>lua require('jdtls').extract_variable()<CR>",
-            "Extract Variable"
-        },
-        c = {
-            "<Cmd>lua require('jdtls').extract_constant()<CR>",
-            "Extract Constant"
-        },
-        t = {"<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method"},
-        T = {"<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class"},
-        u = {"<Cmd>JdtUpdateConfig<CR>", "Update Config"}
-    }
-}
-
-local vmappings = {
-    L = {
-        name = "Java",
-        v = {
-            "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>",
-            "Extract Variable"
-        },
-        c = {
-            "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>",
-            "Extract Constant"
-        },
-        m = {
-            "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
-            "Extract Method"
-        }
-    }
-}
-
-which_key.register(mappings, opts)
-which_key.register(vmappings, vopts)
-
--- debugging
--- git clone git@github.com:microsoft/java-debug.git

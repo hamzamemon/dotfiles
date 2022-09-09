@@ -97,7 +97,6 @@ telescope.setup {
                 ['<C-l>'] = actions.complete_tag,
                 ['<C-h>'] = actions.which_key -- keys from pressing <C-h>
             },
-
             n = {
                 ['<esc>'] = actions.close,
                 ['<CR>'] = actions.select_default,

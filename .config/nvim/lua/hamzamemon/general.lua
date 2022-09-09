@@ -10,7 +10,7 @@ vim.g.maplocalleader = ' '
 
 -- Spelling
 vim.wo.spell = true
-vim.bo.spelllang = "en_us"
+vim.bo.spelllang = 'en_us'
 
 -- Creates a swapfile
 vim.b.swapfile = false
@@ -32,10 +32,10 @@ vim.o.hidden = true
 vim.o.lazyredraw = true
 
 -- Move to next line with these keys
-vim.o.whichwrap = vim.o.whichwrap .. ',<,>,[,],h,l'
+vim.opt.whichwrap:append ',<,>,[,],h,l'
 
 -- Allow for copy and pasting from clipboard
-vim.o.clipboard = "unnamedplus"
+vim.o.clipboard = 'unnamedplus'
 
 -- Horizontal splits will automatically be below
 vim.o.splitbelow = true
@@ -82,7 +82,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- The sign column will appear if there are signs to show
-vim.wo.signcolumn = "yes"
+vim.wo.signcolumn = 'yes'
 
 -- Show matching brackets when text indicator is over them
 vim.o.showmatch = true
@@ -96,14 +96,14 @@ vim.bo.matchpairs = vim.bo.matchpairs .. ',<:>'
 -- Folding
 vim.wo.foldenable = true
 vim.o.foldlevelstart = 5
-vim.wo.foldmethod = "syntax"
+vim.wo.foldmethod = 'syntax'
 vim.cmd('set foldopen-=block')
-vim.wo.foldcolumn = "1"
+vim.wo.foldcolumn = '1'
 
 -- Text is shown normally
 vim.wo.conceallevel = 0
 
--- Remove messages like "-- INSERT --" if in Insert, Replace or Visual modes
+-- Remove messages like '-- INSERT --' if in Insert, Replace or Visual modes
 vim.o.showmode = false
 
 -- Number of spaces to be used if typing a Tab
@@ -116,7 +116,7 @@ vim.bo.expandtab = true
 -- Show line break column
 vim.wo.linebreak = true
 vim.bo.textwidth = 120
-vim.wo.colorcolumn = "120"
+vim.wo.colorcolumn = '120'
 
 -- Do not wrap lines
 vim.wo.wrap = false
@@ -148,7 +148,7 @@ vim.o.showtabline = 0
 -- Do not show insertion completion menu messages
 vim.opt.shortmess:append 'c'
 
--- Insert two spaces after a ".", "?" and "/" with a join command
+-- Insert two spaces after a '.', '?' and '/' with a join command
 vim.o.joinspaces = false
 
 --------------------------------------------------------------------------------

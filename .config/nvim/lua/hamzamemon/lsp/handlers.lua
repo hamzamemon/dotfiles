@@ -2,25 +2,24 @@ local M = {}
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local status_cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not status_cmp_ok then return end
 
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 M.setup = function()
-    local icons = require "hamzamemon.icons"
+    local icons = require 'hamzamemon.icons'
     local signs = {
-
-        {name = "DiagnosticSignError", text = icons.diagnostics.Error},
-        {name = "DiagnosticSignWarn", text = icons.diagnostics.Warning},
-        {name = "DiagnosticSignHint", text = icons.diagnostics.Hint},
-        {name = "DiagnosticSignInfo", text = icons.diagnostics.Information}
+        {name = 'DiagnosticSignError', text = icons.diagnostics.Error},
+        {name = 'DiagnosticSignWarn', text = icons.diagnostics.Warning},
+        {name = 'DiagnosticSignHint', text = icons.diagnostics.Hint},
+        {name = 'DiagnosticSignInfo', text = icons.diagnostics.Information}
     }
 
     for _, sign in ipairs(signs) do
         vim.fn.sign_define(sign.name,
-                           {texthl = sign.name, text = sign.text, numhl = ""})
+                           {texthl = sign.name, text = sign.text, numhl = ''})
     end
 
     local config = {
@@ -34,28 +33,28 @@ M.setup = function()
         severity_sort = true,
         float = {
             focusable = true,
-            style = "minimal",
-            border = "rounded",
-            -- border = {"▄","▄","▄","█","▀","▀","▀","█"},
-            source = "if_many", -- Or "always"
-            header = "",
-            prefix = ""
+            style = 'minimal',
+            border = 'rounded',
+            -- border = {'▄','▄','▄','█','▀','▀','▀','█'},
+            source = 'if_many', -- Or 'always'
+            header = '',
+            prefix = ''
             -- width = 40,
         }
     }
 
     vim.diagnostic.config(config)
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
                                                  vim.lsp.handlers.hover, {
-            border = "rounded"
+            border = 'rounded'
             -- width = 60,
             -- height = 30,
         })
 
-    vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.handlers['textDocument/signatureHelp'] =
         vim.lsp.with(vim.lsp.handlers.signature_help, {
-            border = "rounded"
+            border = 'rounded'
             -- width = 60,
             -- height = 30,
         })
@@ -63,7 +62,7 @@ end
 
 local function lsp_highlight_document(client)
     -- if client.server_capabilities.document_highlight then
-    local status_ok, illuminate = pcall(require, "illuminate")
+    local status_ok, illuminate = pcall(require, 'illuminate')
     if not status_ok then return end
     illuminate.on_attach(client)
     -- end
@@ -71,44 +70,69 @@ end
 
 local function attach_navic(client, bufnr)
     vim.g.navic_silence = true
-    local status_ok, navic = pcall(require, "nvim-navic")
+    local status_ok, navic = pcall(require, 'nvim-navic')
     if not status_ok then return end
     navic.attach(client, bufnr)
 end
 
 local function lsp_keymaps(bufnr)
     local opts = {noremap = true, silent = true}
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd",
-                                "<cmd>Telescope lsp_definitions<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD",
-                                "<cmd>Telescope lsp_declarations<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gI",
-                                "<cmd>Telescope lsp_implementations<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr",
-                                "<cmd>Telescope lsp_references<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gl",
-                                "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gs",
-                                "<cmd>lua vim.lsp.buf.signature_help()<CR>",
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd',
+                                '<cmd>Telescope lsp_definitions<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD',
+                                '<cmd>Telescope lsp_declarations<CR>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gI',
+                                '<cmd>Telescope lsp_implementations<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr',
+                                '<cmd>Telescope lsp_references<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gl',
+                                '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]]
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs',
+                                '<cmd>lua vim.lsp.buf.signature_help()<CR>',
                                 opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-f>", "<cmd>Format<cr>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-a>",
-                                "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<M-f>', '<cmd>Format<cr>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<M-a>',
+                                '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<M-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>', opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
 
 local function attach_inlay_hints(client, bufnr)
-    local status_ok, hints = pcall(require, "lsp-inlayhints")
+    local status_ok, hints = pcall(require, 'lsp-inlayhints')
     if not status_ok then return end
+
     hints.on_attach(client, bufnr)
+end
+
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(client)
+            -- apply whatever logic you want (in this example, we'll only use null-ls)
+            return client.name == 'null-ls'
+        end,
+        bufnr = bufnr
+    })
+end
+
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+function useNullLsForFormatting(client, bufnr)
+    if client.supports_method('textDocument/formatting') then
+        vim.api.nvim_clear_autocmds({group = augroup, buffer = bufnr})
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            group = augroup,
+            buffer = bufnr,
+            callback = function() lsp_formatting(bufnr) end
+        })
+    end
 end
 
 M.on_attach = function(client, bufnr)
@@ -116,17 +140,14 @@ M.on_attach = function(client, bufnr)
     lsp_highlight_document(client)
     attach_navic(client, bufnr)
     attach_inlay_hints(client, bufnr)
+    useNullLsForFormatting(client, bufnr)
 
-    if client.name == "tsserver" then
-        require("lsp-inlayhints").on_attach(client, bufnr)
-    end
-
-    if client.name == "jdt.ls" then
+    if client.name == 'jdt.ls' then
         vim.lsp.codelens.refresh()
         if JAVA_DAP_ACTIVE then
-            require("jdtls").setup_dap {hotcodereplace = "auto"}
+            require('jdtls').setup_dap {hotcodereplace = 'auto'}
             require('jdtls.setup').add_commands()
-            require("jdtls.dap").setup_dap_main_class_configs()
+            require('jdtls.dap').setup_dap_main_class_configs()
         end
     end
 end
@@ -135,19 +156,19 @@ function M.enable_format_on_save()
     vim.cmd [[
     augroup format_on_save
       autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.formatting_sync() 
+      autocmd BufWritePre * lua vim.lsp.buf.format({ async = false }) 
     augroup end
   ]]
-    vim.notify "Enabled format on save"
+    vim.notify 'Enabled format on save'
 end
 
 function M.disable_format_on_save()
-    M.remove_augroup "format_on_save"
-    vim.notify "Disabled format on save"
+    M.remove_augroup 'format_on_save'
+    vim.notify 'Disabled format on save'
 end
 
 function M.toggle_format_on_save()
-    if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
+    if vim.fn.exists '#format_on_save#BufWritePre' == 0 then
         M.enable_format_on_save()
     else
         M.disable_format_on_save()
@@ -155,7 +176,7 @@ function M.toggle_format_on_save()
 end
 
 function M.remove_augroup(name)
-    if vim.fn.exists("#" .. name) == 1 then vim.cmd("au! " .. name) end
+    if vim.fn.exists('#' .. name) == 1 then vim.cmd('au! ' .. name) end
 end
 
 vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("hamzamemon.lsp.handlers").toggle_format_on_save()' ]]

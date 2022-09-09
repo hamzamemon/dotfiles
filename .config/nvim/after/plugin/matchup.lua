@@ -40,9 +40,4 @@ vim.g.matchup_motion_cursor_end = 1
 vim.g.matchup_delim_count_fail = 0
 vim.g.matchup_text_obj_linewise_operators = [['d', 'y']]
 vim.g.matchup_surround_enabled = 1
-vim.g.matchup_matchpref = {
-    html = {
-        nolists = 0,
-        tagnameonly = 0
-    }
-}
+vim.g.matchup_matchpref = {html = {nolists = 0, tagnameonly = 0}}

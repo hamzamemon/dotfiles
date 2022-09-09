@@ -1,8 +1,6 @@
 local status_ok, lualine = pcall(require, 'lualine')
 if not status_ok then return end
 
-local icons = require 'hamzamemon.icons'
-
 M = {}
 
 -- check if value in table
@@ -56,6 +54,9 @@ vim.api.nvim_set_hl(0, 'SLError', {fg = colors['red'], bg = 'NONE'})
 vim.api.nvim_set_hl(0, 'SLWarning', {fg = colors['yellow'], bg = 'NONE'})
 vim.api.nvim_set_hl(0, 'SLHint', {fg = colors['blue'], bg = 'NONE'})
 vim.api.nvim_set_hl(0, 'SLInformation', {fg = colors['green'], bg = 'NONE'})
+vim.api.nvim_set_hl(0, 'SLLocation', {fg = colors['blue'], bg = colors['gray']})
+vim.api.nvim_set_hl(0, 'SLProgress',
+                    {fg = colors['purple'], bg = colors['gray']})
 
 local hl_str = function(str, hl) return '%#' .. hl .. '#' .. str .. '%*' end
 
@@ -198,6 +199,29 @@ local language_server = {
     -- separator = '%#SLSeparator#' .. ' │' .. '%*',
 }
 
+local location = {
+    'location',
+    fmt = function(str)
+        -- return '▊'
+        return hl_str(' ', 'SLSep') .. hl_str(str, 'SLLocation') ..
+                   hl_str(' ', 'SLSep')
+        -- return '  '
+    end,
+    padding = 0
+}
+
+local progress = {
+    'progress',
+    fmt = function(str)
+        -- return '▊'
+        return hl_str('', 'SLSep') .. hl_str('%P/%L', 'SLProgress') ..
+                   hl_str(' ', 'SLSep')
+        -- return '  '
+    end,
+    -- color = 'SLProgress',
+    padding = 0
+}
+
 lualine.setup {
     options = {
         globalstatus = true,
@@ -214,7 +238,7 @@ lualine.setup {
         lualine_c = {filename},
         lualine_x = {"require'lsp-status'.status()"},
         lualine_y = {language_server},
-        lualine_z = {'location', 'progress'}
+        lualine_z = {location, progress}
     },
     inactive_sections = {
         lualine_a = {},
