@@ -1,10 +1,6 @@
 local status_ok, bufferline = pcall(require, 'bufferline')
 if not status_ok then return end
 
-vim.api.nvim_set_hl(0, 'Normal', {fg = '#D4D4D4', bg = '#1E1E1E'})
-vim.api.nvim_set_hl(0, 'TabLine', {fg = '#cccccc', bg = '#3e3e3e'})
-vim.api.nvim_set_hl(0, 'TabLineSel', {fg = '#D4D4D4', bg = '#3e3e3e'})
-
 bufferline.setup {
     options = {
         mode = 'buffers', -- set to 'tabs' to only show tabpages instead
@@ -83,62 +79,64 @@ bufferline.setup {
         -- end
     },
     highlights = {
-        fill = {fg = '#ff0000', bg = '#3e3e3e'},
-        background = {fg = '#cccccc', bg = '#3e3e3e'},
-        tab = {fg = '#cccccc', bg = '#3e3e3e'},
-        tab_selected = {fg = '#D4D4D4', bg = '#1E1E1E'},
-        -- tab_close guifg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
-        tab_close = {fg = '#D4D4D4', bg = '#1E1E1E'},
-        close_button = {fg = '#cccccc', bg = '#3e3e3e'},
-        close_button_visible = {fg = '#cccccc', bg = '#3e3e3e'},
-        close_button_selected = {fg = '#D4D4D4', bg = '#3e3e3e'},
-        buffer_visible = {fg = '#cccccc', bg = '#3e3e3e'},
+        fill = {fg = '#ff0000', bg = 'TabLine'},
+        background = {fg = 'TabLine', bg = 'TabLine'},
+        tab = {fg = 'TabLine', bg = 'TabLine'},
+        tab_selected = {fg = 'Normal', bg = 'Normal'},
+        tab_close = {fg = 'LspDiagnosticsDefaultError', bg = 'Normal'},
+        close_button = {fg = 'TabLine', bg = 'TabLine'},
+        close_button_visible = {fg = 'TabLine', bg = 'TabLine'},
+        close_button_selected = {fg = 'TabLineSel', bg = 'TabLineSel'},
+        buffer_visible = {fg = 'TabLine', bg = 'TabLine'},
         buffer_selected = {
-            fg = '#ff0000',
-            bg = '#0000ff',
+            fg = 'Normal',
+            bg = 'Normal',
             bold = true,
             italic = true
         },
-        numbers = {fg = '#D4D4D4', bg = '#1E1E1E'},
-        numbers_visible = {fg = '#D4D4D4', bg = '#1E1E1E'},
+        numbers = {fg = 'TabLineSel', bg = 'TabLineSel'},
+        numbers_visible = {fg = 'TabLineSel', bg = 'TabLineSel'},
         numbers_selected = {
-            fg = '#D4D4D4',
-            bg = '#1E1E1E',
+            fg = 'TabLineSel',
+            bg = 'TabLineSel',
             bold = true,
             italic = true
         },
-        diagnostic = {fg = '#00ff00', bg = '#1E1E1E'},
-        diagnostic_visible = {fg = '#00ff00', bg = '#1E1E1E'},
+        diagnostic = {fg = '#00ff00', bg = 'Normal'},
+        diagnostic_visible = {fg = '#00ff00', bg = 'Normal'},
         diagnostic_selected = {
             fg = '#00ff00',
-            bg = '#1E1E1E',
+            bg = 'Normal',
             bold = true,
             italic = true
         },
-        modified = {fg = '#cccccc', bg = '#3e3e3e'},
-        modified_visible = {fg = '#cccccc', bg = '#3e3e3e'},
-        modified_selected = {fg = '#D4D4D4', bg = '#1E1E1E'},
-        duplicate_selected = {fg = '#D4D4D4', bg = '#3e3e3e', italic = true},
-        duplicate_visible = {fg = '#cccccc', bg = '#3e3e3e', italic = true},
-        duplicate = {fg = '#cccccc', bg = '#3e3e3e', italic = true},
-        separator_selected = {fg = '#D4D4D4', bg = '#1E1E1E'},
-        separator_visible = {fg = '#cccccc', bg = '#3e3e3e'},
-        separator = {fg = '#cccccc', bg = '#3e3e3e'},
-        -- indicator_selected = {fg = 'LspDiagnosticsDefaultHint', bg = '#1E1E1E'},
-        indicator_selected = {fg = '#00ff00', bg = '#1E1E1E'},
+        modified = {fg = 'TabLine', bg = 'TabLine'},
+        modified_visible = {fg = 'TabLine', bg = 'TabLine'},
+        modified_selected = {fg = 'Normal', bg = 'Normal'},
+        duplicate_selected = {
+            fg = 'TabLineSel',
+            bg = 'TabLineSel',
+            italic = true
+        },
+        duplicate_visible = {fg = 'TabLine', bg = 'TabLine', italic = true},
+        duplicate = {fg = 'TabLine', bg = 'TabLine', italic = true},
+        separator_selected = {fg = 'Normal', bg = 'Normal'},
+        separator_visible = {fg = 'TabLine', bg = 'TabLine'},
+        separator = {fg = 'TabLine', bg = 'TabLine'},
+        indicator_selected = {fg = 'LspDiagnosticsDefaultHint', bg = 'Normal'},
         pick_selected = {
-            fg = '#D4D4D4',
-            bg = '#1E1E1E',
+            fg = 'TabLineSel',
+            bg = 'TabLineSel',
             bold = true,
             italic = true
         },
         pick_visible = {
-            fg = '#cccccc',
-            bg = '#3e3e3e',
+            fg = 'TabLine',
+            bg = 'TabLine',
             bold = true,
             italic = true
         },
-        pick = {fg = '#cccccc', bg = '#3e3e3e', bold = true, italic = true},
+        pick = {fg = 'TabLine', bg = 'TabLine', bold = true, italic = true},
         offset_separator = {
             fg = win_separator_fg,
             bg = separator_background_color

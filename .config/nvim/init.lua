@@ -3,13 +3,13 @@
 --   Hamza Memon
 --------------------------------------------------------------------------------
 -- Install plugins
-require 'hamzamemon.plugins'
+require("hamzamemon.plugins")
 
 -- Adjust general settings
-require 'hamzamemon.general'
+require("hamzamemon.general")
 
 -- LSP
-require 'hamzamemon.lsp'
+require("hamzamemon.lsp")
 
 -- Set keybindings
-require 'hamzamemon.keybinds'
+require("hamzamemon.keybinds")

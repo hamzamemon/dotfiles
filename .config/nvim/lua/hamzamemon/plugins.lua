@@ -44,6 +44,7 @@ packer.startup(function(use)
     -- Color
     use 'hamzamemon/sunflower'
     use 'norcalli/nvim-colorizer.lua'
+    use 'folke/tokyonight.nvim'
 
     -- Status Line
     use 'nvim-lualine/lualine.nvim'

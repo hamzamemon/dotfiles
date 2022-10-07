@@ -121,6 +121,9 @@ vim.wo.colorcolumn = '120'
 -- Do not wrap lines
 vim.wo.wrap = false
 
+-- Enable highlighting of the current line
+vim.wo.cursorline = true
+
 --------------------------------------------------------------------------------
 -- Command line, completion and wild menu
 --------------------------------------------------------------------------------
